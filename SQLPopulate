@@ -1,0 +1,3 @@
+INSERT INTO Companies VALUES(0, 'Google', 'Sundar', NULL, 'Pichai', 's_pichai@google.com', 'Mountain View', 'CA', 'J2L3D2');
+INSERT INTO Companies VALUES(0, 'Microsoft', 'Satya', NULL, 'Nadella', 's_nadella@microsoft.com', 'Redmond', 'WA', 'J8D7Y2');
+INSERT INTO Companies VALUES(0, 'Tesla', 'Elon', NULL, 'Musk', 'elon@tesla.com', 'Palo Alto', 'CA', 'J3L3X9');
