@@ -25,8 +25,6 @@ CREATE TABLE Contracts(
 | premiumType         | enum('Premium','Gold','Diamond','Silver') | NO   |     | NULL    |                |
 +---------------------+-------------------------------------------+------+-----+---------+----------------+
 
-
-
 CREATE TABLE Employees (
         employeeId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         is_manager BOOL NOT NULL,
@@ -34,3 +32,12 @@ CREATE TABLE Employees (
         contractId INT NOT NULL,
         FOREIGN KEY (contractId) REFERENCES Contracts(contractId)
 );
+
++------------+----------------------------------------------------------------------------+------+-----+---------+----------------+
+| Field      | Type                                                                       | Null | Key | Default | Extra          |
++------------+----------------------------------------------------------------------------+------+-----+---------+----------------+
+| employeeId | int(11)                                                                    | NO   | PRI | NULL    | auto_increment |
+| is_manager | tinyint(1)                                                                 | NO   |     | NULL    |                |
+| department | enum('Development','QA','UI','Design','BusinessIntelligence','Networking') | NO   |     | NULL    |                |
+| contractId | int(11)                                                                    | NO   | MUL | NULL    |                |
++------------+----------------------------------------------------------------------------+------+-----+---------+----------------+
