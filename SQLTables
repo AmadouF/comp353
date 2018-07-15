@@ -1,15 +1,15 @@
 Creating our tables:
 
 CREATE TABLE Contracts(
-contractId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-companyId int NOT NULL,
-FOREIGN KEY(companyId) REFERENCES Company(companyId),
-contactNumber varchar(15) NOT NULL,
-annualContractValue double NOT NULL,
-initalAmount double NOT NULL,
-serviceStartDate DATE NOT NULL,
-serviceType ENUM('Cloud','On-premises') NOT NULL,
-premiumType ENUM('Premium','Gold','Diamond','Silver') NOT NULL
+        contractId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        companyId int NOT NULL,
+        FOREIGN KEY(companyId) REFERENCES Company(companyId),
+        contactNumber varchar(15) NOT NULL,
+        annualContractValue double NOT NULL,
+        initalAmount double NOT NULL,
+        serviceStartDate DATE NOT NULL,
+        serviceType ENUM('Cloud','On-premises') NOT NULL,
+        premiumType ENUM('Premium','Gold','Diamond','Silver') NOT NULL
 );
 
 CREATE TABLE Employees (
