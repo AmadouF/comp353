@@ -12,6 +12,21 @@ CREATE TABLE Contracts(
         premiumType ENUM('Premium','Gold','Diamond','Silver') NOT NULL
 );
 
++---------------------+-------------------------------------------+------+-----+---------+----------------+
+| Field               | Type                                      | Null | Key | Default | Extra          |
++---------------------+-------------------------------------------+------+-----+---------+----------------+
+| contractId          | int(11)                                   | NO   | PRI | NULL    | auto_increment |
+| companyId           | int(11)                                   | NO   | MUL | NULL    |                |
+| contactNumber       | varchar(15)                               | NO   |     | NULL    |                |
+| annualContractValue | double                                    | NO   |     | NULL    |                |
+| initalAmount        | double                                    | NO   |     | NULL    |                |
+| serviceStartDate    | date                                      | NO   |     | NULL    |                |
+| serviceType         | enum('Cloud','On-premises')               | NO   |     | NULL    |                |
+| premiumType         | enum('Premium','Gold','Diamond','Silver') | NO   |     | NULL    |                |
++---------------------+-------------------------------------------+------+-----+---------+----------------+
+
+
+
 CREATE TABLE Employees (
         employeeId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         is_manager BOOL NOT NULL,
