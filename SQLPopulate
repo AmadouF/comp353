@@ -1,11 +1,16 @@
 INSERT INTO Companies VALUES(0, 'Google', 'Sundar', NULL, 'Pichai', 's_pichai@google.com', 'Mountain View', 'CA', 'J2L3D2');
 INSERT INTO Companies VALUES(0, 'Microsoft', 'Satya', NULL, 'Nadella', 's_nadella@microsoft.com', 'Redmond', 'WA', 'J8D7Y2');
 INSERT INTO Companies VALUES(0, 'Tesla', 'Elon', NULL, 'Musk', 'elon@tesla.com', 'Palo Alto', 'CA', 'J3L3X9');
+insert into Companies values (0,'Vigilant','Tim','T','Wright','t_wright@vigilant.ca','Montreal','QC','H3G 2W4');
 
 INSERT INTO Contracts VALUES(0, 2, '4159232131', 100000.00, 65000.00, '2019-12-23', 'Cloud', 'Diamond');
 INSERT INTO Contracts VALUES(0, 3, '9824581204', 50000.00, 500.00, '2018-9-10', 'On-premises', 'Premium');
 INSERT INTO Contracts VALUES(0, 4, '8375939182', 92000.00, 2000.00, '2019-2-1', 'On-premises', 'Silver');
+insert into Contracts values (0,6,'5141234567',125496.25,415.25,'2018-07-15','Cloud','Gold');
+insert into Contracts values (0,5,'5148752452',98542140.58,874.35,'2019-10-05','On-premises','Diamond'); 
 
 INSERT INTO Employees VALUES(0, TRUE, 'Development', 1);
 INSERT INTO Employees VALUES(0, TRUE, 'Design', 2);
 INSERT INTO Employees VALUES(0, TRUE, 'UI', 3);
+insert into Employees values (0,1,'QA',4)
+insert into Employees values (0,1,'Design',6)
