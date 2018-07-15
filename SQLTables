@@ -12,3 +12,10 @@ serviceType ENUM('Cloud','On-premises') NOT NULL,
 premiumType ENUM('Premium','Gold','Diamond','Silver') NOT NULL
 );
 
+CREATE TABLE Employees (
+        employeeId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        is_manager BOOL NOT NULL,
+        department ENUM('Development', 'QA', 'UI', 'Design', 'BusinessIntelligence', 'Networking')  NOT NULL,
+        contractId INT NOT NULL,
+        FOREIGN KEY (contractId) REFERENCES Contracts(contractId)
+);
