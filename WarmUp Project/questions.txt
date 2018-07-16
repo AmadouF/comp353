@@ -84,3 +84,15 @@ INSERT INTO Employees VALUES (0, 1, 'Development', 'Juan', 'Vasquez', '7');
 |         47 |          0 | BusinessIntelligence | Tomasa    | Carlson   |          6 |
 |         48 |          1 | QA                   | Joseph    | Aker      |          5 |
 +------------+------------+----------------------+-----------+-----------+------------+
+
+--Inserting the 10 devs for Juan
+INSERT INTO Employees VALUES(0,0,'Development','Dorthy','Whitney',2);
+INSERT INTO Employees VALUES(0,0,'Development','Artie','Farrell',2);
+INSERT INTO Employees VALUES(0,0,'Development','Davis','Hancock',2);
+INSERT INTO Employees VALUES(0,0,'Development','Mahalia','Benson',2);
+INSERT INTO Employees VALUES(0,0,'Development','German','Whitney',2);
+INSERT INTO Employees VALUES(0,0,'Development','Leandra','Burke',2);
+INSERT INTO Employees VALUES(0,0,'Development','Dorthy','Phillips',2);
+INSERT INTO Employees VALUES(0,0,'Development','Ileana','Bowers',2);
+INSERT INTO Employees VALUES(0,0,'Development','Karl','Mercer',2);
+INSERT INTO Employees VALUES(0,0,'Development','Florentina','Benson',2);

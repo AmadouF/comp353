@@ -4,3 +4,9 @@ c:\users\tarik\documents\visual studio 2015\Projects\Comp353 WarmUp\bin\Debug\Co
 c:\users\tarik\documents\visual studio 2015\Projects\Comp353 WarmUp\obj\Debug\Comp353 WarmUp.csprojResolveAssemblyReference.cache
 c:\users\tarik\documents\visual studio 2015\Projects\Comp353 WarmUp\obj\Debug\Comp353 WarmUp.exe
 c:\users\tarik\documents\visual studio 2015\Projects\Comp353 WarmUp\obj\Debug\Comp353 WarmUp.pdb
+C:\Users\Tarik\Documents\GitHub\comp353WarmUp\WarmUp Project\Comp353 WarmUp\bin\Debug\Comp353 WarmUp.exe.config
+C:\Users\Tarik\Documents\GitHub\comp353WarmUp\WarmUp Project\Comp353 WarmUp\obj\Debug\Comp353 WarmUp.exe
+C:\Users\Tarik\Documents\GitHub\comp353WarmUp\WarmUp Project\Comp353 WarmUp\obj\Debug\Comp353 WarmUp.pdb
+C:\Users\Tarik\Documents\GitHub\comp353WarmUp\WarmUp Project\Comp353 WarmUp\bin\Debug\Comp353 WarmUp.exe
+C:\Users\Tarik\Documents\GitHub\comp353WarmUp\WarmUp Project\Comp353 WarmUp\bin\Debug\Comp353 WarmUp.pdb
+C:\Users\Tarik\Documents\GitHub\comp353WarmUp\WarmUp Project\Comp353 WarmUp\obj\Debug\Comp353 WarmUp.csprojResolveAssemblyReference.cache

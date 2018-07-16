@@ -1,0 +1,11 @@
+INSERT INTO Employees VALUES(0,0,'Development','Natisha','Blankenship',7);
+INSERT INTO Employees VALUES(0,0,'Development','German','Benson',7);
+INSERT INTO Employees VALUES(0,0,'Development','Sona','Carlson',7);
+INSERT INTO Employees VALUES(0,0,'Development','Alina','Hebert',7);
+INSERT INTO Employees VALUES(0,0,'Development','Magaret','Rocha',7);
+INSERT INTO Employees VALUES(0,0,'Development','Artie','Benson',7);
+INSERT INTO Employees VALUES(0,0,'Development','Marlin','Blevins',7);
+INSERT INTO Employees VALUES(0,0,'Development','Alina','Cortez',7);
+INSERT INTO Employees VALUES(0,0,'Development','Francie','Gardner',7);
+INSERT INTO Employees VALUES(0,0,'Development','Afton','Butler',7);
+

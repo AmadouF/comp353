@@ -1,4 +1,4 @@
---Populated Tables
+--Populated Tables--
 --Companies table
 +-----------+-------------+--------------+-----------------+-------------+-------------------------+---------------+----------+------------+
 | companyId | companyName | repFirstName | repMiddleInital | repLastName | emailId                 | city          | province | postalCode |
@@ -24,67 +24,58 @@
 +------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
 
 --Employees table
++------------+------------+----------------------+-----------+-----------+------------+
+| employeeId | is_manager | department           | firstName | lastName  | contractId |
++------------+------------+----------------------+-----------+-----------+------------+
+|          1 |          1 | Development          | Eric      | Johnson   |          1 |
+|          2 |          1 | Design               | Jonathan  | Smith     |          2 |
+|          3 |          1 | UI                   | Angela    | Monro     |          3 |
+|          4 |          1 | QA                   | Brad      | Leone     |          4 |
+|          5 |          1 | Design               | Casey     | Black     |          6 |
+|          6 |          0 | Networking           | Janel     | Mcgee     |          1 |
+|          7 |          0 | BusinessIntelligence | Silvana   | Burke     |          1 |
+|          8 |          0 | UI                   | Alina     | Holt      |          1 |
+|          9 |          0 | QA                   | Janel     | Hebert    |          1 |
+|         10 |          0 | UI                   | Sharolyn  | Carlson   |          1 |
+|         11 |          0 | Networking           | Rachael   | Burke     |          1 |
+|         12 |          0 | Design               | Kami      | Fields    |          2 |
+|         13 |          0 | Development          | Luetta    | Mcgee     |          2 |
+|         14 |          0 | Development          | Sona      | Whitney   |          2 |
+|         15 |          0 | Development          | Gordon    | Day       |          2 |
+|         16 |          0 | UI                   | Nilsa     | Flowers   |          2 |
+|         17 |          0 | Networking           | Kami      | Walters   |          2 |
+|         18 |          0 | Networking           | Frankie   | Mcconnell |          2 |
+|         19 |          0 | Development          | Berna     | Blevins   |          2 |
+|         20 |          0 | Design               | Dorthy    | Flowers   |          2 |
+|         21 |          0 | QA                   | Miles     | Gardner   |          3 |
+|         22 |          0 | Development          | Ileana    | Rocha     |          3 |
+|         23 |          0 | QA                   | Sebrina   | Best      |          3 |
+|         24 |          0 | UI                   | Marlin    | Bowers    |          3 |
+|         25 |          0 | QA                   | Alina     | Hancock   |          4 |
+|         26 |          0 | QA                   | Frankie   | Mcgee     |          4 |
+|         27 |          0 | UI                   | Davis     | Whitney   |          4 |
+|         28 |          0 | UI                   | Davis     | Walters   |          4 |
+|         29 |          0 | UI                   | Silvana   | Butler    |          4 |
+|         30 |          0 | UI                   | Magaret   | Hoover    |          4 |
+|         31 |          0 | QA                   | Willian   | Rocha     |          4 |
+|         32 |          0 | Networking           | Billy     | Estes     |          4 |
+|         33 |          0 | QA                   | Gordon    | Hebert    |          4 |
+|         34 |          0 | BusinessIntelligence | Gracia    | Whitney   |          4 |
+|         35 |          0 | UI                   | German    | Estes     |          4 |
+|         36 |          0 | QA                   | Gracia    | Wheeler   |          5 |
+|         37 |          0 | UI                   | Juliane   | Estes     |          5 |
+|         38 |          0 | Design               | Shaunda   | Wise      |          5 |
+|         39 |          0 | Design               | Natisha   | Harper    |          5 |
+|         40 |          0 | Networking           | Gracia    | Phillips  |          6 |
+|         41 |          0 | Design               | Kami      | Erickson  |          6 |
+|         42 |          0 | UI                   | Silvana   | Hebert    |          6 |
+|         43 |          0 | Design               | Willow    | Pineda    |          6 |
+|         44 |          0 | BusinessIntelligence | Devin     | Mcconnell |          6 |
+|         45 |          0 | Design               | Sherika   | Pineda    |          6 |
+|         46 |          0 | Development          | Gordon    | Wise      |          6 |
+|         47 |          0 | BusinessIntelligence | Tomasa    | Carlson   |          6 |
+|         48 |          1 | QA                   | Joseph    | Aker      |          5 |
++------------+------------+----------------------+-----------+-----------+------------+
 
-+------------+-----------+----------------------+------------+
-| employeeId | isManager | department           | contractId |
-+------------+-----------+----------------------+------------+
-|          1 |         1 | Development          |          1 |
-|          2 |         1 | Design               |          2 |
-|          3 |         1 | UI                   |          3 |
-|          4 |         1 | QA                   |          4 |
-|          5 |         1 | Development          |          5 |
-|          6 |         1 | Design               |          6 |
-|         39 |         0 | Design               |          1 |
-|         40 |         0 | Networking           |          1 |
-|         41 |         0 | Development          |          1 |
-|         42 |         0 | Development          |          1 |
-|         43 |         0 | Design               |          1 |
-|         44 |         0 | QA                   |          1 |
-|         45 |         0 | QA                   |          1 |
-|         46 |         0 | Networking           |          1 |
-|         47 |         0 | Development          |          1 |
-|         48 |         0 | Development          |          1 |
-|         49 |         0 | UI                   |          2 |
-|         50 |         0 | Development          |          2 |
-|         51 |         0 | UI                   |          2 |
-|         52 |         0 | QA                   |          2 |
-|         53 |         0 | Development          |          3 |
-|         54 |         0 | UI                   |          3 |
-|         55 |         0 | Development          |          3 |
-|         56 |         0 | Networking           |          3 |
-|         57 |         0 | BusinessIntelligence |          3 |
-|         58 |         0 | UI                   |          3 |
-|         59 |         0 | Design               |          3 |
-|         60 |         0 | UI                   |          4 |
-|         61 |         0 | Networking           |          4 |
-|         62 |         0 | Development          |          4 |
-|         63 |         0 | UI                   |          4 |
-|         64 |         0 | Development          |          4 |
-|         65 |         0 | BusinessIntelligence |          4 |
-|         66 |         0 | Design               |          4 |
-|         67 |         0 | Development          |          4 |
-|         68 |         0 | QA                   |          4 |
-|         69 |         0 | Development          |          4 |
-|         70 |         0 | Design               |          4 |
-|         71 |         0 | Networking           |          5 |
-|         72 |         0 | QA                   |          5 |
-|         73 |         0 | Design               |          5 |
-|         74 |         0 | QA                   |          5 |
-|         75 |         0 | BusinessIntelligence |          5 |
-|         76 |         0 | Development          |          5 |
-|         77 |         0 | UI                   |          5 |
-|         78 |         0 | QA                   |          5 |
-|         79 |         0 | Design               |          6 |
-|         80 |         0 | UI                   |          6 |
-|         81 |         0 | Design               |          6 |
-|         82 |         0 | Networking           |          6 |
-|         83 |         0 | Networking           |          6 |
-|         84 |         0 | UI                   |          6 |
-|         85 |         0 | QA                   |          6 |
-|         86 |         0 | Design               |          6 |
-|         87 |         0 | BusinessIntelligence |          6 |
-|         88 |         0 | Development          |          6 |
-|         89 |         0 | QA                   |          6 |
-+------------+-----------+----------------------+------------+
 
 
