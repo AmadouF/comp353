@@ -1,0 +1,90 @@
+--Populated Tables
+--Companies table
++-----------+-------------+--------------+-----------------+-------------+-------------------------+---------------+----------+------------+
+| companyId | companyName | repFirstName | repMiddleInital | repLastName | emailId                 | city          | province | postalCode |
++-----------+-------------+--------------+-----------------+-------------+-------------------------+---------------+----------+------------+
+|         1 | Apple       | Tim          | NULL            | Cook        | timcook@apple.com       | Cupertino     | CA       | T2P4Y5     |
+|         2 | Google      | Sundar       | NULL            | Pichai      | s_pichai@google.com     | Mountain View | CA       | J2L3D2     |
+|         3 | Microsoft   | Satya        | NULL            | Nadella     | s_nadella@microsoft.com | Redmond       | WA       | J8D7Y2     |
+|         4 | Tesla       | Elon         | NULL            | Musk        | elon@tesla.com          | Palo Alto     | CA       | J3L3X9     |
+|         5 | Playstation | Kazuo        | K               | Hirai       | khirai@playstation.com  | Tokyo         | MU       | U6QS9W     |
+|         6 | Vigilant    | Tim          | T               | Wright      | t_wright@vigilant.ca    | Montreal      | QC       | H3G 2W4    |
++-----------+-------------+--------------+-----------------+-------------+-------------------------+---------------+----------+------------+
+
+--Contracts table
++------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+| contractId | companyId | contactNumber | annualContractValue | initalAmount | serviceStartDate | serviceType | premiumType |
++------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+|          1 |         2 | 4159232131    |              100000 |        65000 | 2019-12-23       | Cloud       | Diamond     |
+|          2 |         3 | 9824581204    |               50000 |          500 | 2018-09-10       | On-premises | Premium     |
+|          3 |         4 | 8375939182    |               92000 |         2000 | 2019-02-01       | On-premises | Silver      |
+|          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|          5 |         1 | 5142225646    |               97000 |          124 | 2010-09-19       | Cloud       | Diamond     |
+|          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
++------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+
+--Employees table
+
++------------+-----------+----------------------+------------+
+| employeeId | isManager | department           | contractId |
++------------+-----------+----------------------+------------+
+|          1 |         1 | Development          |          1 |
+|          2 |         1 | Design               |          2 |
+|          3 |         1 | UI                   |          3 |
+|          4 |         1 | QA                   |          4 |
+|          5 |         1 | Development          |          5 |
+|          6 |         1 | Design               |          6 |
+|         39 |         0 | Design               |          1 |
+|         40 |         0 | Networking           |          1 |
+|         41 |         0 | Development          |          1 |
+|         42 |         0 | Development          |          1 |
+|         43 |         0 | Design               |          1 |
+|         44 |         0 | QA                   |          1 |
+|         45 |         0 | QA                   |          1 |
+|         46 |         0 | Networking           |          1 |
+|         47 |         0 | Development          |          1 |
+|         48 |         0 | Development          |          1 |
+|         49 |         0 | UI                   |          2 |
+|         50 |         0 | Development          |          2 |
+|         51 |         0 | UI                   |          2 |
+|         52 |         0 | QA                   |          2 |
+|         53 |         0 | Development          |          3 |
+|         54 |         0 | UI                   |          3 |
+|         55 |         0 | Development          |          3 |
+|         56 |         0 | Networking           |          3 |
+|         57 |         0 | BusinessIntelligence |          3 |
+|         58 |         0 | UI                   |          3 |
+|         59 |         0 | Design               |          3 |
+|         60 |         0 | UI                   |          4 |
+|         61 |         0 | Networking           |          4 |
+|         62 |         0 | Development          |          4 |
+|         63 |         0 | UI                   |          4 |
+|         64 |         0 | Development          |          4 |
+|         65 |         0 | BusinessIntelligence |          4 |
+|         66 |         0 | Design               |          4 |
+|         67 |         0 | Development          |          4 |
+|         68 |         0 | QA                   |          4 |
+|         69 |         0 | Development          |          4 |
+|         70 |         0 | Design               |          4 |
+|         71 |         0 | Networking           |          5 |
+|         72 |         0 | QA                   |          5 |
+|         73 |         0 | Design               |          5 |
+|         74 |         0 | QA                   |          5 |
+|         75 |         0 | BusinessIntelligence |          5 |
+|         76 |         0 | Development          |          5 |
+|         77 |         0 | UI                   |          5 |
+|         78 |         0 | QA                   |          5 |
+|         79 |         0 | Design               |          6 |
+|         80 |         0 | UI                   |          6 |
+|         81 |         0 | Design               |          6 |
+|         82 |         0 | Networking           |          6 |
+|         83 |         0 | Networking           |          6 |
+|         84 |         0 | UI                   |          6 |
+|         85 |         0 | QA                   |          6 |
+|         86 |         0 | Design               |          6 |
+|         87 |         0 | BusinessIntelligence |          6 |
+|         88 |         0 | Development          |          6 |
+|         89 |         0 | QA                   |          6 |
++------------+-----------+----------------------+------------+
+
+
