@@ -30,6 +30,8 @@ CREATE TABLE Employees (
         employeeId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         is_manager BOOL NOT NULL,
         department ENUM('Development', 'QA', 'UI', 'Design', 'BusinessIntelligence', 'Networking')  NOT NULL,
+		firstName VARCHAR(255) NOT NULL,
+		lastName VARCHAR(255) NOT NULL,
         contractId INT NOT NULL,
         FOREIGN KEY (contractId) REFERENCES Contracts(contractId)
 );
