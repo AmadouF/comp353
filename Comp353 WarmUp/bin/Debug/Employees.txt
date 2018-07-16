@@ -1,0 +1,48 @@
+INSERT INTO Employees VALUES(0,0,'Networking',1);
+INSERT INTO Employees VALUES(0,0,'UI',1);
+INSERT INTO Employees VALUES(0,0,'BusinessIntelligence',1);
+INSERT INTO Employees VALUES(0,0,'Development',1);
+INSERT INTO Employees VALUES(0,0,'Networking',1);
+
+INSERT INTO Employees VALUES(0,0,'Networking',2);
+INSERT INTO Employees VALUES(0,0,'Development',2);
+INSERT INTO Employees VALUES(0,0,'QA',2);
+INSERT INTO Employees VALUES(0,0,'UI',2);
+INSERT INTO Employees VALUES(0,0,'UI',2);
+INSERT INTO Employees VALUES(0,0,'BusinessIntelligence',2);
+INSERT INTO Employees VALUES(0,0,'Development',2);
+INSERT INTO Employees VALUES(0,0,'UI',2);
+
+INSERT INTO Employees VALUES(0,0,'BusinessIntelligence',3);
+INSERT INTO Employees VALUES(0,0,'QA',3);
+INSERT INTO Employees VALUES(0,0,'BusinessIntelligence',3);
+INSERT INTO Employees VALUES(0,0,'UI',3);
+INSERT INTO Employees VALUES(0,0,'BusinessIntelligence',3);
+INSERT INTO Employees VALUES(0,0,'Development',3);
+
+INSERT INTO Employees VALUES(0,0,'UI',4);
+INSERT INTO Employees VALUES(0,0,'Design',4);
+INSERT INTO Employees VALUES(0,0,'BusinessIntelligence',4);
+INSERT INTO Employees VALUES(0,0,'QA',4);
+
+INSERT INTO Employees VALUES(0,0,'QA',5);
+INSERT INTO Employees VALUES(0,0,'BusinessIntelligence',5);
+INSERT INTO Employees VALUES(0,0,'BusinessIntelligence',5);
+INSERT INTO Employees VALUES(0,0,'Development',5);
+INSERT INTO Employees VALUES(0,0,'BusinessIntelligence',5);
+INSERT INTO Employees VALUES(0,0,'UI',5);
+INSERT INTO Employees VALUES(0,0,'Networking',5);
+INSERT INTO Employees VALUES(0,0,'Design',5);
+INSERT INTO Employees VALUES(0,0,'BusinessIntelligence',5);
+
+INSERT INTO Employees VALUES(0,0,'Design',6);
+INSERT INTO Employees VALUES(0,0,'BusinessIntelligence',6);
+INSERT INTO Employees VALUES(0,0,'Development',6);
+INSERT INTO Employees VALUES(0,0,'Networking',6);
+INSERT INTO Employees VALUES(0,0,'Development',6);
+INSERT INTO Employees VALUES(0,0,'QA',6);
+INSERT INTO Employees VALUES(0,0,'UI',6);
+INSERT INTO Employees VALUES(0,0,'BusinessIntelligence',6);
+INSERT INTO Employees VALUES(0,0,'QA',6);
+INSERT INTO Employees VALUES(0,0,'Development',6);
+
