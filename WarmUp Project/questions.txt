@@ -107,3 +107,77 @@ INSERT INTO Employees VALUES(0,0,'Development','Florentina','Benson',2);
 |         58 |          0 | Development          | Afton     | Butler      |          7 |
 |         59 |          1 | Development          | Juan      | Vasquez     |          7 |
 +------------+------------+----------------------+-----------+-------------+------------+
+
+
+--Searching for managers with ACV greater than $80,000
+
+ select * from Employees,Contracts WHERE Employees.contractId=Contracts.contractId AND Contracts.annualContractValue>85000.00 AND Employees.is_manager=1;
++------------+------------+-------------+-----------+----------+------------+------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+| employeeId | is_manager | department  | firstName | lastName | contractId | contractId | companyId | contactNumber | annualContractValue | initalAmount | serviceStartDate | serviceType | premiumType |
++------------+------------+-------------+-----------+----------+------------+------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+|          1 |          1 | Development | Eric      | Johnson  |          1 |          1 |         2 | 4159232131    |              100000 |        65000 | 2019-12-23       | Cloud       | Diamond     |
+|          3 |          1 | UI          | Angela    | Monro    |          3 |          3 |         4 | 8375939182    |               92000 |         2000 | 2019-02-01       | On-premises | Silver      |
+|          4 |          1 | QA          | Brad      | Leone    |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         48 |          1 | QA          | Joseph    | Aker     |          5 |          5 |         1 | 5142225646    |               97000 |          124 | 2010-09-19       | Cloud       | Diamond     |
+|          5 |          1 | Design      | Casey     | Black    |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         59 |          1 | Development | Juan      | Vasquez  |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
++------------+------------+-------------+-----------+----------+------------+------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+
+
+
+--Searchiong for Employees with ACV greater than $85,000
+select * from Employees,Contracts WHERE Employees.contractId=Contracts.contractId AND Contracts.annualContractValue>85000.00;
+
++------------+------------+----------------------+-----------+-------------+------------+------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+| employeeId | is_manager | department           | firstName | lastName    | contractId | contractId | companyId | contactNumber | annualContractValue | initalAmount | serviceStartDate | serviceType | premiumType |
++------------+------------+----------------------+-----------+-------------+------------+------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+|          1 |          1 | Development          | Eric      | Johnson     |          1 |          1 |         2 | 4159232131    |              100000 |        65000 | 2019-12-23       | Cloud       | Diamond     |
+|          6 |          0 | Networking           | Janel     | Mcgee       |          1 |          1 |         2 | 4159232131    |              100000 |        65000 | 2019-12-23       | Cloud       | Diamond     |
+|          7 |          0 | BusinessIntelligence | Silvana   | Burke       |          1 |          1 |         2 | 4159232131    |              100000 |        65000 | 2019-12-23       | Cloud       | Diamond     |
+|          8 |          0 | UI                   | Alina     | Holt        |          1 |          1 |         2 | 4159232131    |              100000 |        65000 | 2019-12-23       | Cloud       | Diamond     |
+|          9 |          0 | QA                   | Janel     | Hebert      |          1 |          1 |         2 | 4159232131    |              100000 |        65000 | 2019-12-23       | Cloud       | Diamond     |
+|         10 |          0 | UI                   | Sharolyn  | Carlson     |          1 |          1 |         2 | 4159232131    |              100000 |        65000 | 2019-12-23       | Cloud       | Diamond     |
+|         11 |          0 | Networking           | Rachael   | Burke       |          1 |          1 |         2 | 4159232131    |              100000 |        65000 | 2019-12-23       | Cloud       | Diamond     |
+|          3 |          1 | UI                   | Angela    | Monro       |          3 |          3 |         4 | 8375939182    |               92000 |         2000 | 2019-02-01       | On-premises | Silver      |
+|         21 |          0 | QA                   | Miles     | Gardner     |          3 |          3 |         4 | 8375939182    |               92000 |         2000 | 2019-02-01       | On-premises | Silver      |
+|         22 |          0 | Development          | Ileana    | Rocha       |          3 |          3 |         4 | 8375939182    |               92000 |         2000 | 2019-02-01       | On-premises | Silver      |
+|         23 |          0 | QA                   | Sebrina   | Best        |          3 |          3 |         4 | 8375939182    |               92000 |         2000 | 2019-02-01       | On-premises | Silver      |
+|         24 |          0 | UI                   | Marlin    | Bowers      |          3 |          3 |         4 | 8375939182    |               92000 |         2000 | 2019-02-01       | On-premises | Silver      |
+|          4 |          1 | QA                   | Brad      | Leone       |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         25 |          0 | QA                   | Alina     | Hancock     |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         26 |          0 | QA                   | Frankie   | Mcgee       |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         27 |          0 | UI                   | Davis     | Whitney     |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         28 |          0 | UI                   | Davis     | Walters     |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         29 |          0 | UI                   | Silvana   | Butler      |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         30 |          0 | UI                   | Magaret   | Hoover      |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         31 |          0 | QA                   | Willian   | Rocha       |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         32 |          0 | Networking           | Billy     | Estes       |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         33 |          0 | QA                   | Gordon    | Hebert      |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         34 |          0 | BusinessIntelligence | Gracia    | Whitney     |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         35 |          0 | UI                   | German    | Estes       |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         36 |          0 | QA                   | Gracia    | Wheeler     |          5 |          5 |         1 | 5142225646    |               97000 |          124 | 2010-09-19       | Cloud       | Diamond     |
+|         37 |          0 | UI                   | Juliane   | Estes       |          5 |          5 |         1 | 5142225646    |               97000 |          124 | 2010-09-19       | Cloud       | Diamond     |
+|         38 |          0 | Design               | Shaunda   | Wise        |          5 |          5 |         1 | 5142225646    |               97000 |          124 | 2010-09-19       | Cloud       | Diamond     |
+|         39 |          0 | Design               | Natisha   | Harper      |          5 |          5 |         1 | 5142225646    |               97000 |          124 | 2010-09-19       | Cloud       | Diamond     |
+|         48 |          1 | QA                   | Joseph    | Aker        |          5 |          5 |         1 | 5142225646    |               97000 |          124 | 2010-09-19       | Cloud       | Diamond     |
+|          5 |          1 | Design               | Casey     | Black       |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         40 |          0 | Networking           | Gracia    | Phillips    |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         41 |          0 | Design               | Kami      | Erickson    |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         42 |          0 | UI                   | Silvana   | Hebert      |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         43 |          0 | Design               | Willow    | Pineda      |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         44 |          0 | BusinessIntelligence | Devin     | Mcconnell   |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         45 |          0 | Design               | Sherika   | Pineda      |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         46 |          0 | Development          | Gordon    | Wise        |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         47 |          0 | BusinessIntelligence | Tomasa    | Carlson     |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         49 |          0 | Development          | Natisha   | Blankenship |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         50 |          0 | Development          | German    | Benson      |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         51 |          0 | Development          | Sona      | Carlson     |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         52 |          0 | Development          | Alina     | Hebert      |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         53 |          0 | Development          | Magaret   | Rocha       |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         54 |          0 | Development          | Artie     | Benson      |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         55 |          0 | Development          | Marlin    | Blevins     |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         56 |          0 | Development          | Alina     | Cortez      |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         57 |          0 | Development          | Francie   | Gardner     |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         58 |          0 | Development          | Afton     | Butler      |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         59 |          1 | Development          | Juan      | Vasquez     |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
++------------+------------+----------------------+-----------+-------------+------------+------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
