@@ -29,6 +29,7 @@ INSERT INTO Contracts VALUES (0, 7, '4657362745', 90000.00, 10000.00, '2018-07-1
 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
 +------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
 
+2.
 
 INSERT INTO Employees VALUES (0, 1, 'Development', 'Juan', 'Vasquez', '7');
 
@@ -108,7 +109,7 @@ INSERT INTO Employees VALUES(0,0,'Development','Florentina','Benson',2);
 |         59 |          1 | Development          | Juan      | Vasquez     |          7 |
 +------------+------------+----------------------+-----------+-------------+------------+
 
-
+3.
 --Searching for managers with ACV greater than $80,000
 
  select * from Employees,Contracts WHERE Employees.contractId=Contracts.contractId AND Contracts.annualContractValue>85000.00 AND Employees.is_manager=1;
@@ -124,7 +125,7 @@ INSERT INTO Employees VALUES(0,0,'Development','Florentina','Benson',2);
 +------------+------------+-------------+-----------+----------+------------+------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
 
 
-
+4.
 --Searchiong for Employees with ACV greater than $85,000
 select * from Employees,Contracts WHERE Employees.contractId=Contracts.contractId AND Contracts.annualContractValue>85000.00;
 
@@ -181,3 +182,13 @@ select * from Employees,Contracts WHERE Employees.contractId=Contracts.contractI
 |         58 |          0 | Development          | Afton     | Butler      |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
 |         59 |          1 | Development          | Juan      | Vasquez     |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
 +------------+------------+----------------------+-----------+-------------+------------+------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+
+
+5.
+
+SELECT Contracts.* from Employees, Contracts Where Employees.contractId = Contracts.contractId AND Employees.firstName = 'Juan' AND Employees.lastName='Vasquez';
++------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+| contractId | companyId | contactNumber | annualContractValue | initalAmount | serviceStartDate | serviceType | premiumType |
++------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+|          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
++------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
