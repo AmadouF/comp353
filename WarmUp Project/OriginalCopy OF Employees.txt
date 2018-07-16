@@ -1,0 +1,162 @@
+INSERT INTO Employees VALUES(0,0,'Networking','Janel','Mcgee',1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'BusinessIntelligence','Silvana','Burke',1);
+INSERT INTO Employees VALUES(0,0,'Development','Sona','Whitney',2);
+INSERT INTO Employees VALUES(0,0,'Development','Gordon','Day',2);
+INSERT INTO Employees VALUES(0,0,'UI','Nilsa','Flowers',2);
+INSERT INTO Employees VALUES(0,0,'Networking','Kami','Walters',2);
+INSERT INTO Employees VALUES(0,0,'Networking','Frankie','Mcconnell',2);
+INSERT INTO Employees VALUES(0,0,'Development','Berna','Blevins',2);
+INSERT INTO Employees VALUES(0,0,'Design','Dorthy','Flowers',2);
+
+INSERT INTO Employees VALUES(0,0,'QA','Miles','Gardner',3);
+INSERT INTO Employees VALUES(0,0,'Development','Ileana','Rocha',3);
+INSERT INTO Employees VALUES(0,0,'QA','Sebrina','Best',3);
+INSERT INTO Employees VALUES(0,0,'UI','Marlin','Bowers',3);
+
+INSERT INTO Employees VALUES(0,0,'QA','Alina','Hancock',4);
+INSERT INTO Employees VALUES(0,0,'QA','Frankie','Mcgee',4);
+INSERT INTO Employees VALUES(0,0,'UI','Davis','Whitney',4);
+INSERT INTO Employees VALUES(0,0,'UI','Davis','Walters',4);
+INSERT INTO Employees VALUES(0,0,'UI','Silvana','Butler',4);
+INSERT INTO Employees VALUES(0,0,'UI','Magaret','Hoover',4);
+INSERT INTO Employees VALUES(0,0,'QA','Willian','Rocha',4);
+IQuery OK, 1 row affected (0.00 sec)
+NSE
+RT INTO Employees VALUES(0,0,'Networking','Billy','Estes',4);
+INSERT INTO Emplmysql> oyeINSERT INTO Employees VALUES(0,0,'UI','Alina','Holt',1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'QA','Janel','Hebert',1);
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'UI','Sharolyn','Carlson',1);
+INSERT INTO Employees VALUES(0,0,'QA','Gracia','Wheeler',5);
+INSERT INTO Employees VALUES(0,0,'UI','Juliane','Estes',5);
+INSERT INTO Employees VALUES(0,0,'Design','Shaunda','Wise',5);
+INSERT INTO Employees VALUES(0,0,'Design','Natisha','Harper',5);
+
+INSERT INTO Employees VALUES(0,0,'Networking','Gracia','Phillips',6);
+INSERT INTO Employees VALUES(0,0,'Design','Kami','Erickson',6);
+INSERT INTO Employees VALUES(0,0,'UI','Silvana','Hebert',6);
+INSERT INTO Employees VALUES(0,0,'Design','Willow','Pineda',6);
+INSERT INTO Employees VALUES(0,0,'BusinessIntelligence','Devin','McconneQuery OK, 1 row affected (0.00 sec)
+ll
+',6);
+INSERT INTO Employees VALUES(0,0,'Design','Sherika','Pinmysql> eda',6INSERT INTO Employees VALUES(0,0,'Networking','Rachael','Burke',1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql>
+mysql> INSERT INTO Employees VALUES(0,0,'Design','Kami','Fields',2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'Development','Luetta','Mcgee',2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'Development','Sona','Whitney',2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'Development','Gordon','Day',2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'UI','Nilsa','Flowers',2);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'Networking','Kami','Walters',2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'Networking','Frankie','Mcconnell',2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'Development','Berna','Blevins',2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'Design','Dorthy','Flowers',2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql>
+mysql> INSERT INTO Employees VALUES(0,0,'QA','Miles','Gardner',3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'Development','Ileana','Rocha',3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'QA','Sebrina','Best',3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'UI','Marlin','Bowers',3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql>
+mysql> INSERT INTO Employees VALUES(0,0,'QA','Alina','Hancock',4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'QA','Frankie','Mcgee',4);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'UI','Davis','Whitney',4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'UI','Davis','Walters',4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'UI','Silvana','Butler',4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'UI','Magaret','Hoover',4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'QA','Willian','Rocha',4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'Networking','Billy','Estes',4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'QA','Gordon','Hebert',4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'BusinessIntelligence','Gracia','Whitney',4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'UI','German','Estes',4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql>
+mysql> INSERT INTO Employees VALUES(0,0,'QA','Gracia','Wheeler',5);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'UI','Juliane','Estes',5);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'Design','Shaunda','Wise',5);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'Design','Natisha','Harper',5);
+Query OK, 1 row affected (0.00 sec)
+
+mysql>
+mysql> INSERT INTO Employees VALUES(0,0,'Networking','Gracia','Phillips',6);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'Design','Kami','Erickson',6);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'UI','Silvana','Hebert',6);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'Design','Willow','Pineda',6);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'BusinessIntelligence','Devin','Mcconnell',6);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'Design','Sherika','Pineda',6);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'Development','Gordon','Wise',6);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Employees VALUES(0,0,'BusinessIntelligence','Tomasa','Carlson',6);
+Query OK, 1 row affected (0.01 sec)
