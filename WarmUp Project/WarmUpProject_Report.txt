@@ -1,0 +1,477 @@
+--Creating our tables:
+
+CREATE TABLE Contracts(
+        contractId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        companyId int NOT NULL,
+        FOREIGN KEY(companyId) REFERENCES Company(companyId),
+        contactNumber varchar(15) NOT NULL,
+        annualContractValue double NOT NULL,
+        initalAmount double NOT NULL,
+        serviceStartDate DATE NOT NULL,
+        serviceType ENUM('Cloud','On-premises') NOT NULL,
+        premiumType ENUM('Premium','Gold','Diamond','Silver') NOT NULL
+);
+
++---------------------+-------------------------------------------+------+-----+---------+----------------+
+| Field               | Type                                      | Null | Key | Default | Extra          |
++---------------------+-------------------------------------------+------+-----+---------+----------------+
+| contractId          | int(11)                                   | NO   | PRI | NULL    | auto_increment |
+| companyId           | int(11)                                   | NO   | MUL | NULL    |                |
+| contactNumber       | varchar(15)                               | NO   |     | NULL    |                |
+| annualContractValue | double                                    | NO   |     | NULL    |                |
+| initalAmount        | double                                    | NO   |     | NULL    |                |
+| serviceStartDate    | date                                      | NO   |     | NULL    |                |
+| serviceType         | enum('Cloud','On-premises')               | NO   |     | NULL    |                |
+| premiumType         | enum('Premium','Gold','Diamond','Silver') | NO   |     | NULL    |                |
++---------------------+-------------------------------------------+------+-----+---------+----------------+
+
+
+CREATE TABLE Employees (
+        employeeId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        is_manager BOOL NOT NULL,
+        department ENUM('Development', 'QA', 'UI', 'Design', 'BusinessIntelligence', 'Networking')  NOT NULL,
+		firstName VARCHAR(255) NOT NULL,
+		lastName VARCHAR(255) NOT NULL,
+        contractId INT NOT NULL,
+        FOREIGN KEY (contractId) REFERENCES Contracts(contractId)
+);
+
++------------+----------------------------------------------------------------------------+------+-----+---------+----------------+
+| Field      | Type                                                                       | Null | Key | Default | Extra          |
++------------+----------------------------------------------------------------------------+------+-----+---------+----------------+
+| employeeId | int(11)                                                                    | NO   | PRI | NULL    | auto_increment |
+| is_manager | tinyint(1)                                                                 | NO   |     | NULL    |                |
+| department | enum('Development','QA','UI','Design','BusinessIntelligence','Networking') | NO   |     | NULL    |                |
+| contractId | int(11)                                                                    | NO   | MUL | NULL    |                |
++------------+----------------------------------------------------------------------------+------+-----+---------+----------------+
+
+
+CREATE TABLE Companies(
+         companyId int NOT NULL AUTO_INCREMENT,
+         companyName varchar(255),
+         repFirstName varchar(255),
+         repMiddleInital varchar(5),
+         repLastName varchar(255),
+         emailId varchar(255), 
+         city varchar(255), 
+         province varchar(255),
+         postalCode varchar(255),
+         PRIMARY KEY (companyId)
+ );
+ 
+ +-----------------+--------------+------+-----+---------+----------------+
+| Field           | Type         | Null | Key | Default | Extra          |
++-----------------+--------------+------+-----+---------+----------------+
+| companyId       | int(11)      | NO   | PRI | NULL    | auto_increment |
+| companyName     | varchar(255) | YES  |     | NULL    |                |
+| repFirstName    | varchar(255) | YES  |     | NULL    |                |
+| repMiddleInital | varchar(5)   | YES  |     | NULL    |                |
+| repLastName     | varchar(255) | YES  |     | NULL    |                |
+| emailId         | varchar(255) | YES  |     | NULL    |                |
+| city            | varchar(255) | YES  |     | NULL    |                |
+| province        | varchar(255) | YES  |     | NULL    |                |
+| postalCode      | varchar(255) | YES  |     | NULL    |                |
++-----------------+--------------+------+-----+---------+----------------+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+--Company Insertion
+INSERT INTO Companies VALUES(0, 'Google', 'Sundar', NULL, 'Pichai', 's_pichai@google.com', 'Mountain View', 'CA', 'J2L3D2');
+INSERT INTO Companies VALUES(0, 'Microsoft', 'Satya', NULL, 'Nadella', 's_nadella@microsoft.com', 'Redmond', 'WA', 'J8D7Y2');
+INSERT INTO Companies VALUES(0, 'Tesla', 'Elon', NULL, 'Musk', 'elon@tesla.com', 'Palo Alto', 'CA', 'J3L3X9');
+insert into Companies values (0,'Vigilant','Tim','T','Wright','t_wright@vigilant.ca','Montreal','QC','H3G 2W4');
+INSERT INTO Companies
+VALUES (0,'Apple','Tim',NULL,'Cook','timcook@apple.com','Cupertino','CA','T2P4Y5');
+INSERT INTO Companies
+VALUES (0,'Playstation','Kazuo','K','Hirai','khirai@playstation.com','Tokyo','MU','U6QS9W');
+
+--Contract insertion
+INSERT INTO Contracts VALUES(0, 2, '4159232131', 100000.00, 65000.00, '2019-12-23', 'Cloud', 'Diamond');
+INSERT INTO Contracts VALUES(0, 3, '9824581204', 50000.00, 500.00, '2018-9-10', 'On-premises', 'Premium');
+INSERT INTO Contracts VALUES(0, 4, '8375939182', 92000.00, 2000.00, '2019-2-1', 'On-premises', 'Silver');
+insert into Contracts values (0,6,'5141234567',125496.25,415.25,'2018-07-15','Cloud','Gold');
+insert into Contracts values (0,5,'5148752452',98542140.58,874.35,'2019-10-05','On-premises','Diamond'); 
+INSERT INTO Contracts
+VALUES (0,1,'5142225646',97000.00, 124.00, '2010-09-19','Cloud','Diamond');
+
+--Employee insetion
+--Managers
+INSERT INTO Employees VALUES(0, TRUE, 'Development', 1);
+INSERT INTO Employees VALUES(0, TRUE, 'Design', 2);
+INSERT INTO Employees VALUES(0, TRUE, 'UI', 3);
+insert into Employees values (0,1,'QA',4)
+insert into Employees values (0,1,'Design',6)
+
+
+--Regular Employees
+INSERT INTO Employees VALUES(0,0,'Networking','Janel','Mcgee',1);
+
+INSERT INTO Employees VALUES(0,0,'BusinessIntelligence','Silvana','Burke',1);
+INSERT INTO Employees VALUES(0,0,'Development','Sona','Whitney',2);
+INSERT INTO Employees VALUES(0,0,'Development','Gordon','Day',2);
+INSERT INTO Employees VALUES(0,0,'UI','Nilsa','Flowers',2);
+INSERT INTO Employees VALUES(0,0,'Networking','Kami','Walters',2);
+INSERT INTO Employees VALUES(0,0,'Networking','Frankie','Mcconnell',2);
+INSERT INTO Employees VALUES(0,0,'Development','Berna','Blevins',2);
+INSERT INTO Employees VALUES(0,0,'Design','Dorthy','Flowers',2);
+
+INSERT INTO Employees VALUES(0,0,'QA','Miles','Gardner',3);
+INSERT INTO Employees VALUES(0,0,'Development','Ileana','Rocha',3);
+INSERT INTO Employees VALUES(0,0,'QA','Sebrina','Best',3);
+INSERT INTO Employees VALUES(0,0,'UI','Marlin','Bowers',3);
+
+INSERT INTO Employees VALUES(0,0,'QA','Alina','Hancock',4);
+INSERT INTO Employees VALUES(0,0,'QA','Frankie','Mcgee',4);
+INSERT INTO Employees VALUES(0,0,'UI','Davis','Whitney',4);
+INSERT INTO Employees VALUES(0,0,'UI','Davis','Walters',4);
+INSERT INTO Employees VALUES(0,0,'UI','Silvana','Butler',4);
+INSERT INTO Employees VALUES(0,0,'UI','Magaret','Hoover',4);
+INSERT INTO Employees VALUES(0,0,'QA','Willian','Rocha',4);
+INSERT INTO Employees VALUES(0,0,'Networking','Billy','Estes',4);
+INSERT INTO Employees VALUES(0,0,'UI','Alina','Holt',1);
+
+INSERT INTO Employees VALUES(0,0,'QA','Janel','Hebert',1);
+INSERT INTO Employees VALUES(0,0,'UI','Sharolyn','Carlson',1);
+INSERT INTO Employees VALUES(0,0,'QA','Gracia','Wheeler',5);
+INSERT INTO Employees VALUES(0,0,'UI','Juliane','Estes',5);
+INSERT INTO Employees VALUES(0,0,'Design','Shaunda','Wise',5);
+INSERT INTO Employees VALUES(0,0,'Design','Natisha','Harper',5);
+
+INSERT INTO Employees VALUES(0,0,'Networking','Gracia','Phillips',6);
+INSERT INTO Employees VALUES(0,0,'Design','Kami','Erickson',6);
+INSERT INTO Employees VALUES(0,0,'UI','Silvana','Hebert',6);
+INSERT INTO Employees VALUES(0,0,'Design','Willow','Pineda',6);
+INSERT INTO Employees VALUES(0,0,'BusinessIntelligence','Devin','McconneQueryll',6);
+INSERT INTO Employees VALUES(0,0,'Design','Sherika','Pineda',6);
+INSERT INTO Employees VALUES(0,0,'Networking','Rachael','Burke',1);
+
+INSERT INTO Employees VALUES(0,0,'Design','Kami','Fields',2);
+
+INSERT INTO Employees VALUES(0,0,'Development','Luetta','Mcgee',2);
+INSERT INTO Employees VALUES(0,0,'Development','Sona','Whitney',2);
+
+INSERT INTO Employees VALUES(0,0,'Development','Gordon','Day',2);
+INSERT INTO Employees VALUES(0,0,'UI','Nilsa','Flowers',2);
+INSERT INTO Employees VALUES(0,0,'Networking','Kami','Walters',2);
+INSERT INTO Employees VALUES(0,0,'Networking','Frankie','Mcconnell',2);
+INSERT INTO Employees VALUES(0,0,'Development','Berna','Blevins',2);
+INSERT INTO Employees VALUES(0,0,'Design','Dorthy','Flowers',2);
+INSERT INTO Employees VALUES(0,0,'QA','Miles','Gardner',3);
+
+INSERT INTO Employees VALUES(0,0,'Development','Ileana','Rocha',3);
+
+
+INSERT INTO Employees VALUES(0,0,'QA','Sebrina','Best',3);
+INSERT INTO Employees VALUES(0,0,'UI','Marlin','Bowers',3);
+INSERT INTO Employees VALUES(0,0,'QA','Alina','Hancock',4);
+INSERT INTO Employees VALUES(0,0,'QA','Frankie','Mcgee',4);
+INSERT INTO Employees VALUES(0,0,'UI','Davis','Whitney',4);
+INSERT INTO Employees VALUES(0,0,'UI','Davis','Walters',4);
+INSERT INTO Employees VALUES(0,0,'UI','Silvana','Butler',4);
+INSERT INTO Employees VALUES(0,0,'UI','Magaret','Hoover',4);
+INSERT INTO Employees VALUES(0,0,'QA','Willian','Rocha',4);
+INSERT INTO Employees VALUES(0,0,'Networking','Billy','Estes',4);
+INSERT INTO Employees VALUES(0,0,'QA','Gordon','Hebert',4);
+INSERT INTO Employees VALUES(0,0,'BusinessIntelligence','Gracia','Whitney',4);
+INSERT INTO Employees VALUES(0,0,'UI','German','Estes',4);
+INSERT INTO Employees VALUES(0,0,'QA','Gracia','Wheeler',5);
+INSERT INTO Employees VALUES(0,0,'UI','Juliane','Estes',5);
+INSERT INTO Employees VALUES(0,0,'Design','Shaunda','Wise',5);
+INSERT INTO Employees VALUES(0,0,'Design','Natisha','Harper',5);
+INSERT INTO Employees VALUES(0,0,'Networking','Gracia','Phillips',6);
+INSERT INTO Employees VALUES(0,0,'Design','Kami','Erickson',6);
+INSERT INTO Employees VALUES(0,0,'UI','Silvana','Hebert',6);
+INSERT INTO Employees VALUES(0,0,'Design','Willow','Pineda',6);
+INSERT INTO Employees VALUES(0,0,'BusinessIntelligence','Devin','Mcconnell',6);
+INSERT INTO Employees VALUES(0,0,'Design','Sherika','Pineda',6);
+INSERT INTO Employees VALUES(0,0,'Development','Gordon','Wise',6);
+INSERT INTO Employees VALUES(0,0,'BusinessIntelligence','Tomasa','Carlson',6);
+
+
+
+-----------------------------------------------------------------------------------
+
+
+--Populated Tables--
+--Companies table
++-----------+-------------+--------------+-----------------+-------------+-------------------------+---------------+----------+------------+
+| companyId | companyName | repFirstName | repMiddleInital | repLastName | emailId                 | city          | province | postalCode |
++-----------+-------------+--------------+-----------------+-------------+-------------------------+---------------+----------+------------+
+|         1 | Apple       | Tim          | NULL            | Cook        | timcook@apple.com       | Cupertino     | CA       | T2P4Y5     |
+|         2 | Google      | Sundar       | NULL            | Pichai      | s_pichai@google.com     | Mountain View | CA       | J2L3D2     |
+|         3 | Microsoft   | Satya        | NULL            | Nadella     | s_nadella@microsoft.com | Redmond       | WA       | J8D7Y2     |
+|         4 | Tesla       | Elon         | NULL            | Musk        | elon@tesla.com          | Palo Alto     | CA       | J3L3X9     |
+|         5 | Playstation | Kazuo        | K               | Hirai       | khirai@playstation.com  | Tokyo         | MU       | U6QS9W     |
+|         6 | Vigilant    | Tim          | T               | Wright      | t_wright@vigilant.ca    | Montreal      | QC       | H3G 2W4    |
++-----------+-------------+--------------+-----------------+-------------+-------------------------+---------------+----------+------------+
+
+--Contracts table
++------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+| contractId | companyId | contactNumber | annualContractValue | initalAmount | serviceStartDate | serviceType | premiumType |
++------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+|          1 |         2 | 4159232131    |              100000 |        65000 | 2019-12-23       | Cloud       | Diamond     |
+|          2 |         3 | 9824581204    |               50000 |          500 | 2018-09-10       | On-premises | Premium     |
+|          3 |         4 | 8375939182    |               92000 |         2000 | 2019-02-01       | On-premises | Silver      |
+|          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|          5 |         1 | 5142225646    |               97000 |          124 | 2010-09-19       | Cloud       | Diamond     |
+|          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
++------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+
+--Employees table
++------------+------------+----------------------+-----------+-----------+------------+
+| employeeId | is_manager | department           | firstName | lastName  | contractId |
++------------+------------+----------------------+-----------+-----------+------------+
+|          1 |          1 | Development          | Eric      | Johnson   |          1 |
+|          2 |          1 | Design               | Jonathan  | Smith     |          2 |
+|          3 |          1 | UI                   | Angela    | Monro     |          3 |
+|          4 |          1 | QA                   | Brad      | Leone     |          4 |
+|          5 |          1 | Design               | Casey     | Black     |          6 |
+|          6 |          0 | Networking           | Janel     | Mcgee     |          1 |
+|          7 |          0 | BusinessIntelligence | Silvana   | Burke     |          1 |
+|          8 |          0 | UI                   | Alina     | Holt      |          1 |
+|          9 |          0 | QA                   | Janel     | Hebert    |          1 |
+|         10 |          0 | UI                   | Sharolyn  | Carlson   |          1 |
+|         11 |          0 | Networking           | Rachael   | Burke     |          1 |
+|         12 |          0 | Design               | Kami      | Fields    |          2 |
+|         13 |          0 | Development          | Luetta    | Mcgee     |          2 |
+|         14 |          0 | Development          | Sona      | Whitney   |          2 |
+|         15 |          0 | Development          | Gordon    | Day       |          2 |
+|         16 |          0 | UI                   | Nilsa     | Flowers   |          2 |
+|         17 |          0 | Networking           | Kami      | Walters   |          2 |
+|         18 |          0 | Networking           | Frankie   | Mcconnell |          2 |
+|         19 |          0 | Development          | Berna     | Blevins   |          2 |
+|         20 |          0 | Design               | Dorthy    | Flowers   |          2 |
+|         21 |          0 | QA                   | Miles     | Gardner   |          3 |
+|         22 |          0 | Development          | Ileana    | Rocha     |          3 |
+|         23 |          0 | QA                   | Sebrina   | Best      |          3 |
+|         24 |          0 | UI                   | Marlin    | Bowers    |          3 |
+|         25 |          0 | QA                   | Alina     | Hancock   |          4 |
+|         26 |          0 | QA                   | Frankie   | Mcgee     |          4 |
+|         27 |          0 | UI                   | Davis     | Whitney   |          4 |
+|         28 |          0 | UI                   | Davis     | Walters   |          4 |
+|         29 |          0 | UI                   | Silvana   | Butler    |          4 |
+|         30 |          0 | UI                   | Magaret   | Hoover    |          4 |
+|         31 |          0 | QA                   | Willian   | Rocha     |          4 |
+|         32 |          0 | Networking           | Billy     | Estes     |          4 |
+|         33 |          0 | QA                   | Gordon    | Hebert    |          4 |
+|         34 |          0 | BusinessIntelligence | Gracia    | Whitney   |          4 |
+|         35 |          0 | UI                   | German    | Estes     |          4 |
+|         36 |          0 | QA                   | Gracia    | Wheeler   |          5 |
+|         37 |          0 | UI                   | Juliane   | Estes     |          5 |
+|         38 |          0 | Design               | Shaunda   | Wise      |          5 |
+|         39 |          0 | Design               | Natisha   | Harper    |          5 |
+|         40 |          0 | Networking           | Gracia    | Phillips  |          6 |
+|         41 |          0 | Design               | Kami      | Erickson  |          6 |
+|         42 |          0 | UI                   | Silvana   | Hebert    |          6 |
+|         43 |          0 | Design               | Willow    | Pineda    |          6 |
+|         44 |          0 | BusinessIntelligence | Devin     | Mcconnell |          6 |
+|         45 |          0 | Design               | Sherika   | Pineda    |          6 |
+|         46 |          0 | Development          | Gordon    | Wise      |          6 |
+|         47 |          0 | BusinessIntelligence | Tomasa    | Carlson   |          6 |
+|         48 |          1 | QA                   | Joseph    | Aker      |          5 |
++------------+------------+----------------------+-----------+-----------+------------+
+
+
+
+
+------------------------------------------------------------------------------------------
+
+
+--Questions
+1.
+
+INSERT INTO Companies VALUES (0, 'GSC Corporation', 'John', 'M', "Doe", 'j_doe@gsc.com', 'Montreal', 'QC', 'H2X2K1');
+
++-----------+-----------------+--------------+-----------------+-------------+-------------------------+---------------+----------+------------+
+| companyId | companyName     | repFirstName | repMiddleInital | repLastName | emailId                 | city          | province | postalCode |
++-----------+-----------------+--------------+-----------------+-------------+-------------------------+---------------+----------+------------+
+|         1 | Apple           | Tim          | NULL            | Cook        | timcook@apple.com       | Cupertino     | CA       | T2P4Y5     |
+|         2 | Google          | Sundar       | NULL            | Pichai      | s_pichai@google.com     | Mountain View | CA       | J2L3D2     |
+|         3 | Microsoft       | Satya        | NULL            | Nadella     | s_nadella@microsoft.com | Redmond       | WA       | J8D7Y2     |
+|         4 | Tesla           | Elon         | NULL            | Musk        | elon@tesla.com          | Palo Alto     | CA       | J3L3X9     |
+|         5 | Playstation     | Kazuo        | K               | Hirai       | khirai@playstation.com  | Tokyo         | MU       | U6QS9W     |
+|         6 | Vigilant        | Tim          | T               | Wright      | t_wright@vigilant.ca    | Montreal      | QC       | H3G 2W4    |
+|         7 | GSC Corporation | John         | M               | Doe         | j_doe@gsc.com           | Montreal      | QC       | H2X2K1     |
++-----------+-----------------+--------------+-----------------+-------------+-------------------------+---------------+----------+------------+
+
+
+INSERT INTO Contracts VALUES (0, 7, '4657362745', 90000.00, 10000.00, '2018-07-16', 'On-premises', 'Gold');
+
++------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+| contractId | companyId | contactNumber | annualContractValue | initalAmount | serviceStartDate | serviceType | premiumType |
++------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+|          1 |         2 | 4159232131    |              100000 |        65000 | 2019-12-23       | Cloud       | Diamond     |
+|          2 |         3 | 9824581204    |               50000 |          500 | 2018-09-10       | On-premises | Premium     |
+|          3 |         4 | 8375939182    |               92000 |         2000 | 2019-02-01       | On-premises | Silver      |
+|          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|          5 |         1 | 5142225646    |               97000 |          124 | 2010-09-19       | Cloud       | Diamond     |
+|          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
++------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+
+2.
+
+INSERT INTO Employees VALUES (0, 1, 'Development', 'Juan', 'Vasquez', '7');
+
+--Inserting the 10 devs for Juan
+INSERT INTO Employees VALUES(0,0,'Development','Dorthy','Whitney',2);
+INSERT INTO Employees VALUES(0,0,'Development','Artie','Farrell',2);
+INSERT INTO Employees VALUES(0,0,'Development','Davis','Hancock',2);
+INSERT INTO Employees VALUES(0,0,'Development','Mahalia','Benson',2);
+INSERT INTO Employees VALUES(0,0,'Development','German','Whitney',2);
+INSERT INTO Employees VALUES(0,0,'Development','Leandra','Burke',2);
+INSERT INTO Employees VALUES(0,0,'Development','Dorthy','Phillips',2);
+INSERT INTO Employees VALUES(0,0,'Development','Ileana','Bowers',2);
+INSERT INTO Employees VALUES(0,0,'Development','Karl','Mercer',2);
+INSERT INTO Employees VALUES(0,0,'Development','Florentina','Benson',2);
+
++------------+------------+----------------------+-----------+-------------+------------+
+| employeeId | is_manager | department           | firstName | lastName    | contractId |
++------------+------------+----------------------+-----------+-------------+------------+
+|          1 |          1 | Development          | Eric      | Johnson     |          1 |
+|          2 |          1 | Design               | Jonathan  | Smith       |          2 |
+|          3 |          1 | UI                   | Angela    | Monro       |          3 |
+|          4 |          1 | QA                   | Brad      | Leone       |          4 |
+|          5 |          1 | Design               | Casey     | Black       |          6 |
+|          6 |          0 | Networking           | Janel     | Mcgee       |          1 |
+|          7 |          0 | BusinessIntelligence | Silvana   | Burke       |          1 |
+|          8 |          0 | UI                   | Alina     | Holt        |          1 |
+|          9 |          0 | QA                   | Janel     | Hebert      |          1 |
+|         10 |          0 | UI                   | Sharolyn  | Carlson     |          1 |
+|         11 |          0 | Networking           | Rachael   | Burke       |          1 |
+|         12 |          0 | Design               | Kami      | Fields      |          2 |
+|         13 |          0 | Development          | Luetta    | Mcgee       |          2 |
+|         14 |          0 | Development          | Sona      | Whitney     |          2 |
+|         15 |          0 | Development          | Gordon    | Day         |          2 |
+|         16 |          0 | UI                   | Nilsa     | Flowers     |          2 |
+|         17 |          0 | Networking           | Kami      | Walters     |          2 |
+|         18 |          0 | Networking           | Frankie   | Mcconnell   |          2 |
+|         19 |          0 | Development          | Berna     | Blevins     |          2 |
+|         20 |          0 | Design               | Dorthy    | Flowers     |          2 |
+|         21 |          0 | QA                   | Miles     | Gardner     |          3 |
+|         22 |          0 | Development          | Ileana    | Rocha       |          3 |
+|         23 |          0 | QA                   | Sebrina   | Best        |          3 |
+|         24 |          0 | UI                   | Marlin    | Bowers      |          3 |
+|         25 |          0 | QA                   | Alina     | Hancock     |          4 |
+|         26 |          0 | QA                   | Frankie   | Mcgee       |          4 |
+|         27 |          0 | UI                   | Davis     | Whitney     |          4 |
+|         28 |          0 | UI                   | Davis     | Walters     |          4 |
+|         29 |          0 | UI                   | Silvana   | Butler      |          4 |
+|         30 |          0 | UI                   | Magaret   | Hoover      |          4 |
+|         31 |          0 | QA                   | Willian   | Rocha       |          4 |
+|         32 |          0 | Networking           | Billy     | Estes       |          4 |
+|         33 |          0 | QA                   | Gordon    | Hebert      |          4 |
+|         34 |          0 | BusinessIntelligence | Gracia    | Whitney     |          4 |
+|         35 |          0 | UI                   | German    | Estes       |          4 |
+|         36 |          0 | QA                   | Gracia    | Wheeler     |          5 |
+|         37 |          0 | UI                   | Juliane   | Estes       |          5 |
+|         38 |          0 | Design               | Shaunda   | Wise        |          5 |
+|         39 |          0 | Design               | Natisha   | Harper      |          5 |
+|         40 |          0 | Networking           | Gracia    | Phillips    |          6 |
+|         41 |          0 | Design               | Kami      | Erickson    |          6 |
+|         42 |          0 | UI                   | Silvana   | Hebert      |          6 |
+|         43 |          0 | Design               | Willow    | Pineda      |          6 |
+|         44 |          0 | BusinessIntelligence | Devin     | Mcconnell   |          6 |
+|         45 |          0 | Design               | Sherika   | Pineda      |          6 |
+|         46 |          0 | Development          | Gordon    | Wise        |          6 |
+|         47 |          0 | BusinessIntelligence | Tomasa    | Carlson     |          6 |
+|         48 |          1 | QA                   | Joseph    | Aker        |          5 |
+|         49 |          0 | Development          | Natisha   | Blankenship |          7 |
+|         50 |          0 | Development          | German    | Benson      |          7 |
+|         51 |          0 | Development          | Sona      | Carlson     |          7 |
+|         52 |          0 | Development          | Alina     | Hebert      |          7 |
+|         53 |          0 | Development          | Magaret   | Rocha       |          7 |
+|         54 |          0 | Development          | Artie     | Benson      |          7 |
+|         55 |          0 | Development          | Marlin    | Blevins     |          7 |
+|         56 |          0 | Development          | Alina     | Cortez      |          7 |
+|         57 |          0 | Development          | Francie   | Gardner     |          7 |
+|         58 |          0 | Development          | Afton     | Butler      |          7 |
+|         59 |          1 | Development          | Juan      | Vasquez     |          7 |
++------------+------------+----------------------+-----------+-------------+------------+
+
+3.
+--Searching for managers with ACV greater than $80,000
+
+ select * from Employees,Contracts WHERE Employees.contractId=Contracts.contractId AND Contracts.annualContractValue>85000.00 AND Employees.is_manager=1;
++------------+------------+-------------+-----------+----------+------------+------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+| employeeId | is_manager | department  | firstName | lastName | contractId | contractId | companyId | contactNumber | annualContractValue | initalAmount | serviceStartDate | serviceType | premiumType |
++------------+------------+-------------+-----------+----------+------------+------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+|          1 |          1 | Development | Eric      | Johnson  |          1 |          1 |         2 | 4159232131    |              100000 |        65000 | 2019-12-23       | Cloud       | Diamond     |
+|          3 |          1 | UI          | Angela    | Monro    |          3 |          3 |         4 | 8375939182    |               92000 |         2000 | 2019-02-01       | On-premises | Silver      |
+|          4 |          1 | QA          | Brad      | Leone    |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         48 |          1 | QA          | Joseph    | Aker     |          5 |          5 |         1 | 5142225646    |               97000 |          124 | 2010-09-19       | Cloud       | Diamond     |
+|          5 |          1 | Design      | Casey     | Black    |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         59 |          1 | Development | Juan      | Vasquez  |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
++------------+------------+-------------+-----------+----------+------------+------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+
+
+4.
+--Searchiong for Employees with ACV greater than $85,000
+select * from Employees,Contracts WHERE Employees.contractId=Contracts.contractId AND Contracts.annualContractValue>85000.00;
+
++------------+------------+----------------------+-----------+-------------+------------+------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+| employeeId | is_manager | department           | firstName | lastName    | contractId | contractId | companyId | contactNumber | annualContractValue | initalAmount | serviceStartDate | serviceType | premiumType |
++------------+------------+----------------------+-----------+-------------+------------+------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+|          1 |          1 | Development          | Eric      | Johnson     |          1 |          1 |         2 | 4159232131    |              100000 |        65000 | 2019-12-23       | Cloud       | Diamond     |
+|          6 |          0 | Networking           | Janel     | Mcgee       |          1 |          1 |         2 | 4159232131    |              100000 |        65000 | 2019-12-23       | Cloud       | Diamond     |
+|          7 |          0 | BusinessIntelligence | Silvana   | Burke       |          1 |          1 |         2 | 4159232131    |              100000 |        65000 | 2019-12-23       | Cloud       | Diamond     |
+|          8 |          0 | UI                   | Alina     | Holt        |          1 |          1 |         2 | 4159232131    |              100000 |        65000 | 2019-12-23       | Cloud       | Diamond     |
+|          9 |          0 | QA                   | Janel     | Hebert      |          1 |          1 |         2 | 4159232131    |              100000 |        65000 | 2019-12-23       | Cloud       | Diamond     |
+|         10 |          0 | UI                   | Sharolyn  | Carlson     |          1 |          1 |         2 | 4159232131    |              100000 |        65000 | 2019-12-23       | Cloud       | Diamond     |
+|         11 |          0 | Networking           | Rachael   | Burke       |          1 |          1 |         2 | 4159232131    |              100000 |        65000 | 2019-12-23       | Cloud       | Diamond     |
+|          3 |          1 | UI                   | Angela    | Monro       |          3 |          3 |         4 | 8375939182    |               92000 |         2000 | 2019-02-01       | On-premises | Silver      |
+|         21 |          0 | QA                   | Miles     | Gardner     |          3 |          3 |         4 | 8375939182    |               92000 |         2000 | 2019-02-01       | On-premises | Silver      |
+|         22 |          0 | Development          | Ileana    | Rocha       |          3 |          3 |         4 | 8375939182    |               92000 |         2000 | 2019-02-01       | On-premises | Silver      |
+|         23 |          0 | QA                   | Sebrina   | Best        |          3 |          3 |         4 | 8375939182    |               92000 |         2000 | 2019-02-01       | On-premises | Silver      |
+|         24 |          0 | UI                   | Marlin    | Bowers      |          3 |          3 |         4 | 8375939182    |               92000 |         2000 | 2019-02-01       | On-premises | Silver      |
+|          4 |          1 | QA                   | Brad      | Leone       |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         25 |          0 | QA                   | Alina     | Hancock     |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         26 |          0 | QA                   | Frankie   | Mcgee       |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         27 |          0 | UI                   | Davis     | Whitney     |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         28 |          0 | UI                   | Davis     | Walters     |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         29 |          0 | UI                   | Silvana   | Butler      |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         30 |          0 | UI                   | Magaret   | Hoover      |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         31 |          0 | QA                   | Willian   | Rocha       |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         32 |          0 | Networking           | Billy     | Estes       |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         33 |          0 | QA                   | Gordon    | Hebert      |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         34 |          0 | BusinessIntelligence | Gracia    | Whitney     |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         35 |          0 | UI                   | German    | Estes       |          4 |          4 |         6 | 5141234567    |           125496.25 |       415.25 | 2018-07-15       | Cloud       | Gold        |
+|         36 |          0 | QA                   | Gracia    | Wheeler     |          5 |          5 |         1 | 5142225646    |               97000 |          124 | 2010-09-19       | Cloud       | Diamond     |
+|         37 |          0 | UI                   | Juliane   | Estes       |          5 |          5 |         1 | 5142225646    |               97000 |          124 | 2010-09-19       | Cloud       | Diamond     |
+|         38 |          0 | Design               | Shaunda   | Wise        |          5 |          5 |         1 | 5142225646    |               97000 |          124 | 2010-09-19       | Cloud       | Diamond     |
+|         39 |          0 | Design               | Natisha   | Harper      |          5 |          5 |         1 | 5142225646    |               97000 |          124 | 2010-09-19       | Cloud       | Diamond     |
+|         48 |          1 | QA                   | Joseph    | Aker        |          5 |          5 |         1 | 5142225646    |               97000 |          124 | 2010-09-19       | Cloud       | Diamond     |
+|          5 |          1 | Design               | Casey     | Black       |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         40 |          0 | Networking           | Gracia    | Phillips    |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         41 |          0 | Design               | Kami      | Erickson    |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         42 |          0 | UI                   | Silvana   | Hebert      |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         43 |          0 | Design               | Willow    | Pineda      |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         44 |          0 | BusinessIntelligence | Devin     | Mcconnell   |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         45 |          0 | Design               | Sherika   | Pineda      |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         46 |          0 | Development          | Gordon    | Wise        |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         47 |          0 | BusinessIntelligence | Tomasa    | Carlson     |          6 |          6 |         5 | 5148752452    |         98542140.58 |       874.35 | 2019-10-05       | On-premises | Diamond     |
+|         49 |          0 | Development          | Natisha   | Blankenship |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         50 |          0 | Development          | German    | Benson      |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         51 |          0 | Development          | Sona      | Carlson     |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         52 |          0 | Development          | Alina     | Hebert      |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         53 |          0 | Development          | Magaret   | Rocha       |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         54 |          0 | Development          | Artie     | Benson      |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         55 |          0 | Development          | Marlin    | Blevins     |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         56 |          0 | Development          | Alina     | Cortez      |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         57 |          0 | Development          | Francie   | Gardner     |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         58 |          0 | Development          | Afton     | Butler      |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
+|         59 |          1 | Development          | Juan      | Vasquez     |          7 |          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
++------------+------------+----------------------+-----------+-------------+------------+------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+
+
+5.
+
+SELECT Contracts.* from Employees, Contracts Where Employees.contractId = Contracts.contractId AND Employees.firstName = 'Juan' AND Employees.lastName='Vasquez';
++------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+| contractId | companyId | contactNumber | annualContractValue | initalAmount | serviceStartDate | serviceType | premiumType |
++------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
+|          7 |         7 | 4657362745    |               90000 |        10000 | 2018-07-16       | On-premises | Gold        |
++------------+-----------+---------------+---------------------+--------------+------------------+-------------+-------------+
