@@ -1,0 +1,138 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- common.css -->
+      <style>* {-webkit-tap-highlight-color: rgba(0,0,0,0);}html {-webkit-text-size-adjust: none;}body {font-family: -apple-system, Helvetica, Arial, sans-serif;margin: 0;padding: 20px;color: #333;word-wrap: break-word;}h1, h2, h3, h4, h5, h6 {line-height: 1.1;}img {max-width: 100% !important;height: auto;}blockquote {margin: 0;padding: 0 15px;color: #777;border-left: 4px solid #ddd;}hr {background-color: #ddd;border: 0;height: 1px;margin: 15px 0;}code {font-family: Menlo, Consolas, 'Ubuntu Mono', Monaco, 'source-code-pro', monospace;line-height: 1.4;margin: 0;padding: 0.2em 0;font-size: 90%;background-color: rgba(0,0,0,0.04);border-radius: 3px;}pre > code {margin: 0;padding: 0;font-size: 100%;word-break: normal;background: transparent;border: 0;}ol {list-style-type: decimal;}ol ol, ul ol {list-style-type: lower-latin;}ol ol ol, ul ol ol, ul ul ol, ol ul ol {list-style-type: lower-roman;}table {border-spacing: 0;border-collapse: collapse;margin-top: 0;margin-bottom: 16px;}table th {font-weight: bold;}table th, table td {padding: 6px 13px;border: 1px solid #ddd;}table tr {border-top: 1px solid #ccc;}table tr:nth-child(even) {background-color: #f8f8f8;}input[type="checkbox"] {cursor: default;margin-right: 0.5em;font-size: 13px;}.task-list-item {list-style-type: none;}.task-list-item+.task-list-item {margin-top: 3px;}.task-list-item input {float: left;margin: 0.3em 1em 0.25em -1.6em;vertical-align: middle;}#tag-field {margin: 8px 2px 10px;}#tag-field .tag {display: inline-block;background: #cadff3;border-radius: 4px;padding: 1px 8px;color: black;font-size: 12px;margin-right: 10px;line-height: 1.4;}</style>
+      <!-- ace-static.css -->
+      <style>.ace_static_highlight {white-space: pre-wrap;}.ace_static_highlight .ace_gutter {width: 2em;text-align: right;padding: 0 3px 0 0;margin-right: 3px;}.ace_static_highlight.ace_show_gutter > .ace_line {padding-left: 2.6em;}.ace_static_highlight .ace_line {position: relative;}.ace_static_highlight .ace_gutter-cell {-moz-user-select: -moz-none;-khtml-user-select: none;-webkit-user-select: none;user-select: none;top: 0;bottom: 0;left: 0;position: absolute;}.ace_static_highlight .ace_gutter-cell:before {content: counter(ace_line, decimal);counter-increment: ace_line;}.ace_static_highlight {counter-reset: ace_line;}</style>
+      <style>.ace-tomorrow-night-eighties .ace_gutter {background: #272727;color: #CCC}.ace-tomorrow-night-eighties .ace_print-margin {width: 1px;background: #272727}.ace-tomorrow-night-eighties {background-color: #2D2D2D;color: #CCCCCC}.ace-tomorrow-night-eighties .ace_constant.ace_other,.ace-tomorrow-night-eighties .ace_cursor {color: #CCCCCC}.ace-tomorrow-night-eighties .ace_marker-layer .ace_selection {background: #515151}.ace-tomorrow-night-eighties.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px #2D2D2D;}.ace-tomorrow-night-eighties .ace_marker-layer .ace_step {background: rgb(102, 82, 0)}.ace-tomorrow-night-eighties .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid #6A6A6A}.ace-tomorrow-night-bright .ace_stack {background: rgb(66, 90, 44)}.ace-tomorrow-night-eighties .ace_marker-layer .ace_active-line {background: #393939}.ace-tomorrow-night-eighties .ace_gutter-active-line {background-color: #393939}.ace-tomorrow-night-eighties .ace_marker-layer .ace_selected-word {border: 1px solid #515151}.ace-tomorrow-night-eighties .ace_invisible {color: #6A6A6A}.ace-tomorrow-night-eighties .ace_keyword,.ace-tomorrow-night-eighties .ace_meta,.ace-tomorrow-night-eighties .ace_storage,.ace-tomorrow-night-eighties .ace_storage.ace_type,.ace-tomorrow-night-eighties .ace_support.ace_type {color: #CC99CC}.ace-tomorrow-night-eighties .ace_keyword.ace_operator {color: #66CCCC}.ace-tomorrow-night-eighties .ace_constant.ace_character,.ace-tomorrow-night-eighties .ace_constant.ace_language,.ace-tomorrow-night-eighties .ace_constant.ace_numeric,.ace-tomorrow-night-eighties .ace_keyword.ace_other.ace_unit,.ace-tomorrow-night-eighties .ace_support.ace_constant,.ace-tomorrow-night-eighties .ace_variable.ace_parameter {color: #F99157}.ace-tomorrow-night-eighties .ace_invalid {color: #CDCDCD;background-color: #F2777A}.ace-tomorrow-night-eighties .ace_invalid.ace_deprecated {color: #CDCDCD;background-color: #CC99CC}.ace-tomorrow-night-eighties .ace_fold {background-color: #6699CC;border-color: #CCCCCC}.ace-tomorrow-night-eighties .ace_entity.ace_name.ace_function,.ace-tomorrow-night-eighties .ace_support.ace_function,.ace-tomorrow-night-eighties .ace_variable {color: #6699CC}.ace-tomorrow-night-eighties .ace_support.ace_class,.ace-tomorrow-night-eighties .ace_support.ace_type {color: #FFCC66}.ace-tomorrow-night-eighties .ace_heading,.ace-tomorrow-night-eighties .ace_markup.ace_heading,.ace-tomorrow-night-eighties .ace_string {color: #99CC99}.ace-tomorrow-night-eighties .ace_comment {color: #999999}.ace-tomorrow-night-eighties .ace_entity.ace_name.ace_tag,.ace-tomorrow-night-eighties .ace_entity.ace_other.ace_attribute-name,.ace-tomorrow-night-eighties .ace_meta.ace_tag,.ace-tomorrow-night-eighties .ace_variable {color: #F2777A}.ace-tomorrow-night-eighties .ace_indent-guide {background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWPQ09NrYAgMjP4PAAtGAwchHMyAAAAAAElFTkSuQmCC) right repeat-y}</style>
+      <!-- export.css -->
+      <style>
+        body{margin:0 auto;max-width:800px;line-height:1.4}
+        #nav{margin:5px 0 10px;font-size:15px}
+        #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px 0;}
+        #contentarea{font-size:15px;margin:16px 0}
+        .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 0;}
+        .code-cell{font-family:Menlo,Consolas,'Ubuntu Mono',Monaco,'source-code-pro',monospace;font-size:12px;}
+        .latex-cell{white-space:pre-wrap;}
+      </style>
+      <!-- User CSS -->
+      <style> .text-cell {font-size: 15px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 15px;}.latex-cell {font-size: 15px;}</style>
+    </head>
+    <body>
+      <div id="nav"><div>Next: <a href='LECTURE 3 - RELATIONAL DATA MODEL.html'>LECTURE 3 - RELATIONAL DATA MODEL</a>, Previous: <a href='LECTURE 1 - INTRO TO DATABASES AND SQL.html'>LECTURE 1 - INTRO TO DATABASES AND SQL</a>, Up: <a href='index.html'>Index</a></div></div>
+      <div id="titlearea">
+        <h2>LECTURE 2 - E/R MODEL FILE</h2>
+      </div>
+      <div id="contentarea"><div class="cell markdown-cell"><h1>LECTURE 2 - E/R MODEL FILE</h1>
+<p><strong>E/R</strong> = Entity Relationship Model<br>
+<strong>Object Oriented</strong> (ex: Object Definition Language)<br>
+<strong>Semi-structured Data</strong> (ex: XML)</p>
+<h3>Database Design</h3>
+<p>Database Design is made using a Data Model  describing:</p>
+<ul>
+<li>data and relationships among data</li>
+<li>data semantics and constraints</li>
+</ul>
+<p><strong>Entity Relationship Model</strong>:<br>
+<img src="resources/1F0387743911AD264318C4D84E9BAC10.jpg" alt="IMAGE" width="301" height="160"></p>
+<p><strong>Entity</strong>:</p>
+<ul>
+<li>Real world object distinguishable from other objects</li>
+<li><em>ODL = Object</em></li>
+</ul>
+<p><strong>Entity Set</strong>:</p>
+<ul>
+<li>A collection of similar entities</li>
+<li>All entities in an entity set have the same set of attribute</li>
+<li><em>ODL = Class</em></li>
+<li>(Student, Course)</li>
+</ul>
+<p><strong>Attribute</strong>:</p>
+<ul>
+<li>Attributes (type) are atomic (1NF) (not allowed multiple values)</li>
+<li>(courseNumber, name, credits)(firstName, lastName, studentID, GPA)</li>
+</ul>
+<p><strong>Relationship</strong>:</p>
+<ul>
+<li>Association among entities</li>
+<li>one-one</li>
+<li>one-many</li>
+<li>many-many</li>
+</ul>
+<p><strong>Relationship Set</strong>:<br>
+Set of relationships of the same type<br>
+If E1, E2, . . ., En are entity sets, a relationship R on these sets is defined as:<br>
+R ⊆  E1 x … x En<br>
+<strong><strong><strong>HERE</strong></strong></strong></p>
+<p><strong>Converting n-ary relationship to binary</strong><br>
+<img src="resources/3A9A34A31BFE198FC6C672FB15B5D096.jpg" alt="IMAGE" width="325" height="154"></p>
+<p><strong>Inheritance</strong>:<br>
+Represented by ISA<br>
+In OO = an object must be a member of exactly one class</p>
+<h3>Constraints</h3>
+<p>Things that cannot be represented using the <strong>ODL</strong> or <strong>E/R</strong> model introduced so far</p>
+<p><strong>Key K</strong>:<br>
+unique identifiers</p>
+<p><strong>Single-value Constraints</strong>:<br>
+1:1 — 1:M — M:1<br>
+The value for an attribute must exist if it is part of the key<br>
+The value for an attribute is optional, otherwise<br>
+Normalization = Atomic, means multiple values are not allowed</p>
+<p><strong>Referential Integrity Constraints</strong>:<br>
+Objects referred to by some object/entity must actually exist<br>
+Rounded Arrow Notation</p>
+<p><strong>Domain Constraints</strong>:<br>
+Restrict the values of an <em>attribute</em> to be drawn from a <em>set</em></p>
+<p><strong>General Constraints</strong>:<br>
+Arbitrary  constraints that must hold on the DB</p>
+<p><strong>Relationship degree constraints</strong> (multiplicity):<br>
+Restrict the number of entities in the entity sets involved in a relationship<br>
+ex: student cannot be enrolled in more than 5 courses</p>
+<h3>Keys</h3>
+<p><strong>Superkey</strong>:<br>
+Set of attributes whose values uniquely identify an entity (object) in the entity set (class)</p>
+<p><strong>Minimal Superkey</strong>:<br>
+An entity can have <em>many</em> <strong>Candidate/Alternate Keys</strong><br>
+Candidate keys are a special subset of super-keys that do not have any extraneous  information in them<br>
+Only one of which is picked as the ~<strong>Primary Key</strong>~ (underlined in E/R)</p>
+<h3>Weak Entity &amp; Weak Relationship Sets</h3>
+<p>ATM deposit transactions example: Different accounts might have transactions by the same number, on the same date, and for the same amount<br>
+<img src="resources/3F6178CDBA3C4124C377457FBE3AD0A8.jpg" alt="IMAGE" width="360" height="112"></p>
+<ul>
+<li>A <strong>strong</strong> entity set has a key</li>
+<li>A <strong>weak</strong>entity set does not have sufficient attributes of its own to form a key.
+<ul>
+<li>It participates in a M-1 relationship (with no descriptive attributes) with a strong entity set</li>
+</ul>
+</li>
+<li><strong>Discriminator</strong> of a <strong>weak</strong> entity set is a set of attributes that distinguishes among the entities corresponding to a strong entity (/#number)</li>
+<li><strong>key</strong> of a weak entity set = key of the strong entity combined with the discriminator of the weak entity (ex above: number + account#)</li>
+<li>CES = Connecting Entity Sets = Always Weak
+<ul>
+<li>often have no attributes of their own</li>
+</ul>
+</li>
+</ul>
+<h3>Design Principles</h3>
+<ol>
+<li>Faithful/Realistic</li>
+<li>Avoid Redundancy</li>
+<li>Simple</li>
+</ol>
+<h3>Choosing Attribute VS Entity Set or Class</h3>
+<ul>
+<li>An <strong>attribute</strong> is simpler to implement than a class/entity set or a relationship.</li>
+<li>If something has more information associated with it than just its name, it should probably be modelled ed as an <strong>entity set or a class</strong></li>
+</ul>
+</div></div>
+      <script>document.body.onkeyup = function(e) {
+if (e.keyCode === 39) window.location.href = 'LECTURE 3 - RELATIONAL DATA MODEL.html';
+if (e.keyCode === 37) window.location.href = 'LECTURE 1 - INTRO TO DATABASES AND SQL.html';
+}</script>
+    </body>
+    </html>
+  
