@@ -17,4 +17,4 @@ Amadou Fall
 
 ------
 
-[Lecture Notes 1-6](https://kcamel.com/comp353/Lecture%20Notes%201%20to%206/)
+[Lecture Notes 1-6](https://kcamel.com/comp353/Lecture%20Notes)
