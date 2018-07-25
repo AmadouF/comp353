@@ -14,3 +14,7 @@ Team Members:
 [Kevin Camellini](github.com/kcamcam)  
 Amadou Fall  
 [Liyuan Zhang](github.com/Swallow666)  
+
+------
+
+[Lecture Notes 1-6](https://kcamel.com/comp353/Lecture%20Notes%201%20to%206/)
