@@ -47,7 +47,7 @@
         1. Final deliverable: 28th day from start
 
 ## Reports
-1. Number of employees with Premium [employee plan](#insurance) with working hoursless than 60 hrs / month
+1. Number of employees with Premium [employee plan](#insurance) with working hours less than 60 hrs / month
 1. Number of [Premium contracts](#types) delivered in more than 10 buisiness days having more than 35 employees with Silver [Employee Plan](#insurance)
 1. Compare the delivery schedule of First Deliverable of all [type of contracts](#types) in each month of the year 2017
 
