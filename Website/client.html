@@ -13,16 +13,16 @@
     <!-- Custom Script -->
     <script type="text/javascript" src="script.js"></script>
 
-    <title>Home</title>
+    <title>Client</title>
   </head>
   <body>
-
     <!-- container -->
     <div class="container">
+
       <!-- nav -->
       <ul class="nav nav-pills py-2 nav-fill">
         <li class="nav-item">
-          <a class="nav-link active" href="index.html">
+          <a class="nav-link" href="index.html">
             Home
           </a>
         </li>
@@ -60,58 +60,71 @@
           <a class="nav-link" href="addcontract.html">
             New Contract
           </a>
-        </li>
+        </li>  
         <li class="nav-item">
-          <a class="nav-link" href="client.html">
+          <a class="nav-link active" href="client.html">
             Client
           </a>
-        </li>          
+        </li>         
         <li class="nav-item">
           <a class="nav-link" href="addclient.html">
             New Client
           </a>
-        </li>        
+        </li>               
       </ul>
-      <!-- ./nav -->
+      <!-- ./nav -->    
 
       <!-- row -->
       <div class="row py-3">
         <div class="col-12">
-          <h1>COMP 353 - Final Project</h1>
+          <h1>Client</h1>
         </div>
       </div>
       <!-- ./ row -->
-
+      
       <!-- row -->
       <div class="row">
         <div class="col-12">
-          <h5>Team Members:</h5>
-          <span>Tarik Azzouni</span>
+          <h3>Name: <a href="https://instantcena.ca">Tesla</a></h3>
+          <span>ID: 26771010</span>
           <br/>
-          <span>Frederic Desgreniers</span>
+          <span>Contract Date: 01/03/2018</span>
           <br/>
-          <span>Kevin Camellini</span>
+          <span>Premium: Gold</span>
           <br/>
-          <span>Amadou Fall</span>
-          <br/>
-          <span>Liyuan Zhang</span>
+          <span>Manager: John Goldstein</span>
           <br/>
           <br/>
-        </div>
-        <!-- ./ row -->
+          <h5>Manager on Contract:</h5>
+          <span>Dwight Schrute</a>
+          <br/>
+          <br/>
+          <h5>Deliverables:</h5>
+          <span>XYZ</a>
+          <br/>
+          <br/>          
 
-        <!-- row -->
-        <div class="col-12">
-          <h5>Config:</h5>
-          <span>Scientific Linux 7.3</span>
-          <br/>
-          <span>MYSQL 5.6.39</span>
-          <br/>
-          <span>PHP 7.2.5</span>
-          <br/>
+          <!-- form row -->
+          <div class="form-group">
+            <label for="dropdown" class="col-form-label"><strong>Satisfaction Score:</strong></label>
+            <select class="form-control col-4" id="dropdown">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select>
+            <button class="my-2 btn btn-primary btn-md">Add</button>
+          </div>
+          <!-- ./ form row -->
         </div>
       </div>
-      <!-- ./ row --> 
+      <!-- ./ row -->
     </div>
     <!-- ./ container -->
 
