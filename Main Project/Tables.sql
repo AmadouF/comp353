@@ -27,7 +27,7 @@ CREATE TABLE Clients(
   postalCode VARCHAR(255),
   password VARCHAR(20) NOT NULL,
   PRIMARY KEY (clientId)
- );
+);
 
 CREATE TABLE Employees (
   employeeId INT NOT NULL AUTO_INCREMENT,
@@ -35,6 +35,10 @@ CREATE TABLE Employees (
   lastName VARCHAR(255) NOT NULL,
   password varchar(20) NOT NULL,
   PRIMARY KEY (employeeId)
+);
+
+CREATE TABLE Supervisor (
+  employeeId INT NOT NULL PRIMARY KEY REFERENCES Employees(employeeId)
 );
 
 CREATE TABLE SalesAssociate (
@@ -49,16 +53,21 @@ CREATE TABLE Admin (
 CREATE TABLE Manager (
   employeeId INT NOT NULL PRIMARY KEY REFERENCES Employees(employeeId),
 	contractId INT NOT NULL,
-	FOREIGN KEY (contractId) REFERENCES Contracts(contractId)
+  manageBy INT NOT NULL,
+	FOREIGN KEY (contractId) REFERENCES Contracts(contractId),
+  FOREIGN KEY (manageBy) REFERENCES Supervisor(employeeId)
 );
 
 
 CREATE TABLE Regular (
   employeeId INT NOT NULL PRIMARY KEY REFERENCES Employees(employeeId),
 	contractId INT NOT NULL,
+  manageBy INT NOT NULL,
 	department ENUM('Development', 'QA', 'UI', 'Design', 'BusinessIntelligence', 'Networking') NOT NULL,
 	insurance ENUM('Premium','Silver','Normal') NOT NULL,
-	FOREIGN KEY (contractId) REFERENCES Contracts(contractId)
+  desiredContractType ENUM('Premium','Gold','Diamond','Silver') NOT NULL,
+	FOREIGN KEY (contractId) REFERENCES Contracts(contractId),
+  FOREIGN KEY (manageBy) REFERENCES Manager(employeeId)
 );
 
 
@@ -78,10 +87,10 @@ CREATE TABLE Tasks(
 
 
 
- --How to reset primary key
- ALTER table Companies AUTO_INCREMENT = 1;
+--How to reset primary key
+ALTER table Companies AUTO_INCREMENT = 1;
 
- --Companies insertion
+--Companies insertion
 INSERT INTO Companies
 VALUES (0,'Apple','Tim',NULL,'Cook','timcook@apple.com','Cupertino','CA','T2P4Y5');
 
