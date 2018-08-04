@@ -13,7 +13,7 @@
     <!-- Custom Script -->
     <script type="text/javascript" src="script.js"></script>
 
-    <title>Employees</title>
+    <title>Login</title>
   </head>
   <body>
     <!-- container -->
@@ -32,7 +32,17 @@
           </a>
         </li>          
         <li class="nav-item">
-          <a class="nav-link active" href="employees.html">
+          <a class="nav-link" href="saleassociate.html">
+            SaleAssociate
+          </a>
+        </li>          
+        <li class="nav-item">
+          <a class="nav-link" href="manager.html">
+            Manager
+          </a>
+        </li>    
+        <li class="nav-item">
+          <a class="nav-link" href="employees.html">
             Employees
           </a>
         </li>
@@ -50,71 +60,76 @@
           <a class="nav-link" href="contracts.html">
             Contracts
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contract.html">
-            Contract
-          </a>
-        </li>      
+        </li>    
         <li class="nav-item">
           <a class="nav-link" href="addcontract.html">
             New Contract
           </a>
-        </li>  
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="client.html">
             Client
           </a>
-        </li>         
-        <li class="nav-item">
-          <a class="nav-link" href="addclient.html">
-            New Client
-          </a>
-        </li>               
+        </li>                
       </ul>
-      <!-- ./nav -->  
+      <!-- ./nav -->
 
       <!-- row -->
       <div class="row py-3">
-        <div class="col-12">
-          <h1>Employees</h1>
-        </div>
+
+        <form class="col-12 col-sm-6">
+          <h2>Client Login</h2>
+          <!-- form row -->
+          <div class="form-group row">
+            <label for="clienid" class="col-sm-2 col-form-label">ID</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="clienid" placeholder="12345678">
+            </div>
+          </div>
+          <!-- ./ form row -->
+
+          <!-- ./ row -->
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+            </div>
+          </div>
+          <!-- ./ form row -->
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Login</button>
+            <button class="btn btn-danger">Cancel</button>
+          </div>
+        </form>
+
+        <form class="col-12 col-sm-6">
+          <h2>Employee Login</h2>
+          <!-- form row -->
+          <div class="form-group row">
+            <label for="employeeid" class="col-sm-2 col-form-label">ID</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="employeeid" placeholder="12345678">
+            </div>
+          </div>
+          <!-- ./ form row -->
+
+          <!-- ./ row -->
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+            </div>
+          </div>
+          <!-- ./ form row -->
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Login</button>
+            <button class="btn btn-danger">Cancel</button>
+          </div>
+        </form>
       </div>
-      <!-- ./ row -->
-      
-      <!-- row -->
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover col-12 col-sm-12">
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Company</th>
-              <th scope="col">Premium</th>
-              <th scope="col">ACV</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Nike</td>
-              <td>Platinum</td>
-              <td>$24567</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Tesla</td>
-              <td>Gold</td>
-              <td>$1000</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Microsoft</td>
-              <td>$67462</td>
-            </tr>
-          </tbody>
-        </table> 
-      </div>
-      <!-- ./ row -->
+      <!-- ./row -->       
     </div>
     <!-- ./ container -->
 

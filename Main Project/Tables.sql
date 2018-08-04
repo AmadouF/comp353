@@ -13,7 +13,7 @@ CREATE TABLE Contracts(
   lineOfBusiness ENUM('CloudServices', 'Development', 'Research') NOT NULL,
   satisfactionLevel INT CHECK (satisfactionLevel >=1 AND satisfactionLevel <=10),
   FOREIGN KEY (clientId) REFERENCES Clients(clientId),
-  FOREIGN KEY (superviseBy) REFERENCES Supervisor(employeeId)
+  FOREIGN KEY (superviseBy) REFERENCES SalesAssociate(employeeId)
 );
 
 
@@ -37,10 +37,6 @@ CREATE TABLE Employees (
   password varchar(20) NOT NULL
 );
 
-CREATE TABLE Supervisor (
-  employeeId INT NOT NULL PRIMARY KEY REFERENCES Employees(employeeId)
-);
-
 CREATE TABLE SalesAssociate (
   employeeId INT NOT NULL PRIMARY KEY REFERENCES Employees(employeeId)
 );
@@ -55,7 +51,7 @@ CREATE TABLE Manager (
 	contractId INT NOT NULL,
   superviseBy INT NOT NULL,
 	FOREIGN KEY (contractId) REFERENCES Contracts(contractId),
-  FOREIGN KEY (superviseBy) REFERENCES Supervisor(employeeId)
+  FOREIGN KEY (superviseBy) REFERENCES SalesAssociate(employeeId)
 );
 
 

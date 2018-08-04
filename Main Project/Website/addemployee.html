@@ -12,8 +12,8 @@
     <link type="text/css" rel="stylesheet" href="style.css"/>
     <!-- Custom Script -->
     <script type="text/javascript" src="script.js"></script>
-
-    <title>Login</title>
+    
+    <title>Add Employee</title>
   </head>
   <body>
     <!-- container -->
@@ -26,11 +26,21 @@
             Home
           </a>
         </li>
-        <li class="nav-item ml-2">
-          <a class="nav-link active" href="login.html">
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">
             Login
           </a>
         </li>          
+        <li class="nav-item">
+          <a class="nav-link" href="saleassociate.html">
+            SaleAssociate
+          </a>
+        </li>          
+        <li class="nav-item">
+          <a class="nav-link" href="manager.html">
+            Manager
+          </a>
+        </li>    
         <li class="nav-item">
           <a class="nav-link" href="employees.html">
             Employees
@@ -50,86 +60,93 @@
           <a class="nav-link" href="contracts.html">
             Contracts
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contract.html">
-            Contract
-          </a>
-        </li>      
+        </li>    
         <li class="nav-item">
           <a class="nav-link" href="addcontract.html">
             New Contract
           </a>
-        </li> 
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="client.html">
             Client
           </a>
-        </li>             
-        <li class="nav-item">
-          <a class="nav-link" href="addclient.html">
-            New Client
-          </a>
-        </li>
+        </li>                
       </ul>
       <!-- ./nav -->
 
       <!-- row -->
       <div class="row py-3">
+        <div class="col-12">
+          <h1>New Employee</h1>
+        </div>
+      </div>
+      <!-- ./ row -->
 
-        <form class="col-12 col-sm-6">
-          <h2>Client Login</h2>
+      <!-- row -->
+      <div class="row">
+        <form class="col-12">
+
           <!-- form row -->
           <div class="form-group row">
-            <label for="clienid" class="col-sm-2 col-form-label">ID</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="clienid" placeholder="12345678">
+            <label for="staticEmail" class="col-sm-4 col-form-label">EmployeeID</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="staticEmail" placeholder="12345678">
             </div>
           </div>
           <!-- ./ form row -->
 
+          <!-- form row -->
+          <div class="form-group row">
+            <label for="fname" class="col-sm-4 col-form-label">First Name</label>
+            <div class="col-sm-8">
+              <input class="form-control" id="fname" placeholder="Department">
+            </div>
+          </div>
+          <!-- ./ form row -->          
+
+          <!-- form row -->
+          <div class="form-group row">
+            <label for="lname" class="col-sm-4 col-form-label">Last Name</label>
+            <div class="col-sm-8">
+              <input class="form-control" id="fname" placeholder="lname">
+            </div>
+          </div>
+          <!-- ./ form row -->              
+
+          <!-- form row -->
+          <div class="form-group row">
+            <label for="department" class="col-sm-4 col-form-label">Department</label>
+            <div class="col-sm-8">
+              <input class="form-control" id="department" placeholder="Department">
+            </div>
+          </div>
+          <!-- ./ form row -->
+
+          <!-- form row -->
+          <div class="form-group row">
+            <label for="contractID" class="col-sm-4 col-form-label">Contract ID</label>
+            <div class="col-sm-8">
+              <input class="form-control" id="contactid" placeholder="Contract ID">
+            </div>
+          </div>
+          <!-- ./ form row -->      
+          
           <!-- ./ row -->
           <div class="form-group row">
-            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
+            <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
+            <div class="col-sm-8">
               <input type="password" class="form-control" id="inputPassword" placeholder="Password">
             </div>
           </div>
           <!-- ./ form row -->
 
           <div class="form-group">
-            <button type="submit" class="btn btn-primary">Login</button>
-            <button class="btn btn-danger">Cancel</button>
-          </div>
-        </form>
-
-        <form class="col-12 col-sm-6">
-          <h2>Employee Login</h2>
-          <!-- form row -->
-          <div class="form-group row">
-            <label for="employeeid" class="col-sm-2 col-form-label">ID</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="employeeid" placeholder="12345678">
-            </div>
-          </div>
-          <!-- ./ form row -->
-
-          <!-- ./ row -->
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-            </div>
-          </div>
-          <!-- ./ form row -->
-
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary">Add Employee</button>
             <button class="btn btn-danger">Cancel</button>
           </div>
         </form>
       </div>
-      <!-- ./row -->       
+      <!-- ./row -->   
     </div>
     <!-- ./ container -->
 
