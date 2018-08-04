@@ -13,7 +13,7 @@
     <!-- Custom Script -->
     <script type="text/javascript" src="script.js"></script>
 
-    <title>Employees</title>
+    <title>Employee</title>
   </head>
   <body>
     <!-- container -->
@@ -47,13 +47,8 @@
           </a>
         </li>  
         <li class="nav-item">
-          <a class="nav-link" href="employees.html">
-            Employees
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="employee.html">
-            Employee
+          <a class="nav-link" href="regular.html">
+            Regular
           </a>
         </li>          
         <li class="nav-item">
@@ -80,46 +75,70 @@
       <!-- ./nav -->
 
       <!-- row -->
-      <div class="row py-3">
+      <div class="row">
         <div class="col-12">
-          <h1>Employees</h1>
+          <h1>John Cena</h1>
+          <span>ID: 26771010</span><br/>
+          <span>Regular Employee</span>
+          <br/>
         </div>
       </div>
       <!-- ./ row -->
       
       <!-- row -->
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover col-12 col-sm-12">
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Company</th>
-              <th scope="col">Premium</th>
-              <th scope="col">ACV</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Nike</td>
-              <td>Platinum</td>
-              <td>$24567</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Tesla</td>
-              <td>Gold</td>
-              <td>$1000</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Microsoft</td>
-              <td>$67462</td>
-            </tr>
-          </tbody>
-        </table> 
+      <div class="row py-3">
+        <div class="col-sm">
+          <h3>My Contract</h3>
+          <h4>Client Name: <a href="https://instantcena.ca">Nike</a></h4>
+          <span>ID: 26771010</span>
+          <br/>
+          <span>Contract Date: 01/03/2018</span>
+          <br/>
+          <span>Contact number:</span>
+          <br/>
+          <span>Supervised By:</span>
+          <br/>
+          <span>Initial Amount:</span>
+          <br/>
+          <span>ACV:</span>
+          <br/>
+          <span>Type: Gold</span>
+          <br/>
+          <span>Service Type:</span>
+          <br/>
+          <span>Line of Bisiness:</span>
+          <br/>
+          <span>Satisfaction Score:</span>
+          <br/>
+          
+          <!-- form row -->
+          <div class="form-group">
+            <label for="dropdown" class="col-form-label"><strong>Wanted Contract Type:</strong></label>
+            <select class="form-control col-4" id="dropdown">
+              <option>Premium</option>
+              <option>Diamond</option>
+              <option>Gold</option>
+              <option>Silver</option>
+            </select>
+            <label for="dropdown" class="col-form-label"><strong>Insurance Plan:</strong></label>
+            <select class="form-control col-4" id="dropdown">
+              <option>Premium</option>
+              <option>Silver</option>
+              <option>Normal</option>
+            </select>
+            <button class="my-2 btn btn-primary btn-md">Confirm</button>
+          </div>
+        </div>
+        <div class="col-sm">
+          <h3>Task Working On</h3>
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action active">Bargaining with TA</a>
+            <a href="#" class="list-group-item list-group-item-action">Details: afdasdfasdfasd</a>
+            <a href="#" class="list-group-item list-group-item-action">Logged Hours: 21h</a>
+          </div>
+        </div>
       </div>
-      <!-- ./ row -->
+      <!-- ./row -->   
     </div>
     <!-- ./ container -->
 
