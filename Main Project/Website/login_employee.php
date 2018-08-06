@@ -16,8 +16,6 @@ if($userSet && $passSet) {
     $employeeId = $_POST["employeeId"];
     $employeePassword = $_POST["employeePassword"];
     $db->loginEmployee($employeeId, $employeePassword);
-
-    exit();
 } else {
     if(!$userSet) {
         pushError("Could not login, employee username not set");

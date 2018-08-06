@@ -16,8 +16,6 @@ if($userSet && $passSet) {
     $clientId = $_POST["clientId"];
     $clientPassword = $_POST["clientPassword"];
     $db->loginClient($clientId, $clientPassword);
-
-    exit();
 } else {
     if(!$userSet) {
         pushError("Could not login, client username not set");
