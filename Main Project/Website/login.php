@@ -30,7 +30,7 @@ if(isset($_SESSION["user"])) {
       <!-- row -->
       <div class="row py-3">
 
-        <form class="col-12 col-sm-6" action="/login_client.php" method="POST">
+        <form class="col-12 col-sm-6" action="login_client.php" method="POST">
           <h2>Client Login</h2>
           <!-- form row -->
           <div class="form-group row">
@@ -56,7 +56,7 @@ if(isset($_SESSION["user"])) {
           </div>
         </form>
 
-        <form class="col-12 col-sm-6" action="/login_employee.php" method="POST">
+        <form class="col-12 col-sm-6" action="login_employee.php" method="POST">
           <h2>Employee Login</h2>
           <!-- form row -->
           <div class="form-group row">
