@@ -1,5 +1,5 @@
 <?php 
-include_once("common.php");
+include("includes.php");
 
 // If the user is already logged in, just redirect him to the index
 if(isset($_SESSION["user"])) {
@@ -11,8 +11,6 @@ $passSet = !empty($_POST["employeePassword"]);
 
 // If employee post variables are set, attempt log in
 if($userSet && $passSet) {
-    $db = new DatabaseConn();
-
     $employeeId = $_POST["employeeId"];
     $employeePassword = $_POST["employeePassword"];
     $db->loginEmployee($employeeId, $employeePassword);

@@ -1,5 +1,5 @@
 <?php 
-include_once("common.php");
+include("includes.php");
 
 displayErrors();
 

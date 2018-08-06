@@ -1,5 +1,5 @@
 <?php
-include_once("common.php");
+include("includes.php");
 
 // If the user is already logged in, just redirect him to the index
 if(isset($_SESSION["user"])) {
