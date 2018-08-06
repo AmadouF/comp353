@@ -3,8 +3,6 @@
   if(!isLoggedIn() || !getUserType() == "Regular") {
     header("location: /");
   }
-
-  $user = $_SESSION["user"];
 ?>
 
 <!-- row -->

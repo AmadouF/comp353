@@ -38,10 +38,22 @@ class DatabaseConn {
     function getUserById(int $id) {
         $result = $this->conn->query("SELECT * FROM Users WHERE id=$id");
         
-        if($user.num_rows > 0) {
+        if($result.num_rows > 0) {
             return $result->fetch_assoc();
         } else {
             return null;
+        }
+    }
+
+    function getRegularEmployeeById(int $id) {
+        $result = $this->conn->query("SELECT * FROM Regular INNER JOIN Employees WHERE Regular.employeeId=$id");
+        
+        print($this->conn->error);
+
+        if($result->num_rows > 0){
+            return $result->fetch_assoc();
+        } else {
+            return 0;
         }
     }
 
@@ -115,6 +127,5 @@ class DatabaseConn {
 }
 
 $db = new DatabaseConn();
-
 ?>
 
