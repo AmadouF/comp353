@@ -3,7 +3,7 @@ if(!isset($_SESSION["errors"])) {
     $_SESSION["errors"] = array();
 }
 
-function pushError($err) {
+function pushError(string $err) {
     array_push($_SESSION["errors"], $err);
 }
 

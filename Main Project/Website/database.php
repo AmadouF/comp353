@@ -30,7 +30,7 @@ class DatabaseConn {
     }
 
     // Returns a user by his id
-    function getUserById($id) {
+    function getUserById(int $id) {
         $result = $this->conn->query("SELECT * FROM Users WHERE id=$id");
         
         if($user.num_rows > 0) {
@@ -41,7 +41,7 @@ class DatabaseConn {
     }
 
     // Attempt to login as a client
-    function loginClient($username, $password) {
+    function loginClient(string $username, string $password) {
         $query = "SELECT * FROM clients WHERE emailId ='$username' AND password='$password' LIMIT 1";
         $clients = $this->conn->query($query);
 
@@ -58,7 +58,7 @@ class DatabaseConn {
     }
 
     // Attempt to login as an employee
-    function loginEmployee($username, $password) {
+    function loginEmployee(string $username,string $password) {
         $query = "SELECT * FROM employees WHERE CONCAT(firstname,lastname) ='$username' AND password='$password' LIMIT 1";
         $employees = $this->conn->query($query);
 
@@ -76,7 +76,7 @@ class DatabaseConn {
     }
 
     // Returns an employee type by his id
-    function getEmployeeTypeById($id) {
+    function getEmployeeTypeById(int $id) {
         if($this->checkTableForEmployeeId("Admins", $id)) {
             return "Admin";
         }
@@ -97,18 +97,19 @@ class DatabaseConn {
     }
 
     // Checks a table to see if it contains a user id
-    private function checkTableForEmployeeId($table, $id) {
+    private function checkTableForEmployeeId(string $table,int $id) {
         $sql = "SELECT * FROM $table WHERE employeeId=$id";
         $admins = $this->conn->query($sql);
         return $admins->num_rows >= 1;
     }
 
     // Escape string to be safe
-    function escape($str) {
+    function escape(string $str) {
         return $this->conn->real_escape_string(trim($str));
     }
 }
 
 $db = new DatabaseConn();
+
 ?>
 
