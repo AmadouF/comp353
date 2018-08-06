@@ -12,7 +12,7 @@ function pushError($err) {
 // This will display and clear errors in the session
 function displayErrors() {
     if(isset($_SESSION["errors"])) {
-        foreach($_SESSION["errors"]as $error) {
+        foreach($_SESSION["errors"] as $error) {
             echo "$error <br />";
         }
 
@@ -21,7 +21,7 @@ function displayErrors() {
 }
 
 // Returns if a user or client is logged in
-function IsLoggedIn() {
+function isLoggedIn() {
     return isset($_SESSION["user"]);
 }
 
@@ -66,6 +66,41 @@ class DatabaseConn {
         }
     }
 
+    // Attempt to login as a client
+    function loginClient($username, $password) {
+        $query = "SELECT * FROM clients WHERE emailId ='$username' AND password='$password' LIMIT 1";
+        $clients = $this->conn->query($query);
+
+        if($clients->num_rows >= 1) {
+            $client = $clients->fetch_assoc();
+
+            $_SESSION["user"] = $client;
+            $_SESSION["user_type"] = "Client";
+        } else {
+            pushError("Wrong emailId / password for client login");
+        }
+
+        header("location: /");
+    }
+
+    // Attempt to login as an employee
+    function loginEmployee($username, $password) {
+        $query = "SELECT * FROM employees WHERE CONCAT(firstname,lastname) ='$username' AND password='$password' LIMIT 1";
+        $employees = $this->conn->query($query);
+
+        if($employees->num_rows >= 1) {
+            $employee = $employees->fetch_assoc();
+            $employee_type = $this->getEmployeeTypeById($employee["employeeId"]);
+
+            $_SESSION["user"] = $employee;
+            $_SESSION["user_type"] = $employee_type;
+        } else {
+            pushError("Wrong firstname.lastname / password for employee login");
+        }
+
+        header("location: /index.php");
+    }
+
     // Returns an employee type by his id
     function getEmployeeTypeById($id) {
         if($this->checkTableForEmployeeId("Admins", $id)) {
@@ -97,41 +132,6 @@ class DatabaseConn {
     // Escape string to be safe
     function escape($str) {
         return $this->conn->real_escape_string(trim($str));
-    }
-
-    // Attempt to login as an employee
-    function loginEmployee($username, $password) {
-        $query = "SELECT * FROM employees WHERE CONCAT(firstname,lastname) ='$username' AND password='$password' LIMIT 1";
-        $employees = $this->conn->query($query);
-
-        if($employees->num_rows >= 1) {
-            $employee = $employees->fetch_assoc();
-            $employee_type = $this->getEmployeeTypeById($employee["employeeId"]);
-
-            $_SESSION["user"] = $employee;
-            $_SESSION["user_type"] = $employee_type;
-        } else {
-            pushError("Wrong firstname.lastname / password for employee login");
-        }
-
-        header("location: /index.php");
-    }
-
-    // Attempt to login as a client
-    function loginClient($username, $password) {
-        $query = "SELECT * FROM clients WHERE emailId ='$username' AND password='$password' LIMIT 1";
-        $clients = $this->conn->query($query);
-
-        if($clients->num_rows >= 1) {
-            $client = $clients->fetch_assoc();
-
-            $_SESSION["user"] = $client;
-            $_SESSION["user_type"] = "Client";
-        } else {
-            pushError("Wrong emailId / password for client login");
-        }
-
-        header("location: /");
     }
 }
 ?>
