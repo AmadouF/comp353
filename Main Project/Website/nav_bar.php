@@ -5,7 +5,7 @@
 <!-- nav -->
 <ul class="nav nav-pills py-3 nav-fill">
     <li class="nav-item">
-      <a class="nav-link btn-success" href="/">
+      <a class="nav-link btn-success" href="">
         Home
       </a>
     </li>
@@ -13,8 +13,8 @@
       if(isLoggedIn()) {
     ?>
     <li class="nav-item">
-      <a class="nav-link" href="/logout.php">
-        Logout
+      <a class="nav-link" href="logout.php">
+        Logoutdsa
       </a>
     </li>
     <?php

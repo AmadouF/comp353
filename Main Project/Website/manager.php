@@ -1,7 +1,7 @@
 <?php
   include("includes.php");
   if(!isLoggedIn() || !getUserType() == "Manager") {
-    header("location: /");
+    header("location: index.php");
   }
 ?>
 

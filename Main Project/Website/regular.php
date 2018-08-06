@@ -1,7 +1,7 @@
 <?php
   include("includes.php");
   if(!isLoggedIn() || !getUserType() == "Regular") {
-    header("location: /");
+    header("location: index.php");
   }
 
   $user = $db->getRegularEmployeeById($_SESSION["user"]["employeeId"]);

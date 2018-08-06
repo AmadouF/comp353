@@ -3,7 +3,7 @@ include("includes.php");
 
 // If the user is already logged in, just redirect him to the index
 if(isset($_SESSION["user"])) {
-    header("location: /");
+    header("location: index.php");
 }
 
 $userSet = !empty($_POST["employeeId"]); 
@@ -22,7 +22,7 @@ if($userSet && $passSet) {
         pushError("Could not login, employee password not set");
     }
 
-    header("location: /");
+    header("location: index.php");
 }
 
 ?>

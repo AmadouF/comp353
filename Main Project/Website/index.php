@@ -30,7 +30,7 @@ if(isLoggedIn()) {
         }
     } else {
         pushError("Invalid user, no type specified: ".implode(" ", $user));
-        header("location: /logout.php");
+        header("location: logout.php");
     }
 } else {
     $_SESSION["msg"] = "You must log in first";

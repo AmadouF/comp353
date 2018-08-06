@@ -1,7 +1,7 @@
 <?php
   include("includes.php");
   if(!isLoggedIn() || !getUserType() == "Client") {
-    header("location: /");
+    header("location: index.php");
   }
 
   $user = $_SESSION["user"];
