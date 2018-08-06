@@ -3,7 +3,7 @@ include_once("common.php");
 
 displayErrors();
 
-if(isset($_SESSION["user"])) {
+if(isLoggedIn()) {
     $user = $_SESSION["user"];
 
     // Redirect user to proper page

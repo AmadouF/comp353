@@ -1,10 +1,12 @@
 <?php
 include_once("common.php");
 
+// If the user is already logged in, just redirect him to the index
 if(isset($_SESSION["user"])) {
     header("location: /");
 }
 
+// If client login post variables are set, attempt log in
 if(isset($_POST["clientId"]) && isset($_POST["clientPassword"])) {
     $db = new DatabaseConn();
 
@@ -15,6 +17,7 @@ if(isset($_POST["clientId"]) && isset($_POST["clientPassword"])) {
     exit();
 } 
 
+// If employee post variables are set, attempt log in
 if(isset($_POST["employeeId"]) && isset($_POST["employeePassword"])) {
     $db = new DatabaseConn();
 
