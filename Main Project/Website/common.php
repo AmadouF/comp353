@@ -5,6 +5,10 @@ if(!isset($_SESSION["errors"])) {
     $_SESSION["errors"] = array();
 }
 
+function pushError($err) {
+    array_push($_SESSION["errors"], $err);
+}
+
 // This will display and clear errors in the session
 function displayErrors() {
     if(isset($_SESSION["errors"])) {
@@ -107,7 +111,7 @@ class DatabaseConn {
             $_SESSION["user"] = $employee;
             $_SESSION["user_type"] = $employee_type;
         } else {
-            array_push($_SESSION["errors"], "Wrong firstname.lastname / password for employee login");
+            pushError("Wrong firstname.lastname / password for employee login");
         }
 
         header("location: /index.php");
@@ -124,7 +128,7 @@ class DatabaseConn {
             $_SESSION["user"] = $client;
             $_SESSION["user_type"] = "Client";
         } else {
-            array_push($_SESSION["errors"], "Wrong emailId / password for client login");
+            pushError("Wrong emailId / password for client login");
         }
 
         header("location: /");

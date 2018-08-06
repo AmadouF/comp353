@@ -5,28 +5,6 @@ include_once("common.php");
 if(isset($_SESSION["user"])) {
     header("location: /");
 }
-
-// If client login post variables are set, attempt log in
-if(isset($_POST["clientId"]) && isset($_POST["clientPassword"])) {
-    $db = new DatabaseConn();
-
-    $clientId = $_POST["clientId"];
-    $clientPassword = $_POST["clientPassword"];
-    $db->loginClient($clientId, $clientPassword);
-
-    exit();
-} 
-
-// If employee post variables are set, attempt log in
-if(isset($_POST["employeeId"]) && isset($_POST["employeePassword"])) {
-    $db = new DatabaseConn();
-
-    $employeeId = $_POST["employeeId"];
-    $employeePassword = $_POST["employeePassword"];
-    $db->loginEmployee($employeeId, $employeePassword);
-
-    exit();
-}
 ?>
 
 <!doctype html>
@@ -52,7 +30,7 @@ if(isset($_POST["employeeId"]) && isset($_POST["employeePassword"])) {
       <!-- row -->
       <div class="row py-3">
 
-        <form class="col-12 col-sm-6" action="/login.php" method="POST">
+        <form class="col-12 col-sm-6" action="/login_client.php" method="POST">
           <h2>Client Login</h2>
           <!-- form row -->
           <div class="form-group row">
@@ -78,7 +56,7 @@ if(isset($_POST["employeeId"]) && isset($_POST["employeePassword"])) {
           </div>
         </form>
 
-        <form class="col-12 col-sm-6" action="/login.php" method="POST">
+        <form class="col-12 col-sm-6" action="/login_employee.php" method="POST">
           <h2>Employee Login</h2>
           <!-- form row -->
           <div class="form-group row">
