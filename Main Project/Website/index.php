@@ -14,23 +14,21 @@ if(isLoggedIn()) {
         print_r($user);
         echo "<br />".$user_type."<br />";
 
-        echo "<a href=\"logout.php\">Logout</a>";
-
         switch($user_type) {
             case "Sales Associate": {
-                include("views/salesassociate.html");
+                include("salesassociate.php");
             } break;
             case "Manager": {
-                include("views/manager.html");
+                include("manager.php");
             } break;
             case "Regular": {
-                include("views/regular.html");
+                include("regular.php");
             } break;
             case "Admin": {
-                include("views/admin.html");
+                include("admin.php");
             }
             case "Client": {
-                include("views/client.html");
+                include("client.php");
             } break;
         }
     } else {
@@ -39,6 +37,6 @@ if(isLoggedIn()) {
     }
 } else {
     $_SESSION["msg"] = "You must log in first";
-    include("views/login.php");
+    include("login.php");
 }
 ?>

@@ -29,6 +29,11 @@ class DatabaseConn {
         return $result;
     }
 
+    function getContractsByClientId(int $id) {
+        $results = $this->conn->query("SELECT * FROM Contracts WHERE clientId=$id");
+        return $results;
+    }
+
     // Returns a user by his id
     function getUserById(int $id) {
         $result = $this->conn->query("SELECT * FROM Users WHERE id=$id");
@@ -93,7 +98,7 @@ class DatabaseConn {
             return "Regular";
         }
 
-        return "Unknown";
+        return null;
     }
 
     // Checks a table to see if it contains a user id

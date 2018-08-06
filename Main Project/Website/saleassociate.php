@@ -1,3 +1,10 @@
+<?php
+  include("includes.php");
+  if(!isLoggedIn() || !getUserType() == "Sales Associate") {
+    header("location: /");
+  }
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -20,55 +27,14 @@
     <div class="container">
 
       <!-- nav -->
-      <ul class="nav nav-pills py-3 nav-fill">
-          <li class="nav-item">
-            <a class="nav-link btn-success" href="/">
-              Home
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login.php">
-              Login
-            </a>
-          </li>          
-          <li class="nav-item">
-            <a class="nav-link" href="/views/saleassociate.html">
-              SaleAssociate
-            </a>
-          </li>          
-          <li class="nav-item">
-            <a class="nav-link" href="/views/manager.html">
-              Manager
-            </a>
-          </li>    
-          <li class="nav-item">
-            <a class="nav-link" href="/views/admin.html">
-              Admin
-            </a>
-          </li>  
-          <li class="nav-item">
-            <a class="nav-link" href="/views/regular.html">
-              Regular
-            </a>
-          </li>   
-          <li class="nav-item">
-            <a class="nav-link" href="/views/client.html">
-              Client
-            </a>
-          </li>                
-        </ul>
+      <?php
+        include("nav_bar.php");
+      ?>
       <!-- ./nav -->
 
-      <!-- row -->
-      <div class="row">
-        <div class="col-12">
-          <h1>John Cena</h1>
-          <span>ID: 26771010</span><br/>
-          <span>Sale Associate</span>
-          <br/>
-        </div>
-      </div>
-      <!-- ./ row -->
+      <?php 
+        include("employee_general_info.php");
+      ?>
 
       <!-- row -->
       <div class="row py-3">

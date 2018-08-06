@@ -1,3 +1,10 @@
+<?php
+  include("includes.php");
+  if(!isLoggedIn() || !getUserType() == "Admin") {
+    header("location: /");
+  }
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,61 +20,21 @@
     <!-- Custom Script -->
     <script type="text/javascript" src="script.js"></script>
 
-    <title>Client</title>
+    <title>SaleAssociate</title>
   </head>
   <body>
     <!-- container -->
     <div class="container">
 
       <!-- nav -->
-      <ul class="nav nav-pills py-3 nav-fill">
-          <li class="nav-item">
-            <a class="nav-link btn-success" href="/">
-              Home
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login.php">
-              Login
-            </a>
-          </li>          
-          <li class="nav-item">
-            <a class="nav-link" href="/views/saleassociate.html">
-              SaleAssociate
-            </a>
-          </li>          
-          <li class="nav-item">
-            <a class="nav-link" href="/views/manager.html">
-              Manager
-            </a>
-          </li>    
-          <li class="nav-item">
-            <a class="nav-link" href="/views/admin.html">
-              Admin
-            </a>
-          </li>  
-          <li class="nav-item">
-            <a class="nav-link" href="/views/regular.html">
-              Regular
-            </a>
-          </li>   
-          <li class="nav-item">
-            <a class="nav-link" href="/views/client.html">
-              Client
-            </a>
-          </li>                
-        </ul>
-      <!-- ./nav -->    
+      <?php
+        include("nav_bar.php");
+      ?>
+      <!-- ./nav -->
 
-      <!-- row -->
-      <div class="row py-3">
-        <div class="col-12">
-          <h1>Tesla</h1>
-          <span>ID: 232323233</span><br/>
-          <span>Client</span>
-        </div>
-      </div>
-      <!-- ./ row -->
+      <?php 
+        include("employee_general_info.php");
+      ?>
 
       <!-- row -->
       <div class="row py-3">
@@ -78,7 +45,7 @@
       <!-- ./ row -->
 
       <div class="list-group">
-        <a href="client_contract.html" class="list-group-item list-group-item-action flex-column align-items-start">
+        <a href="admin_contract.html" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">Contract A</h5>
             <small>July 7, 2018</small>
@@ -86,7 +53,7 @@
           <p class="mb-1">Contract Info:Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
           <small>Satisfaction score 8</small>
         </a>
-        <a href="client_contract.html" class="list-group-item list-group-item-action flex-column align-items-start">
+        <a href="admin_contract.html" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">Contract B</h5>
             <small class="text-muted">March 14, 1995</small>
@@ -94,7 +61,7 @@
           <p class="mb-1">Contract Info: elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
           <small class="text-muted">Satisfaction score 10</small>
         </a>
-        <a href="client_contract.html" class="list-group-item list-group-item-action flex-column align-items-start">
+        <a href="admin_contract.html" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">Contract C</h5>
             <small class="text-muted">3 days ago</small>
