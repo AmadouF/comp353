@@ -13,7 +13,7 @@ if(isLoggedIn()) {
 
         switch($user_type) {
             case "Sales Associate": {
-                include("salesassociate.php");
+                include("saleassociate.php");
             } break;
             case "Manager": {
                 include("manager.php");
