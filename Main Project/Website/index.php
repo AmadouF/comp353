@@ -18,19 +18,19 @@ if(isLoggedIn()) {
 
         switch($user_type) {
             case "Sales Associate": {
-                include("salesassociate.html");
+                include("views/salesassociate.html");
             } break;
             case "Manager": {
-                include("manager.html");
+                include("views/manager.html");
             } break;
             case "Regular": {
-                include("regular.html");
+                include("views/regular.html");
             } break;
             case "Admin": {
-                include("admin.html");
+                include("views/admin.html");
             }
             case "Client": {
-                include("client.html");
+                include("views/client.html");
             } break;
         }
     } else {
@@ -39,6 +39,6 @@ if(isLoggedIn()) {
     }
 } else {
     $_SESSION["msg"] = "You must log in first";
-    include("login.php");
+    include("views/login.php");
 }
 ?>
