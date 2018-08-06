@@ -18,7 +18,7 @@ if($userSet && $passSet) {
     $db->loginEmployee($employeeId, $employeePassword);
 
     exit();
-}else {
+} else {
     if(!$userSet) {
         pushError("Could not login, employee username not set");
     }

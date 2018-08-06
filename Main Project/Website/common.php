@@ -66,21 +66,21 @@ class DatabaseConn {
         }
     }
 
-    // Returns a user type by his id
-    function getUserTypeById($id) {
-        if($this->checkTableForUserId("Admins", $id)) {
+    // Returns an employee type by his id
+    function getEmployeeTypeById($id) {
+        if($this->checkTableForEmployeeId("Admins", $id)) {
             return "Admin";
         }
 
-        if($this->checkTableForUserId("SalesAssociate", $id)) {
+        if($this->checkTableForEmployeeId("SalesAssociate", $id)) {
             return "Sales Associate";
         }
 
-        if($this->checkTableForUserId("Manager", $id)) {
+        if($this->checkTableForEmployeeId("Manager", $id)) {
             return "Manager";
         }
 
-        if($this->checkTableForUserId("Regular", $id)) {
+        if($this->checkTableForEmployeeId("Regular", $id)) {
             return "Regular";
         }
 
@@ -88,7 +88,7 @@ class DatabaseConn {
     }
 
     // Checks a table to see if it contains a user id
-    private function checkTableForUserId($table, $id) {
+    private function checkTableForEmployeeId($table, $id) {
         $sql = "SELECT * FROM $table WHERE employeeId=$id";
         $admins = $this->conn->query($sql);
         return $admins->num_rows >= 1;
@@ -106,7 +106,7 @@ class DatabaseConn {
 
         if($employees->num_rows >= 1) {
             $employee = $employees->fetch_assoc();
-            $employee_type = $this->getUserTypeById($employee["employeeId"]);
+            $employee_type = $this->getEmployeeTypeById($employee["employeeId"]);
 
             $_SESSION["user"] = $employee;
             $_SESSION["user_type"] = $employee_type;

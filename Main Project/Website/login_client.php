@@ -28,5 +28,4 @@ if($userSet && $passSet) {
 
     header("location: /");
 }
-
 ?>
