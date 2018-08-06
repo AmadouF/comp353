@@ -46,7 +46,7 @@ class DatabaseConn {
     }
 
     function getRegularEmployeeById(int $id) {
-        $result = $this->conn->query("SELECT * FROM Regular INNER JOIN Employees WHERE Regular.employeeId=$id");
+        $result = $this->conn->query("SELECT * FROM Regular INNER JOIN Employees ON Employees.employeeId = Regular.employeeId WHERE Regular.employeeId=$id");
         
         print($this->conn->error);
 
