@@ -51,7 +51,7 @@ if(isset($_SESSION["user"])) {
           <!-- ./ form row -->
 
           <div class="form-group">
-            <input name="login" type="submit" class="btn btn-primary">
+            <input value="login" name="login" type="submit" class="btn btn-primary">
             <button class="btn btn-danger">Cancel</button>
           </div>
         </form>
@@ -77,7 +77,7 @@ if(isset($_SESSION["user"])) {
           <!-- ./ form row -->
 
           <div class="form-group">
-            <input name="login" type="submit" class="btn btn-primary" />
+            <input value="login" name="login" type="submit" class="btn btn-primary" />
             <button class="btn btn-danger">Cancel</button>
           </div>
         </form>
