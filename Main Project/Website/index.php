@@ -5,8 +5,10 @@ if(isset($_SESSION["user"])) {
     $user = $_SESSION["user"];
 
     // Redirect user to proper page
-    $user_type = $_SESSION["user_type"];
-    if(isset($user_type)) {
+    
+    if(isset($_SESSION["user_type"])) {
+        $user_type = $_SESSION["user_type"];
+        
         switch($user_type) {
             case "Sales Associate": {
 
