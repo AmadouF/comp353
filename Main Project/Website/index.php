@@ -1,5 +1,5 @@
 <?php 
-session_start();
+include_once("common.php");
 
 if(isset($_SESSION["user"])) {
     $user = $_SESSION["user"];
@@ -11,6 +11,8 @@ if(isset($_SESSION["user"])) {
         
         print_r($user);
         echo "<br />".$user_type;
+
+        echo "<a href=\"logout.php\">Logout</a>";
 
         switch($user_type) {
             case "Sales Associate": {

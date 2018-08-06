@@ -1,14 +1,11 @@
 <?php print_r($_POST); ?>
 
 <?php
-session_start();
+include_once("common.php");
 
 if(isset($_SESSION["user"])) {
     header("location: /");
 }
-
-include_once("common.php");
-
 
 if(isset($_POST["clientId"]) && isset($_POST["clientPassword"])) {
     $db = new Database();

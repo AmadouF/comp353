@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 function IsLoggedIn() {
     return isset($_SESSION["user"]);
