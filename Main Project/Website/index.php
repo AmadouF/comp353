@@ -10,9 +10,6 @@ if(isLoggedIn()) {
     
     if(isset($_SESSION["user_type"])) {
         $user_type = $_SESSION["user_type"];
-        
-        print_r($user);
-        echo "<br />".$user_type."<br />";
 
         switch($user_type) {
             case "Sales Associate": {
