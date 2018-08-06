@@ -71,7 +71,7 @@ class DatabaseConn {
             pushError("Wrong emailId / password for client login");
         }
 
-        header("location: /");
+        header("location: index.php");
     }
 
     // Attempt to login as an employee
@@ -79,17 +79,24 @@ class DatabaseConn {
         $query = "SELECT * FROM employees WHERE CONCAT(firstname,lastname) ='$username' AND password='$password' LIMIT 1";
         $employees = $this->conn->query($query);
 
+		echo $query."   ";
+		echo $username."--".$password;	
+		echo "  ".$employees->num_rows;
+
         if($employees->num_rows >= 1) {
             $employee = $employees->fetch_assoc();
             $employee_type = $this->getEmployeeTypeById($employee["employeeId"]);
 
             $_SESSION["user"] = $employee;
-            $_SESSION["user_type"] = $employee_type;
+			$_SESSION["user_type"] = $employee_type;
+			echo "GOOD";
         } else {
+			echo "ERROR";
+
             pushError("Wrong firstname.lastname / password for employee login");
         }
 
-        header("location: /index.php");
+        header("location: index.php");
     }
 
     // Returns an employee type by his id
