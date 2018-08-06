@@ -15,8 +15,6 @@ if(isset($_POST["clientId"]) && isset($_POST["clientPassword"])) {
     exit();
 } 
 
-echo "client not set";
-
 if(isset($_POST["employeeId"]) && isset($_POST["employeePassword"])) {
     $db = new Database();
 

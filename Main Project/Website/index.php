@@ -1,6 +1,8 @@
 <?php 
 include_once("common.php");
 
+displayErrors();
+
 if(isset($_SESSION["user"])) {
     $user = $_SESSION["user"];
 
@@ -10,7 +12,7 @@ if(isset($_SESSION["user"])) {
         $user_type = $_SESSION["user_type"];
         
         print_r($user);
-        echo "<br />".$user_type;
+        echo "<br />".$user_type."<br />";
 
         echo "<a href=\"logout.php\">Logout</a>";
 

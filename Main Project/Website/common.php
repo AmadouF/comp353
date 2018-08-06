@@ -1,6 +1,20 @@
 <?php
 session_start();
 
+if(!isset($_SESSION["errors"])) {
+    $_SESSION["errors"] = array();
+}
+
+function displayErrors() {
+    if(isset($_SESSION["errors"])) {
+        foreach($_SESSION["errors"]as $error) {
+            echo "$error <br />";
+        }
+
+        $_SESSION["errors"] = array();
+    }
+}
+
 function IsLoggedIn() {
     return isset($_SESSION["user"]);
 }
@@ -81,17 +95,13 @@ class Database {
             $employee = $employees->fetch_assoc();
             $employee_type = $this->getUserType($employee["employeeId"]);
 
-
-
             $_SESSION["user"] = $employee;
             $_SESSION["user_type"] = $employee_type;
-         
-            header("location: /index.php");
-            die();
         } else {
-            die("INVALID USERNAME / PASS");
-            //TODO: USER NOT FOUND ERROR
+            array_push($_SESSION["errors"], "Wrong firstname.lastname / password for employee login");
         }
+
+        header("location: /index.php");
     }
 
     function loginClient($username, $password) {
@@ -104,13 +114,11 @@ class Database {
 
             $_SESSION["user"] = $client;
             $_SESSION["user_type"] = "Client";
-
-            header("location: /");
-            die();
         } else {
-            die("INVALID USERNAME / PASS");
-            //TODO: CLIENT NOT FOUND ERROR
+            array_push($_SESSION["errors"], "Wrong emailId / password for client login");
         }
+
+        header("location: /");
     }
 }
 ?>
