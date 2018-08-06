@@ -19,7 +19,7 @@ function IsLoggedIn() {
     return isset($_SESSION["user"]);
 }
 
-class Database {
+class DatabaseConn {
     function __construct() {
         $this->config = parse_ini_file("config.ini", true);
         $this->connect();

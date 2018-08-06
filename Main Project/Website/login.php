@@ -6,7 +6,7 @@ if(isset($_SESSION["user"])) {
 }
 
 if(isset($_POST["clientId"]) && isset($_POST["clientPassword"])) {
-    $db = new Database();
+    $db = new DatabaseConn();
 
     $clientId = $_POST["clientId"];
     $clientPassword = $_POST["clientPassword"];
@@ -16,7 +16,7 @@ if(isset($_POST["clientId"]) && isset($_POST["clientPassword"])) {
 } 
 
 if(isset($_POST["employeeId"]) && isset($_POST["employeePassword"])) {
-    $db = new Database();
+    $db = new DatabaseConn();
 
     $employeeId = $_POST["employeeId"];
     $employeePassword = $_POST["employeePassword"];
