@@ -1,8 +1,8 @@
 <?php 
 session_start();
 
-// connect to database
-$database = mysqli_connect('localhost', 'root', 'ytn889300', 'Comp353');
+// Connect to database. Server name, username, password, and DB name.
+$database = mysqli_connect('localhost', 'root', 'pass', 'Comp353');
 
 // variable declaration
 $username = "";
@@ -77,115 +77,4 @@ function register()
 	}
 }
 */
-
-// Get the user's id.
-function getUserById($id)
-{
-	global $database;
-	$query = "SELECT * FROM users WHERE id=" . $id;
-	$result = mysqli_query($database, $query);
-
-	$user = mysqli_fetch_assoc($result);
-	return $user;
-}
-
-// escape string
-function e($val)
-{
-	global $database;
-	return mysqli_real_escape_string($database, trim($val));
-}
-
-function display_error() 
-{
-	global $errors;
-
-	if (count($errors) > 0){
-		echo '<div class="error">';
-			foreach ($errors as $error){
-				echo $error .'<br>';
-			}
-		echo '</div>';
-	}
-}	
-
-function isLoggedIn()
-{
-	if (isset($_SESSION['user'])) 
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
-// log user out if logout button clicked
-if (isset($_GET['logout'])) 
-{
-	session_destroy();
-	unset($_SESSION['user']);
-	header("location: login.php");
-}
-
-// call the login() function if register_btn is clicked
-if (isset($_POST['login_btn'])) 
-{
-	login();
-}
-
-// LOGIN USER
-function login()
-{
-	global $database, $username, $errors;
-
-	// grap form values
-	$username = e($_POST['username']);
-	$password = e($_POST['password']);
-	
-
-
-	// make sure form is filled properly
-	if (empty($username))
-		{
-		array_push($errors, "Username is required");
-	}
-	if (empty($password)) 
-	{
-		array_push($errors, "Password is required");
-	}
-
-	// attempt login if no errors on form
-	if (count($errors) == 0) 
-	{
-		//$password = md5($password);
-
-		$query = "SELECT * FROM employees WHERE CONCAT(firstname,lastname) ='$username' AND password='$password' LIMIT 1";
-		$results = mysqli_query($database, $query);
-
-		if (mysqli_num_rows($results) == 1) // if user found
-		{ 
-			// check if user is admin or user
-			$logged_in_user = mysqli_fetch_assoc($results);
-			
-			if ($logged_in_user['user_type'] == 'admin') 
-			{
-				$_SESSION['user'] = $logged_in_user;
-				$_SESSION['success']  = "You are now logged in";
-				header('location: admin/home.php');		  
-			}
-			else
-			{
-				$_SESSION['user'] = $logged_in_user;
-				$_SESSION['success']  = "You are now logged in";
-				
-				header('location: index.php');
-			}
-		}
-		else 
-		{
-			array_push($errors, "Wrong username/password combination");
-		}
-	}
-}
+>
