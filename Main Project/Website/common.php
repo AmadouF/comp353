@@ -93,5 +93,24 @@ class Database {
             //TODO: USER NOT FOUND ERROR
         }
     }
+
+    function loginClient($username, $password) {
+        echo "login $username, $password";
+        $query = "SELECT * FROM clients WHERE emailId ='$username' AND password='$password' LIMIT 1";
+        $clients = $this->conn->query($query);
+
+        if($clients->num_rows >= 1) {
+            $client = $clients->fetch_assoc();
+
+            $_SESSION["user"] = $client;
+            $_SESSION["user_type"] = "Client";
+
+            header("location: /");
+            die();
+        } else {
+            die("INVALID USERNAME / PASS");
+            //TODO: CLIENT NOT FOUND ERROR
+        }
+    }
 }
 ?>

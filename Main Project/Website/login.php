@@ -1,5 +1,3 @@
-<?php print_r($_POST); ?>
-
 <?php
 include_once("common.php");
 
@@ -12,11 +10,7 @@ if(isset($_POST["clientId"]) && isset($_POST["clientPassword"])) {
 
     $clientId = $_POST["clientId"];
     $clientPassword = $_POST["clientPassword"];
-
-    // LOGIN CLIENT
-    echo "Client login request with $clientId and $clientPassword";
-    
-    //header("location: /");
+    $db->loginClient($clientId, $clientPassword);
 
     exit();
 } 
