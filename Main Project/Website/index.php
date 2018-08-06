@@ -9,22 +9,29 @@ if(isset($_SESSION["user"])) {
     if(isset($_SESSION["user_type"])) {
         $user_type = $_SESSION["user_type"];
         
+        print_r($user);
+        echo "<br />".$user_type;
+
         switch($user_type) {
             case "Sales Associate": {
-
+                include("salesassociate.html");
             } break;
             case "Manager": {
-
+                include("manager.html");
             } break;
-            case "Employee": {
-
+            case "Regular": {
+                include("regular.html");
             } break;
+            case "Admin": {
+                include("admin.html");
+            }
             case "Client": {
-
+                include("client.html");
             } break;
         }
     }
 } else {
-    include("login.html");
+    $_SESSION["msg"] = "You must log in first";
+    include("login.php");
 }
 ?>

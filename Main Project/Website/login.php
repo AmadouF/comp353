@@ -1,3 +1,42 @@
+<?php print_r($_POST); ?>
+
+<?php
+session_start();
+
+if(isset($_SESSION["user"])) {
+    header("location: /");
+}
+
+include_once("common.php");
+
+
+if(isset($_POST["clientId"]) && isset($_POST["clientPassword"])) {
+    $db = new Database();
+
+    $clientId = $_POST["clientId"];
+    $clientPassword = $_POST["clientPassword"];
+
+    // LOGIN CLIENT
+    echo "Client login request with $clientId and $clientPassword";
+    
+    //header("location: /");
+
+    exit();
+} 
+
+echo "client not set";
+
+if(isset($_POST["employeeId"]) && isset($_POST["employeePassword"])) {
+    $db = new Database();
+
+    $employeeId = $_POST["employeeId"];
+    $employeePassword = $_POST["employeePassword"];
+    $db->loginEmployee($employeeId, $employeePassword);
+
+    exit();
+}
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -18,57 +57,16 @@
   <body>
     <!-- container -->
     <div class="container">
-
-      <!-- nav -->
-      <ul class="nav nav-pills py-3 nav-fill">
-        <li class="nav-item">
-          <a class="nav-link btn-success" href="index.html">
-            Home
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="login.html">
-            Login
-          </a>
-        </li>          
-        <li class="nav-item">
-          <a class="nav-link" href="saleassociate.html">
-            SaleAssociate
-          </a>
-        </li>          
-        <li class="nav-item">
-          <a class="nav-link" href="manager.html">
-            Manager
-          </a>
-        </li>    
-        <li class="nav-item">
-          <a class="nav-link" href="admin.html">
-            Admin
-          </a>
-        </li>  
-        <li class="nav-item">
-          <a class="nav-link" href="regular.html">
-            Regular
-          </a>
-        </li>    
-        <li class="nav-item">
-          <a class="nav-link" href="client.html">
-            Client
-          </a>
-        </li>                
-      </ul>
-      <!-- ./nav -->
-
       <!-- row -->
       <div class="row py-3">
 
-        <form class="col-12 col-sm-6">
+        <form class="col-12 col-sm-6" action="/login.php" method="POST">
           <h2>Client Login</h2>
           <!-- form row -->
           <div class="form-group row">
             <label for="clienid" class="col-sm-2 col-form-label">ID</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="clienid" placeholder="12345678">
+              <input name="clientId" type="text" class="form-control" id="clienid" placeholder="12345678">
             </div>
           </div>
           <!-- ./ form row -->
@@ -77,24 +75,24 @@
           <div class="form-group row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              <input name="clientPassword" type="password" class="form-control" id="inputPassword" placeholder="Password">
             </div>
           </div>
           <!-- ./ form row -->
 
           <div class="form-group">
-            <button type="submit" class="btn btn-primary">Login</button>
+            <input name="login" type="submit" class="btn btn-primary">
             <button class="btn btn-danger">Cancel</button>
           </div>
         </form>
 
-        <form class="col-12 col-sm-6">
+        <form class="col-12 col-sm-6" action="/login.php" method="POST">
           <h2>Employee Login</h2>
           <!-- form row -->
           <div class="form-group row">
             <label for="employeeid" class="col-sm-2 col-form-label">ID</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="employeeid" placeholder="12345678">
+              <input name="employeeId" type="text" class="form-control" id="employeeid" placeholder="12345678">
             </div>
           </div>
           <!-- ./ form row -->
@@ -103,13 +101,13 @@
           <div class="form-group row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              <input name="employeePassword" type="password" class="form-control" id="inputPassword" placeholder="Password">
             </div>
           </div>
           <!-- ./ form row -->
 
           <div class="form-group">
-            <button type="submit" class="btn btn-primary">Login</button>
+            <input name="login" type="submit" class="btn btn-primary" />
             <button class="btn btn-danger">Cancel</button>
           </div>
         </form>
