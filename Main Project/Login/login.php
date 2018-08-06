@@ -1,4 +1,4 @@
-<?php include('functions.php') ?>
+<?php  include('functions.php');?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="header">
-		<h2>Login</h2>
+		<h2>Employee Login</h2>
 	</div>
 	<form method="post" action="login.php">
 

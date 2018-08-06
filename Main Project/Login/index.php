@@ -34,7 +34,7 @@
 
 			<div>
 				<?php  if (isset($_SESSION['user'])) : ?>
-					<strong><?php echo 'Welcome '. $_SESSION['user']['firstName']; ?></strong>
+					<strong><?php echo 'Welcome '. $_SESSION['user']['firstName'] . ' ' . $_SESSION['user']['lastName']; ?></strong>
 					<small>
 						<!-- <i  style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i> -->
 						<br>
