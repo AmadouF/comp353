@@ -14,7 +14,7 @@
     ?>
     <li class="nav-item">
       <a class="nav-link" href="logout.php">
-        Logoutdsa
+        Logout
       </a>
     </li>
     <?php

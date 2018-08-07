@@ -59,7 +59,7 @@ class DatabaseConn {
 
     // Attempt to login as a client
     function loginClient(string $username, string $password) {
-        $query = "SELECT * FROM clients WHERE emailId ='$username' AND password='$password' LIMIT 1";
+        $query = "SELECT * FROM Clients WHERE emailId ='$username' AND password='$password' LIMIT 1";
         $clients = $this->conn->query($query);
 
         if($clients->num_rows >= 1) {
@@ -76,7 +76,7 @@ class DatabaseConn {
 
     // Attempt to login as an employee
     function loginEmployee(string $username,string $password) {
-        $query = "SELECT * FROM employees WHERE CONCAT(firstname,lastname) ='$username' AND password='$password' LIMIT 1";
+        $query = "SELECT * FROM Employees WHERE CONCAT(firstName,lastName) ='$username' AND password='$password' LIMIT 1";
         $employees = $this->conn->query($query);
 
 		echo $query."   ";
