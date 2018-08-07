@@ -15,13 +15,28 @@ if($userSet && $passSet) {
     $employeePassword = $_POST["employeePassword"];
     $db->loginEmployee($employeeId, $employeePassword);
 } else {
+    pushError("<div class=\"container\"><div class=\"row-fluid\">");
     if(!$userSet) {
-        pushError("Could not login, employee username not set");
+        pushError("
+        <div class=\"alert alert-danger alert-dismissible fade show m-1\">
+            Employee <strong>username</strong> is required 🤦.
+             <button type=\"button\" class=\"close\" data-dismiss=\"alert\">
+                <span>&times;</span>
+            </button>
+        </div>
+        ");
     }
     if(!$passSet) {
-        pushError("Could not login, employee password not set");
+        pushError("
+        <div class=\"alert alert-danger alert-dismissible fade show m-1\">
+            Employee <strong>password</strong> is required 🙈.
+             <button type=\"button\" class=\"close\" data-dismiss=\"alert\">
+                <span>&times;</span>
+            </button>
+        </div>
+        ");
     }
-
+    pushError("</div></div>");
     header("location: index.php");
 }
 

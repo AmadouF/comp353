@@ -11,7 +11,7 @@ function pushError(string $err) {
 function displayErrors() {
     if(isset($_SESSION["errors"])) {
         foreach($_SESSION["errors"] as $error) {
-            echo "$error <br />";
+            echo "$error";
         }
 
         $_SESSION["errors"] = array();

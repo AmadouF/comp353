@@ -26,59 +26,56 @@ if(isset($_SESSION["user"])) {
   </head>
   <body>
     <!-- container -->
-    <div class="container">
+    <div class="container py-3">
       <!-- row -->
-      <div class="row py-3">
+      <h1 class="text-center">Contract Management System</h1>
+      <div class="row py-2">
 
-        <form class="col-12 col-sm-6" action="login_client.php" method="POST">
-          <h2>Client Login</h2>
+        <form class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-3" action="login_client.php" method="POST">
+          <h2 class="text-center">Client Login</h2>
           <!-- form row -->
           <div class="form-group row">
-            <label for="clienid" class="col-sm-2 col-form-label">ID</label>
-            <div class="col-sm-10">
-              <input name="clientId" type="text" class="form-control" id="clienid" placeholder="12345678">
-            </div>
+            <label for="clientId">ID</label>
+            <input name="clientId" type="text" class="form-control" id="clienid" placeholder="12345678">
           </div>
           <!-- ./ form row -->
 
           <!-- ./ row -->
           <div class="form-group row">
-            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
-              <input name="clientPassword" type="password" class="form-control" id="inputPassword" placeholder="Password">
-            </div>
+            <label for="inputPassword">Password</label>
+            <input name="clientPassword" type="password" class="form-control" id="inputPassword" placeholder="Password">
           </div>
           <!-- ./ form row -->
 
-          <div class="form-group">
-            <input value="login" name="login" type="submit" class="btn btn-primary">
-            <button class="btn btn-danger">Cancel</button>
+          <div class="form-group text-center">
+            <input value="Login" name="login" type="submit" class="btn btn-primary">
+            <a class="btn btn-danger" href="./">Cancel</a>
           </div>
         </form>
+      </div>
+      <!-- ./ row -->
 
-        <form class="col-12 col-sm-6" action="login_employee.php" method="POST">
-          <h2>Employee Login</h2>
+      <!-- row -->
+      <div class="row py-2">
+        <form class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-3" action="login_employee.php" method="POST">
+          <h2 class="text-center">Employee Login</h2>
           <!-- form row -->
           <div class="form-group row">
-            <label for="employeeid" class="col-sm-2 col-form-label">ID</label>
-            <div class="col-sm-10">
-              <input name="employeeId" type="text" class="form-control" id="employeeid" placeholder="12345678">
-            </div>
+            <label for="employeeId">Employee ID</label>
+            <input name="employeeId" type="text" class="form-control" id="employeeid" placeholder="12345678">
           </div>
           <!-- ./ form row -->
 
           <!-- ./ row -->
           <div class="form-group row">
-            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
-              <input name="employeePassword" type="password" class="form-control" id="inputPassword" placeholder="Password">
-            </div>
+            <label for="inputPassword">Password</label>
+            <input name="employeePassword" type="password" class="form-control" id="inputPassword" placeholder="Password">
           </div>
           <!-- ./ form row -->
 
-          <div class="form-group">
-            <input value="login" name="login" type="submit" class="btn btn-primary" />
-            <button class="btn btn-danger">Cancel</button>
+          <div class="form-group text-center">
+            <input value="Login" name="login" type="submit" class="btn btn-primary" />
+            <a class="btn btn-danger" href="./">Cancel</a>
           </div>
         </form>
       </div>
