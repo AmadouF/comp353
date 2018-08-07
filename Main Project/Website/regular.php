@@ -57,8 +57,8 @@
 
         <!-- col -->
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
-          <h3 class="text-center">My Contract</h3>
-          <h4 class="text-center">Client Name: <?=$user_client["clientName"]?></h4>
+          <h3>My Contract</h3>
+          <h4>Client Name: <?=$user_client["clientName"]?></h4>
         </div>
         <!-- ./ col -->
 
