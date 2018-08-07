@@ -40,9 +40,16 @@
       
       <!-- row -->
       <div class="row py-3">
-        <div class="col-sm">
-          <h3>My Contract</h3>
-          <h4>Client Name: <a href="https://instantcena.ca">Nike</a></h4>
+        
+        <!-- col -->
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
+          <h3 class="text-center">My Contract</h3>
+          <h4 class="text-center">Client Name: <a href="https://instantcena.ca">Nike</a></h4>
+        </div>
+        <!-- ./ col -->
+
+        <!-- col -->
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
           <span>ID: 26771010</span>
           <br/>
           <span>Contract Date: 01/03/2018</span>
@@ -63,33 +70,41 @@
           <br/>
           <span>Satisfaction Score:</span>
           <br/>
-          
+        </div>
+        <!-- ./ col -->
+
+        <!-- col -->
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
           <!-- form row -->
           <div class="form-group">
             <label for="dropdown" class="col-form-label"><strong>Wanted Contract Type:</strong></label>
-            <select class="form-control col-4" id="dropdown">
+            <select class="form-control col-6" id="dropdown">
               <option <?=$user["desiredContractType"]=="Premium"?"selected":""?>>Premium</option>
               <option <?=$user["desiredContractType"]=="Diamond"?"selected":""?>>Diamond</option>
               <option <?=$user["desiredContractType"]=="Gold"?"selected":""?>>Gold</option>
               <option <?=$user["desiredContractType"]=="Silver"?"selected":""?>>Silver</option>
             </select>
             <label for="dropdown" class="col-form-label"><strong>Insurance Plan:</strong></label>
-            <select class="form-control col-4" id="dropdown">
+            <select class="form-control col-6" id="dropdown">
               <option <?=$user["insurance"]=="Premium"?"selected":""?>>Premium</option>
               <option <?=$user["insurance"]=="Silver"?"selected":""?>>Silver</option>
               <option <?=$user["insurance"]=="Normal"?"selected":""?>>Normal</option>
             </select>
-            <button class="my-2 btn btn-primary btn-md">Confirm</button>
+            <button class="my-2 btn btn-outline-primary btn-md">Confirm</button>
           </div>
         </div>
-        <div class="col-sm">
-          <h3>Task Working On</h3>
-          <div class="list-group">
+        <!-- ./ col -->
+
+        <!-- col -->
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
+          <h4>Task Working On</h4>
+          <div class="list-group pb-3">
             <a href="#" class="list-group-item list-group-item-action active">Bargaining with TA</a>
             <a href="#" class="list-group-item list-group-item-action">Details: afdasdfasdfasd</a>
             <a href="#" class="list-group-item list-group-item-action">Logged Hours: 21h</a>
           </div>
         </div>
+        <!-- ./col -->
       </div>
       <!-- ./row -->   
     </div>

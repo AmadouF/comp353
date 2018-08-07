@@ -27,9 +27,15 @@
 
       <!-- row -->
       <div class="row py-3">
-        <div class="col-sm">
-          <h3>Contract XXX</h3>
-          <h4>Client Name: <a href="https://instantcena.ca">Nike</a></h4>
+        <!-- col -->
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
+          <h3 class="text-center">Contract XXX</h3>
+          <h4 class="text-center">Client Name: <a href="https://instantcena.ca">Nike</a></h4>
+        </div>
+        <!-- ./ col -->
+
+        <!-- col -->
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
           <span>ID: 26771010</span>
           <br/>
           <span>Contract Date: 01/03/2018</span>
@@ -49,9 +55,12 @@
           <span>Line of Bisiness:</span>
           <br/>
           <span>Satisfaction Score:</span>
-          <br/>
-          <br/>
-          <h5>Employees on Contract:</h5>
+        </div>
+        <!-- ./ col -->
+
+        <!-- col -->
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
+          <h4>Employees on Contract:</h4>
           <h6>Task asfwef:</h6>
           <span>Dwight Schrute</span>&nbsp;<span>(50 hours)</span>
           <br/>
@@ -59,14 +68,13 @@
           <br/>
           <span>Jim Halpern</span>&nbsp;<span>(71 hours)</span>
           <br/>
+          <button type="button" class="btn btn-outline-success">Edit</button>
+          <button type="button" class="btn btn-outline-primary">Save</button>
+          <button type="button" class="btn btn-outline-danger">Cancel</button>
         </div>
+        <!-- ./ col -->
       </div>
-
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-secondary">Edit</button>
-        <button type="button" class="btn btn-primary">Save</button>
-        <button type="button" class="btn btn-danger">Cancel</button>
-      </div>
+      <!-- ./ row -->
 
     </div>
     <!-- ./ container -->

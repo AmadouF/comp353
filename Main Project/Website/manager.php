@@ -38,8 +38,15 @@
       
       <!-- row -->
       <div class="row py-3">
-        <div class="col-sm">
-          <h3>My Contract</h3>
+        
+        <!-- col -->
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
+          <h3 class="text-center">My Contract</h3>
+        </div>
+        <!-- ./ col -->
+
+        <!-- col -->
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
           <h4>Client Name: <a href="https://instantcena.ca">Nike</a></h4>
           <span>ID: 26771010</span>
           <br/>
@@ -89,30 +96,33 @@
             <button class="my-2 btn btn-primary btn-md">Add</button>
           </div>
         </div>
-        <div class="col-sm">
+        <!-- ./col -->
+
+        <!-- col -->
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
           <h3>Candidates List</h3>
-          <div class="list-group">
+          <div class="list-group pb-3">
             <a href="#" class="list-group-item list-group-item-action active">Premium</a>
             <a href="#" class="list-group-item list-group-item-action">Jack</a>
             <a href="#" class="list-group-item list-group-item-action">David</a>
             <a href="#" class="list-group-item list-group-item-action">Bob</a>
             <a href="#" class="list-group-item list-group-item-action">Robin</a>
           </div>
-          <div class="list-group">
+          <div class="list-group pb-3">
             <a href="#" class="list-group-item list-group-item-action active">Diamond</a>
             <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
             <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
             <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
             <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
           </div>
-          <div class="list-group">
+          <div class="list-group pb-3">
             <a href="#" class="list-group-item list-group-item-action active">Gold</a>
             <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
             <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
             <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
             <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
           </div>
-          <div class="list-group">
+          <div class="list-group pb-3">
             <a href="#" class="list-group-item list-group-item-action active">Silver</a>
             <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
             <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
