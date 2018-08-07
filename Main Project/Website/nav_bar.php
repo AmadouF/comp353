@@ -1,4 +1,4 @@
-<?php 
+<?php
   include("includes.php");
 ?>
 
@@ -13,12 +13,12 @@
       if(isLoggedIn()) {
     ?>
     <li class="nav-item text-right">
-      <a class="nav-link text-success" href="logout.php">
+      <a class="nav-link text-danger" href="logout.php">
         Logout
       </a>
     </li>
     <?php
       }
-    ?>                          
+    ?>
 </ul>
 <!-- ./nav -->
