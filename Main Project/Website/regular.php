@@ -5,6 +5,7 @@
   }
 
   $user = $db->getRegularEmployeeById($_SESSION["user"]["employeeId"]);
+  $user_contract = $db->getContractByContractId($user["contractId"]);
 ?>
 
 <!doctype html>
@@ -61,25 +62,25 @@
 
         <!-- col -->
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-          <span>Contract ID: <?=$user["contractId"]?></span>
+          <span>Contract ID: <?=$user_contract["contractId"]?></span>
           <br/>
-          <span>Contract Date: 01/03/2018</span>
+          <span>Contract Start Date: <?=$user_contract["serviceStartDate"]?></span>
           <br/>
-          <span>Contact number:</span>
+          <span>Contact number: <?=$user_contract["contactNumber"]?></span>
           <br/>
-          <span>Supervised By:</span>
+          <span>Supervised By: <?=$user_contract["superviseBy"]?></span>
           <br/>
-          <span>Initial Amount:</span>
+          <span>Initial Amount: <?=$user_contract["initalAmount"]?></span>
           <br/>
-          <span>ACV:</span>
+          <span>ACV: <?=$user_contract["annualContractValue"]?></span>
           <br/>
-          <span>Type: Gold</span>
+          <span>Type: <?=$user_contract["contractType"]?></span>
           <br/>
-          <span>Service Type:</span>
+          <span>Service Type: <?=$user_contract["serviceType"]?></span>
           <br/>
-          <span>Line of Bisiness:</span>
+          <span>Line of Bisiness: <?=$user_contract["lineOfBusiness"]?></span>
           <br/>
-          <span>Satisfaction Score:</span>
+          <span>Satisfaction Score: <?=$user_contract["satisfactionLevel"]?></span>
           <br/>
         </div>
         <!-- ./ col -->

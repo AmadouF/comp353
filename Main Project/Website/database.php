@@ -15,11 +15,11 @@ class DatabaseConn {
         $db = $databaseConfig["db"];
 
         $connection = new mysqli($server, $username, $password, $db);
-    
+
         if($connection->connect_error) {
             die("Connection failed: ". $connection->connect_error);
         }
-    
+
         $this->conn = $connection;
     }
 
@@ -37,7 +37,7 @@ class DatabaseConn {
     // Returns a user by his id
     function getUserById(int $id) {
         $result = $this->conn->query("SELECT * FROM Users WHERE id=$id");
-        
+
         if($result.num_rows > 0) {
             return $result->fetch_assoc();
         } else {
@@ -47,7 +47,7 @@ class DatabaseConn {
 
     function getRegularEmployeeById(int $id) {
         $result = $this->conn->query("SELECT * FROM Regular INNER JOIN Employees ON Employees.employeeId = Regular.employeeId WHERE Regular.employeeId=$id");
-        
+
         print($this->conn->error);
 
         if($result->num_rows > 0){
@@ -57,6 +57,18 @@ class DatabaseConn {
         }
     }
 
+    function getContractByContractId(int $id) {
+        $result = $this->conn->query("SELECT * FROM Contracts WHERE Contracts.contractId=$id");
+
+        print($this->conn->error);
+
+        if($result->num_rows > 0){
+            return $result->fetch_assoc();
+        } else {
+            return 0;
+        }
+    }
+    
     // Attempt to login as a client
     function loginClient(string $username, string $password) {
         // $query = "SELECT * FROM Clients WHERE emailId ='$username' AND password='$password' LIMIT 1";
@@ -79,7 +91,7 @@ class DatabaseConn {
                         </button>
                     </div>
                 </div>
-            </div>    
+            </div>
             ");
         }
 
@@ -93,7 +105,7 @@ class DatabaseConn {
         $employees = $this->conn->query($query);
 
 		echo $query."   ";
-		echo $username."--".$password;	
+		echo $username."--".$password;
 		echo "  ".$employees->num_rows;
 
         if($employees->num_rows >= 1) {
@@ -115,7 +127,7 @@ class DatabaseConn {
                         </button>
                     </div>
                 </div>
-            </div>    
+            </div>
             ");
         }
 
@@ -158,4 +170,3 @@ class DatabaseConn {
 
 $db = new DatabaseConn();
 ?>
-
