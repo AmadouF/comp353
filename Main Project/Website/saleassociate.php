@@ -24,7 +24,7 @@
   </head>
   <body>
     <!-- container -->
-    <div class="container">
+    <div class="container pb-5">
 
       <!-- nav -->
       <?php
@@ -38,15 +38,15 @@
 
       <!-- row -->
       <div class="row py-3">
-        <div class="col-12">
-          <h3>My Clients List</h3>
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+          <h3>Clients List</h3>
         </div>
       </div>
       <!-- ./ row -->
       
       <!-- row -->
       <div class="table-responsive">
-        <table class="table table-bordered table-hover col-12 col-sm-12">
+        <table class="table table-hover table-striped col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
           <thead>
             <tr>
               <th scope="col">Name</th>
@@ -62,48 +62,58 @@
               <td>Jack Sparrow</td>
               <td>Tortuga</td>
               <td>Qc</td>
-              <td>H8N9C9</td>
+              <td>H8N 9C9</td>
             </tr>
             <tr>
               <th scope="row">Another Pirate</th>
               <td>Edward Teach</td>
               <td>Nassau</td>
               <td>ON</td>
-              <td>H0N3C3</td>
+              <td>H0N 3C3</td>
             </tr>
           </tbody>
         </table> 
       </div>
       <!-- ./ row -->
-      <a type="button" class="btn btn-outline-primary btn-lg btn-block" href="addclient.html">Create Account For Client</a>
-      <br/><br/>
-      <div class="col-sm-12">
-          <h3>Line of Business</h3>
-          <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action active">Development</a>
+
+      <!-- row -->
+      <div class="row pb-3">
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+          <a class="btn btn-outline-primary px-4" href="addclient.php">Create A New <strong>Client Account</strong></a>
+        </div>
+      </div>  
+      <!-- ./ row -->
+
+      <!-- row -->
+      <div class="row pb-3">
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+          <h3 class="py-3">Departments</h3>
+          <div class="list-group pb-3">
+            <a href="#" class="list-group-item active">Development</a>
             <a href="#" class="list-group-item list-group-item-action">contractA</a>
             <a href="#" class="list-group-item list-group-item-action">contractB</a>
             <a href="#" class="list-group-item list-group-item-action">contractC</a>
             <a href="#" class="list-group-item list-group-item-action">contractD</a>
           </div>
-          <div class="list-group">
+          <div class="list-group pb-3">
             <a href="#" class="list-group-item list-group-item-action active">Research</a>
             <a href="#" class="list-group-item list-group-item-action">contractE</a>
             <a href="#" class="list-group-item list-group-item-action">contractF</a>
             <a href="#" class="list-group-item list-group-item-action">contractG</a>
             <a href="#" class="list-group-item list-group-item-action">contractH</a>
           </div>
-          <div class="list-group">
+          <div class="list-group pb-3">
             <a href="#" class="list-group-item list-group-item-action active">Cloud Service</a>
             <a href="#" class="list-group-item list-group-item-action">contractI</a>
             <a href="#" class="list-group-item list-group-item-action">contractJ</a>
             <a href="#" class="list-group-item list-group-item-action">contractK</a>
             <a href="#" class="list-group-item list-group-item-action">contractL</a>
           </div>
-        </div><br/>
-        <div row>
-          <a type="button" class="btn btn-outline-primary btn-lg btn-block" href="addcontract.html">Start New Contract</a>
-        </div><br/><br/>
+          <a class="btn btn-outline-primary px-4 my-2" href="addcontract.php">Start A New <strong>Contract</strong></a>
+        </div>
+      </div>  
+      <!-- ./ row -->
+
     </div>
     <!-- ./ container -->
 

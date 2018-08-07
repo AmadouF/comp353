@@ -26,7 +26,7 @@ if(isset($_SESSION["user"])) {
   </head>
   <body>
     <!-- container -->
-    <div class="container py-3">
+    <div class="container pt-3 pb-5">
       <!-- row -->
       <h1 class="text-center">Contract Management System</h1>
       <div class="row py-2">

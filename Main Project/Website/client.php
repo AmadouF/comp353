@@ -26,7 +26,7 @@
   </head>
   <body>
     <!-- container -->
-    <div class="container">
+    <div class="container pb-5">
 
       <!-- nav -->
       <?php
@@ -35,31 +35,31 @@
       <!-- ./nav -->
 
       <!-- row -->
-      <div class="row py-3">
-        <div class="col-12">
+      <div class="row py-3 text-center">
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
           <h1><?= $user["clientName"]?></h1>
-          <span>ID: <?= $user["clientId"]?></span><br/>
-          <span>Client</span>
+          <span><strong>Client ID</strong>: <?= $user["clientId"]?></span><br/>
+          <span><strong>Type</strong>: Client</span>
         </div>
       </div>
       <!-- ./ row -->
 
       <!-- row -->
       <div class="row py-3">
-        <div class="col-12">
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
           <h3>List of Contracts</h3>
         </div>
       </div>
       <!-- ./ row -->
 
-      <div class="list-group">
+      <div class="list-group col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
 
         <?php
           $contracts = $db->getContractsByClientId($user["clientId"]);
           if($contracts->num_rows > 0) {
             while($contract = $contracts->fetch_array()) {
               ?>
-            <a href="client_contract.html" class="list-group-item list-group-item-action flex-column align-items-start">
+            <a href="client_contract.php" class="list-group-item list-group-item-action flex-column align-items-start">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1"><?=$contract["contractId"] ?></h5>
                 <small><?=$contract["serviceStartDate"]?></small>

@@ -17,16 +17,16 @@
   </head>
   <body>
     <!-- container -->
-    <div class="container">
+    <div class="container pb-5">
 
       <!-- nav -->
       <?php
-        include("/views/nav_bar.php");
+        include("nav_bar.php");
       ?>
       <!-- ./nav -->
 
       <!-- row -->
-      <div class="row py-3">
+      <div class="row pb-4 text-center">
         <div class="col-12">
           <h1>New Client</h1>
         </div>
@@ -34,17 +34,8 @@
       <!-- ./ row -->
 
       <!-- row -->
-      <div class="row">
-        <form class="col-12">
-
-          <!-- form row -->
-          <div class="form-group row">
-            <label for="staticEmail" class="col-sm-4 col-form-label">Name</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="staticEmail" placeholder="Company Name">
-            </div>
-          </div>
-          <!-- ./ form row -->
+      <div class="row pb-3">
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
 
           <!-- form row -->
           <div class="form-group row">
@@ -57,6 +48,15 @@
 
           <!-- form row -->
           <div class="form-group row">
+            <label for="lname" class="col-sm-4 col-form-label">Last Name</label>
+            <div class="col-sm-8">
+              <input class="form-control" id="lname" placeholder="Representative Last Name">
+            </div>
+          </div>
+          <!-- ./ form row -->     
+
+          <!-- form row -->
+          <div class="form-group row">
             <label for="mname" class="col-sm-4 col-form-label">Middle Name</label>
             <div class="col-sm-8">
               <input class="form-control" id="mname" placeholder="Representative Middle Name">
@@ -66,12 +66,12 @@
 
           <!-- form row -->
           <div class="form-group row">
-            <label for="lname" class="col-sm-4 col-form-label">Last Name</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
             <div class="col-sm-8">
-              <input class="form-control" id="lname" placeholder="Representative Last Name">
+              <input type="text" class="form-control" id="staticEmail" placeholder="Company Name">
             </div>
           </div>
-          <!-- ./ form row -->     
+          <!-- ./ form row -->
 
           <!-- form row -->
           <div class="form-group row">
@@ -121,7 +121,7 @@
 
           <div class="form-group">
             <button type="submit" class="btn btn-primary">Add Client</button>
-            <a href="saleassociate.html" class="btn btn-danger">Cancel</a>
+            <a href="./" class="btn btn-danger">Cancel</a>
           </div>
         </form>
       </div>

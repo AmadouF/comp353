@@ -4,16 +4,16 @@
 
 <!-- nav -->
 <ul class="nav nav-pills py-3 nav-fill">
-    <li class="nav-item">
-      <a class="nav-link btn-success" href="">
+    <li>
+      <a class="nav-item nav-link btn btn-outline-success" href="index.php">
         Home
       </a>
     </li>
     <?php
       if(isLoggedIn()) {
     ?>
-    <li class="nav-item">
-      <a class="nav-link" href="logout.php">
+    <li class="nav-item text-right">
+      <a class="nav-link text-success" href="logout.php">
         Logout
       </a>
     </li>

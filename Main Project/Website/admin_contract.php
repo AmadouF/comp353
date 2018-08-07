@@ -17,11 +17,11 @@
   </head>
   <body>
     <!-- container -->
-    <div class="container">
+    <div class="container pb-5">
 
       <!-- nav -->
       <?php
-        include("/views/nav_bar.php");
+        include("nav_bar.php");
       ?>
       <!-- ./nav -->
 

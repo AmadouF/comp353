@@ -17,25 +17,25 @@
   </head>
   <body>
     <!-- container -->
-    <div class="container">
+    <div class="container pb-5">
 
       <!-- nav -->
       <?php
-        include("/views/nav_bar.php");
+        include("nav_bar.php");
       ?>
       <!-- ./nav -->
 
       <!-- row -->
-      <div class="row py-3">
-        <div class="col-12">
+      <div class="row pb-4 text-center">
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
           <h1>New Contract</h1>
         </div>
       </div>
       <!-- ./ row -->
 
       <!-- row -->
-      <div class="row">
-        <form class="col-12">
+      <div class="row pb-3">
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
 
           <!-- form row -->
           <div class="form-group row">
@@ -137,7 +137,7 @@
 
           <div class="form-group">
             <button type="submit" class="btn btn-primary">Add Contract</button>
-            <button class="btn btn-danger">Cancel</button>
+            <a href="./" class="btn btn-danger">Cancel</a>
           </div>
         </form>
       </div>

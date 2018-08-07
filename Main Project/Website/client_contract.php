@@ -17,17 +17,17 @@
   </head>
   <body>
     <!-- container -->
-    <div class="container">
+    <div class="container pb-5">
 
       <!-- nav -->
       <?php
-        include("/views/nav_bar.php");
+        include("nav_bar.php");
       ?>
       <!-- ./nav -->
 
       <!-- row -->
-      <div class="row py-3">
-        <div class="col-12">
+      <div class="row py-3 text-center">
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
           <h1>Contract A</h1>
         </div>
       </div>
@@ -35,9 +35,8 @@
       
       <!-- row -->
       <div class="row">
-        <div class="col-12">
-          <h3>ID: 26771010</h3>
-          <br/>
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+          <h4>ID: 26771010</h4>
           <span>Contract Date: 01/03/2018</span>
           <br/>
           <span>Contact number:</span>

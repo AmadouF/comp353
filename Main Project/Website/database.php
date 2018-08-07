@@ -69,7 +69,18 @@ class DatabaseConn {
             $_SESSION["user"] = $client;
             $_SESSION["user_type"] = "Client";
         } else {
-            pushError("Wrong emailId / password for client login");
+            pushError("
+            <div class=\"container\">
+                <div class=\"row-fluid\">
+                    <div class=\"alert alert-danger alert-dismissible fade show m-1\">
+                        ✋Invalid login credentials, try again.
+                         <button type=\"button\" class=\"close\" data-dismiss=\"alert\">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>    
+            ");
         }
 
         header("location: index.php");
@@ -94,8 +105,18 @@ class DatabaseConn {
 			echo "GOOD";
         } else {
 			echo "ERROR";
-
-            pushError("Wrong firstname.lastname / password for employee login");
+            pushError("
+            <div class=\"container\">
+                <div class=\"row-fluid\">
+                    <div class=\"alert alert-danger alert-dismissible fade show m-1\">
+                        ✋Invalid login credentials, try again.
+                         <button type=\"button\" class=\"close\" data-dismiss=\"alert\">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>    
+            ");
         }
 
         header("location: index.php");
