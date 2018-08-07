@@ -34,13 +34,24 @@
       ?>
       <!-- ./nav -->
 
-      <?php 
+      <?php
         include("employee_general_info.php");
       ?>
-      
+
+      <!-- row -->
+      <div class="row text-center">
+      	<div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+      	    <strong>Department: </strong>: <?= $user["department"] ?><br/>
+      	    <strong>Managed By: </strong>: <?= $user["manageBy"] ?><br/>
+      	    <strong>Insurance: </strong>: <?= $user["insurance"] ?><br/>
+      	    <br/>
+      	</div>
+      </div>
+      <!-- ./ row -->
+
       <!-- row -->
       <div class="row py-3">
-        
+
         <!-- col -->
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
           <h3 class="text-center">My Contract</h3>
@@ -50,7 +61,7 @@
 
         <!-- col -->
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-          <span>ID: 26771010</span>
+          <span>Contract ID: <?=$user["contractId"]?></span>
           <br/>
           <span>Contract Date: 01/03/2018</span>
           <br/>
@@ -106,7 +117,7 @@
         </div>
         <!-- ./col -->
       </div>
-      <!-- ./row -->   
+      <!-- ./row -->
     </div>
     <!-- ./ container -->
 

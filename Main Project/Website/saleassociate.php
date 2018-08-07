@@ -32,7 +32,7 @@
       ?>
       <!-- ./nav -->
 
-      <?php 
+      <?php
         include("employee_general_info.php");
       ?>
 
@@ -43,7 +43,7 @@
         </div>
       </div>
       <!-- ./ row -->
-      
+
       <!-- row -->
       <div class="table-responsive">
         <table class="table table-hover table-striped col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
@@ -72,7 +72,7 @@
               <td>H0N 3C3</td>
             </tr>
           </tbody>
-        </table> 
+        </table>
       </div>
       <!-- ./ row -->
 
@@ -81,13 +81,13 @@
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
           <a class="btn btn-outline-primary px-4" href="addclient.php">Create A New <strong>Client Account</strong></a>
         </div>
-      </div>  
+      </div>
       <!-- ./ row -->
 
       <!-- row -->
       <div class="row pb-3">
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-          <h3 class="py-3">Departments</h3>
+          <h3 class="py-3">Line of Business</h3>
           <div class="list-group pb-3">
             <a href="#" class="list-group-item active">Development</a>
             <a href="#" class="list-group-item list-group-item-action">contractA</a>
@@ -111,7 +111,7 @@
           </div>
           <a class="btn btn-outline-primary px-4 my-2" href="addcontract.php">Start A New <strong>Contract</strong></a>
         </div>
-      </div>  
+      </div>
       <!-- ./ row -->
 
     </div>
