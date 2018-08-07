@@ -1,0 +1,17 @@
+1)	Select clientName
+FROM Contracts, Clients
+Where 
+Contracts.contractId=(Select Distinct Max(Contracts.contractId)&(Contracts.clientId=Clients.clientId))
+
+
+2)	SELECT * 
+FROM Contracts, SalesAssociate
+WHERE SalesAssociate.employeeId=Contracts.superviseBy
+
+3)	Select *
+From Employees
+where province='Quebec'
+
+4)	Select * 
+FROM Contracts 
+WHERE contractType='Gold'
