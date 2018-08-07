@@ -28,7 +28,8 @@ if(isset($_SESSION["user"])) {
     <!-- container -->
     <div class="container pt-3 pb-5">
       <!-- row -->
-      <h1 class="text-center">Contract Management System</h1>
+      <h1 class="text-center display-4">Contract Management System</h1>
+      <p class="text-center lead">COMP 353 Summer 2018 Final Project</p>
       <div class="row py-2">
 
         <form class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-3" action="login_client.php" method="POST">
@@ -48,8 +49,8 @@ if(isset($_SESSION["user"])) {
           <!-- ./ form row -->
 
           <div class="form-group text-center">
-            <input value="Login" name="login" type="submit" class="btn btn-primary">
-            <a class="btn btn-danger" href="./">Cancel</a>
+            <input value="Login" name="login" type="submit" class="btn btn-outline-primary">
+            <a class="btn btn-outline-danger" href="./">Cancel</a>
           </div>
         </form>
       </div>
@@ -74,8 +75,8 @@ if(isset($_SESSION["user"])) {
           <!-- ./ form row -->
 
           <div class="form-group text-center">
-            <input value="Login" name="login" type="submit" class="btn btn-primary" />
-            <a class="btn btn-danger" href="./">Cancel</a>
+            <input value="Login" name="login" type="submit" class="btn btn-outline-primary" />
+            <a class="btn btn-outline-danger" href="./">Cancel</a>
           </div>
         </form>
       </div>

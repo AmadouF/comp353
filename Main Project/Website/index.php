@@ -23,7 +23,7 @@ if(isLoggedIn()) {
             } break;
             case "Admin": {
                 include("admin.php");
-            }
+            } break;
             case "Client": {
                 include("client.php");
             } break;

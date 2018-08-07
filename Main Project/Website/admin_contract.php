@@ -68,6 +68,7 @@
           <br/>
           <span>Jim Halpern</span>&nbsp;<span>(71 hours)</span>
           <br/>
+          <br/>
           <button type="button" class="btn btn-outline-success">Edit</button>
           <button type="button" class="btn btn-outline-primary">Save</button>
           <button type="button" class="btn btn-outline-danger">Cancel</button>
