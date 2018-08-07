@@ -68,7 +68,31 @@ class DatabaseConn {
             return 0;
         }
     }
-    
+
+    function getClientByContractId(int $id) {
+        $result = $this->conn->query("SELECT * FROM Clients WHERE clientId IN (SELECT clientId FROM Contracts WHERE Contracts.contractId=$id)");
+
+        print($this->conn->error);
+
+        if($result->num_rows > 0){
+        return $result->fetch_assoc();
+        } else {
+            return 0;
+        }
+    }
+
+    function getTaskByEmployeeId(int $id) {
+        $result = $this->conn->query("SELECT * FROM Tasks WHERE Tasks.employeeId=$id");
+
+        print($this->conn->error);
+
+        if($result->num_rows > 0){
+        return $result->fetch_assoc();
+        } else {
+            return 0;
+        }
+    }
+
     // Attempt to login as a client
     function loginClient(string $username, string $password) {
         // $query = "SELECT * FROM Clients WHERE emailId ='$username' AND password='$password' LIMIT 1";

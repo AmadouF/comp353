@@ -6,6 +6,8 @@
 
   $user = $db->getRegularEmployeeById($_SESSION["user"]["employeeId"]);
   $user_contract = $db->getContractByContractId($user["contractId"]);
+  $user_client = $db->getClientByContractId($user["contractId"]);
+  $user_task = $db->getTaskByEmployeeId($user["employeeId"]);
 ?>
 
 <!doctype html>
@@ -56,7 +58,7 @@
         <!-- col -->
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
           <h3 class="text-center">My Contract</h3>
-          <h4 class="text-center">Client Name: <a href="https://instantcena.ca">Nike</a></h4>
+          <h4 class="text-center">Client Name: <?=$user_client["clientName"]?></h4>
         </div>
         <!-- ./ col -->
 
@@ -111,9 +113,8 @@
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
           <h4>Task Working On</h4>
           <div class="list-group pb-3">
-            <a href="#" class="list-group-item list-group-item-action active">Bargaining with TA</a>
-            <a href="#" class="list-group-item list-group-item-action">Details: afdasdfasdfasd</a>
-            <a href="#" class="list-group-item list-group-item-action">Logged Hours: 21h</a>
+            <button type="button" class="list-group-item list-group-item-action active"><?=$user_task["taskType"]?></button>
+            <button type="button" class="list-group-item list-group-item-action">Logged In Hours: <?=$user_task["hours"]?></button>
           </div>
         </div>
         <!-- ./col -->
