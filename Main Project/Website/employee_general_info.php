@@ -1,8 +1,5 @@
 <?php
   include("includes.php");
-  if(!isLoggedIn() || !getUserType() == "Regular") {
-    header("location: /");
-  }
 ?>
 
 <!-- row -->
