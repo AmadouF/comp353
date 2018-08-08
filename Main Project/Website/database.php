@@ -117,6 +117,22 @@ class DatabaseConn {
         }
     }
 
+    function getRegularOnSameContract(int $contractId)
+    {
+      $result = $this->conn->query("SELECT Employees.firstName FROM Employees, Regular WHERE Employees.employeeId = Regular.employeeId AND Regular.contractId=$contractId");
+
+      print($this->conn->error);
+
+      if($result->num_rows > 0)
+      {
+        return $result->fetch_assoc();
+      }
+      else
+      {
+          return 0;
+      }
+    }
+
     // Attempt to login as a client
     function loginClient(string $username, string $password) {
         // $query = "SELECT * FROM Clients WHERE emailId ='$username' AND password='$password' LIMIT 1";

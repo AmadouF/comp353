@@ -7,6 +7,7 @@
   $user_contract = $db->getContractByContractId($user["contractId"]);
   $user_client = $db->getClientByContractId($user["contractId"]);
   $user_supervisor = $db->getEmployeeById($user["superviseBy"]);
+  $user_regularUnder = $db->getRegularOnSameContract($user["contractId"]);
 ?>
 
 <!doctype html>
@@ -74,14 +75,10 @@
           <br/>
           <br/>
           <h5>Employees on Contract:</h5>
+
+
           <h6>Task asfwef:</h6>
-          <span>Dwight Schrute</span>&nbsp;<span>(50 hours)</span>&nbsp;<a href="#">remove</a>
-          <br/>
-          <span>Michael Scott</span>&nbsp;<span>(48 hours)</span>&nbsp;<a href="#">remove</a>
-          <br/>
-          <span>Jim Halpern</span>&nbsp;<span>(71 hours)</span>&nbsp;<a href="#">remove</a>
-          <br/>
-          <br/>
+
 
           <!-- form row -->
           <div class="form-group">
