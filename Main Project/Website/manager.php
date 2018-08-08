@@ -52,32 +52,22 @@
 
         <!-- col -->
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-          <h4>Client Name: <?=$user_client["clientName"]?></h4>
-          <span>Contract ID: <?=$user_contract["contractId"]?></span>
-          <br/>
-          <span>Contract Start Date: <?=$user_contract["serviceStartDate"]?></span>
-          <br/>
-          <span>Contact number: <?=$user_contract["contactNumber"]?></span>
-          <br/>
-          <span>Supervised By: <?=$user_supervisor["firstName"].' '.$user_supervisor["lastName"]?></span>
-          <br/>
-          <span>Initial Amount: <?=$user_contract["initalAmount"]?></span>
-          <br/>
-          <span>ACV: <?=$user_contract["annualContractValue"]?></span>
-          <br/>
-          <span>Type: <?=$user_contract["contractType"]?></span>
-          <br/>
-          <span>Service Type: <?=$user_contract["serviceType"]?></span>
-          <br/>
-          <span>Line of Bisiness: <?=$user_contract["lineOfBusiness"]?></span>
-          <br/>
-          <span>Satisfaction Score: <?=$user_contract["satisfactionLevel"]?></span>
-          <br/>
-          <br/>
+          <ul class="list-group pb-3">
+            <li class="list-group-item active">Client Name: <?=$user_client["clientName"]?></li>
+            <li class="list-group-item">Contract ID: <?=$user_contract["contractId"]?></li>
+            <li class="list-group-item">Contract Start Date: <?=$user_contract["serviceStartDate"]?></li>
+            <li class="list-group-item">Contact number: <?=$user_contract["contactNumber"]?></li>
+            <li class="list-group-item">Supervised By: <?=$user_supervisor["firstName"].' '.$user_supervisor["lastName"]?></li>
+            <li class="list-group-item">Initial Amount: <?=$user_contract["initalAmount"]?></li>
+            <li class="list-group-item">ACV: <?=$user_contract["annualContractValue"]?></li>
+            <li class="list-group-item">Type: <?=$user_contract["contractType"]?></li>
+            <li class="list-group-item">Service Type: <?=$user_contract["serviceType"]?></li>
+            <li class="list-group-item">Line of Bisiness: <?=$user_contract["lineOfBusiness"]?></li>
+            <li class="list-group-item">Satisfaction Score: <?=$user_contract["satisfactionLevel"]?></li>
+          </ul>
+
           <h5>Employees on Contract:</h5>
-
-
-          <h6>Task asfwef:</h6>
+          <p>Task asfwef:</p>
 
 
           <!-- form row -->
