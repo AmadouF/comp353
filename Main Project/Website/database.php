@@ -93,6 +93,18 @@ class DatabaseConn {
         }
     }
 
+    function getEmployeeById(int $id) {
+      $result = $this->conn->query("SELECT * FROM Employees WHERE Employees.employeeId=$id");
+
+      print($this->conn->error);
+
+      if($result->num_rows > 0){
+      return $result->fetch_assoc();
+      } else {
+          return 0;
+        }
+    }
+
     // Attempt to login as a client
     function loginClient(string $username, string $password) {
         // $query = "SELECT * FROM Clients WHERE emailId ='$username' AND password='$password' LIMIT 1";

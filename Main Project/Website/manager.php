@@ -3,6 +3,10 @@
   if(!isLoggedIn() || !getUserType() == "Manager") {
     header("location: index.php");
   }
+  $user = $db->getManagerEmployeeById($_SESSION["user"]["employeeId"]);
+  $user_contract = $db->getContractByContractId($user["contractId"]);
+  $user_client = $db->getClientByContractId($user["contractId"]);
+  $user_supervisor = $db->getEmployeeById($user["superviseBy"]);
 ?>
 
 <!doctype html>
@@ -32,41 +36,41 @@
       ?>
       <!-- ./nav -->
 
-   <?php 
+   <?php
         include("employee_general_info.php");
       ?>
-      
+
       <!-- row -->
       <div class="row py-3">
-        
+
         <!-- col -->
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
-          <h3 class="text-center">My Contract</h3>
+          <h3>My Contract</h3>
         </div>
         <!-- ./ col -->
 
         <!-- col -->
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-          <h4>Client Name: <a href="https://instantcena.ca">Nike</a></h4>
-          <span>ID: 26771010</span>
+          <h4>Client Name: <?=$user_client["clientName"]?></h4>
+          <span>Contract ID: <?=$user_contract["contractId"]?></span>
           <br/>
-          <span>Contract Date: 01/03/2018</span>
+          <span>Contract Start Date: <?=$user_contract["serviceStartDate"]?></span>
           <br/>
-          <span>Contact number:</span>
+          <span>Contact number: <?=$user_contract["contactNumber"]?></span>
           <br/>
-          <span>Supervised By:</span>
+          <span>Supervised By: <?=$user_supervisor["firstName"].' '.$user_supervisor["lastName"]?></span>
           <br/>
-          <span>Initial Amount:</span>
+          <span>Initial Amount: <?=$user_contract["initalAmount"]?></span>
           <br/>
-          <span>ACV:</span>
+          <span>ACV: <?=$user_contract["annualContractValue"]?></span>
           <br/>
-          <span>Type: Gold</span>
+          <span>Type: <?=$user_contract["contractType"]?></span>
           <br/>
-          <span>Service Type:</span>
+          <span>Service Type: <?=$user_contract["serviceType"]?></span>
           <br/>
-          <span>Line of Bisiness:</span>
+          <span>Line of Bisiness: <?=$user_contract["lineOfBusiness"]?></span>
           <br/>
-          <span>Satisfaction Score:</span>
+          <span>Satisfaction Score: <?=$user_contract["satisfactionLevel"]?></span>
           <br/>
           <br/>
           <h5>Employees on Contract:</h5>
@@ -78,7 +82,7 @@
           <span>Jim Halpern</span>&nbsp;<span>(71 hours)</span>&nbsp;<a href="#">remove</a>
           <br/>
           <br/>
-          
+
           <!-- form row -->
           <div class="form-group">
             <label for="dropdown" class="col-form-label"><strong>Assign New Employee:</strong></label>
@@ -131,7 +135,7 @@
           </div>
         </div>
       </div>
-      <!-- ./row -->   
+      <!-- ./row -->
 
     </div>
     <!-- ./ container -->
