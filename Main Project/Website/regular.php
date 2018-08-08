@@ -8,6 +8,7 @@
   $user_contract = $db->getContractByContractId($user["contractId"]);
   $user_client = $db->getClientByContractId($user["contractId"]);
   $user_task = $db->getTaskByEmployeeId($user["employeeId"]);
+  $user_manager = $db->getEmployeeById($user["manageBy"]);
 ?>
 
 <!doctype html>
@@ -44,9 +45,8 @@
       <!-- row -->
       <div class="row text-center">
       	<div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-      	    <strong>Department: </strong>: <?= $user["department"] ?><br/>
-      	    <strong>Managed By: </strong>: <?= $user["manageBy"] ?><br/>
-      	    <strong>Insurance: </strong>: <?= $user["insurance"] ?><br/>
+      	    <strong>Department</strong>: <?= $user["department"] ?><br/>
+      	    <strong>Insurance</strong>: <?= $user["insurance"] ?><br/>
       	    <br/>
       	</div>
       </div>
@@ -70,7 +70,7 @@
           <br/>
           <span>Contact number: <?=$user_contract["contactNumber"]?></span>
           <br/>
-          <span>Supervised By: <?=$user_contract["superviseBy"]?></span>
+          <span>Managed By: <?= $user_manager["firstName"].' '.$user_manager["lastName"] ?></span>
           <br/>
           <span>Initial Amount: <?=$user_contract["initalAmount"]?></span>
           <br/>

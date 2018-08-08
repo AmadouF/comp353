@@ -57,6 +57,18 @@ class DatabaseConn {
         }
     }
 
+    function getManagerEmployeeById(int $id) {
+        $result = $this->conn->query("SELECT * FROM Manager INNER JOIN Employees ON Employees.employeeId = Manager.employeeId WHERE Manager.employeeId=$id");
+
+        print($this->conn->error);
+
+        if($result->num_rows > 0){
+            return $result->fetch_assoc();
+        } else {
+            return 0;
+        }
+    }
+
     function getContractByContractId(int $id) {
         $result = $this->conn->query("SELECT * FROM Contracts WHERE Contracts.contractId=$id");
 
@@ -90,6 +102,18 @@ class DatabaseConn {
         return $result->fetch_assoc();
         } else {
             return 0;
+        }
+    }
+
+    function getEmployeeById(int $id) {
+      $result = $this->conn->query("SELECT * FROM Employees WHERE Employees.employeeId=$id");
+
+      print($this->conn->error);
+
+      if($result->num_rows > 0){
+      return $result->fetch_assoc();
+      } else {
+          return 0;
         }
     }
 
