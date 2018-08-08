@@ -117,6 +117,18 @@ class DatabaseConn {
         }
     }
 
+    function getTaskByContractId(int $id) {
+      $result = $this->conn->query("SELECT * FROM Tasks WHERE Tasks.contractId=$id");
+
+      print($this->conn->error);
+
+      if($result->num_rows > 0){
+      return $result->fetch_assoc();
+      } else {
+          return 0;
+        }
+    }
+
     function getRegularOnSameContract(int $contractId)
     {
       $result = $this->conn->query("SELECT Employees.firstName FROM Employees, Regular WHERE Employees.employeeId = Regular.employeeId AND Regular.contractId=$contractId");
