@@ -2,16 +2,19 @@
     include("includes.php");
 
     if(!isset($_SESSION["user"])) {
-        exit();
+        echo "No user;";
+        die("No user");
     }
 
     $user = $_SESSION["user"];
 
     if($_SESSION["user_type"] != "Client") {
-        exit();
+        echo "User is not a client";
+        die("User not a client");
     }
 
-    if(!empty($_POST("contractId") && !empty($_POST("satisfactionScore")))) {
+    if(isset($_POST["contractId"]) && isset($_POST["satisfactionScore"])) {
         $db->saveContractSatisfactionByContractId($_POST["contractId"], $_POST["satisfactionScore"]);
+        echo "saved";
     }
 ?>

@@ -30,10 +30,10 @@ class DatabaseConn {
     }
 
     function saveContractSatisfactionByContractId(int $contractId, int $satisfaction) {
-        $result = $this->conn->query("UPDATE Contracts WHERE contractId=$contractId SET satisfactionLevel=$satisfaction");
+        $result = $this->conn->query("UPDATE Contracts SET satisfactionLevel=$satisfaction WHERE contractId=$contractId");
 
         if(!$result) {
-            die($this->conn->error());
+            die($this->conn->error);
         }
     }
 
