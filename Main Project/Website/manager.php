@@ -131,7 +131,7 @@
               ?>
           </select>
 
-          <button class="my-2 btn btn-primary btn-md">Add</button>
+          <button class="my-2 btn btn-outline-primary btn-md">Add</button>
 
           </div>
         </div>
