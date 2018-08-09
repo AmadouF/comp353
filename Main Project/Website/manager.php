@@ -9,6 +9,7 @@
   $user_supervisor = $db->getEmployeeById($user["superviseBy"]);
   $user_regularUnder = $db->getRegularOnSameContract($user["contractId"]);
   $user_tasks = $db->getTaskByContractId($user["contractId"]);
+  $empl_and_tasktype_on_contract = $db->getTaskTypeAndEmployeeIdByContractId($user["contractId"]);
 ?>
 
 <!doctype html>
@@ -46,63 +47,47 @@
       <div class="row py-3">
 
         <!-- col -->
-        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
-          <h3>My Contract</h3>
-        </div>
-        <!-- ./ col -->
-
-        <!-- col -->
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-          <h4>Client Name: <?=$user_client["clientName"]?></h4>
-          <span>Contract ID: <?=$user_contract["contractId"]?></span>
-          <br/>
-          <span>Contract Start Date: <?=$user_contract["serviceStartDate"]?></span>
-          <br/>
-          <span>Contact number: <?=$user_contract["contactNumber"]?></span>
-          <br/>
-          <span>Supervised By: <?=$user_supervisor["firstName"].' '.$user_supervisor["lastName"]?></span>
-          <br/>
-          <span>Initial Amount: <?=$user_contract["initalAmount"]?></span>
-          <br/>
-          <span>ACV: <?=$user_contract["annualContractValue"]?></span>
-          <br/>
-          <span>Type: <?=$user_contract["contractType"]?></span>
-          <br/>
-          <span>Service Type: <?=$user_contract["serviceType"]?></span>
-          <br/>
-          <span>Line of Bisiness: <?=$user_contract["lineOfBusiness"]?></span>
-          <br/>
-          <span>Satisfaction Score: <?=$user_contract["satisfactionLevel"]?></span>
-          <br/>
-          <br/>
-          <h5>Employees on Contract:</h5>
+          <h3 class="py-3">My Contract</h3>
+          <ul class="list-group pb-3">
+            <li class="list-group-item active">Client Name: <?=$user_client["clientName"]?></li>
+            <li class="list-group-item">Contract ID: <?=$user_contract["contractId"]?></li>
+            <li class="list-group-item">Contract Start Date: <?=$user_contract["serviceStartDate"]?></li>
+            <li class="list-group-item">Contact number: <?=$user_contract["contactNumber"]?></li>
+            <li class="list-group-item">Supervised By: <?=$user_supervisor["firstName"].' '.$user_supervisor["lastName"]?></li>
+            <li class="list-group-item">Initial Amount: <?=$user_contract["initalAmount"]?></li>
+            <li class="list-group-item">ACV: <?=$user_contract["annualContractValue"]?></li>
+            <li class="list-group-item">Type: <?=$user_contract["contractType"]?></li>
+            <li class="list-group-item">Service Type: <?=$user_contract["serviceType"]?></li>
+            <li class="list-group-item">Line of Bisiness: <?=$user_contract["lineOfBusiness"]?></li>
+            <li class="list-group-item">Satisfaction Score: <?=$user_contract["satisfactionLevel"]?></li>
+          </ul>
 
+          <h3 class="py-3">Employees on Contract</h3>
+          <ul class="list-group pb-3">
+          <?php 
+            foreach ($user_regularUnder as $key => $val) {
+              echo "<li class=\"list-group-item\">$val[0]</li>";
+            }
+          ?>
+          </ul>
 
-          <h6>Task asfwef:</h6>
+          <h3 class="py-3">Tasks</h3>
+          <?php 
+            foreach ($user_tasks as $key => $task) {
+              echo "<ul class=\"list-group pb-3\">";
+                echo "<li class=\"list-group-item active\">$task[0]</li>";
+                foreach ($empl_and_tasktype_on_contract as $key => $val) {
+                  if($val[0] == $task[0]){
+                    echo "<li class=\"list-group-item\">$val[1]</li>";
+                  }
+                }
+              echo "</ul>";
+            }
+          ?>
+          </ul>
 
-
-          <!-- form row -->
-          <div class="form-group">
-            <label for="dropdown" class="col-form-label"><strong>Assign New Employee:</strong></label>
-            <select class="form-control col-4" id="dropdown">
-              <option>Oscar</option>
-              <option>Dwight</option>
-              <option>Big Tuna</option>
-            </select>
-            <label for="dropdown" class="col-form-label"><strong>To Task:</strong></label>
-            <select class="form-control col-4" id="dropdown">
-              <option>A</option>
-              <option>B</option>
-              <option>C</option>
-            </select>
-            <button class="my-2 btn btn-primary btn-md">Add</button>
-          </div>
-        </div>
-        <!-- ./col -->
-
-        <!-- col -->
-        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-          <h3>Candidates List</h3>
+          <h3 class="py-3">Candidates List</h3>
           <div class="list-group pb-3">
             <a href="#" class="list-group-item list-group-item-action active">Premium</a>
             <a href="#" class="list-group-item list-group-item-action">Jack</a>
@@ -131,7 +116,25 @@
             <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
             <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
           </div>
+
+          <!-- form row -->
+          <div class="form-group">
+            <label for="dropdown" class="col-form-label"><strong>Assign New Employee:</strong></label>
+            <select class="form-control col-4" id="dropdown">
+              <option>Oscar</option>
+              <option>Dwight</option>
+              <option>Big Tuna</option>
+            </select>
+            <label for="dropdown" class="col-form-label"><strong>To Task:</strong></label>
+            <select class="form-control col-4" id="dropdown">
+              <option>A</option>
+              <option>B</option>
+              <option>C</option>
+            </select>
+            <button class="my-2 btn btn-primary btn-md">Add</button>
+          </div>          
         </div>
+        <!-- ./ form row -->
       </div>
       <!-- ./row -->
 
