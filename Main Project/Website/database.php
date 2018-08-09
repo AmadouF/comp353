@@ -29,6 +29,14 @@ class DatabaseConn {
         return $result;
     }
 
+    function saveContractSatisfactionByContractId(int $contractId, int $satisfaction) {
+        $result = $this->conn->query("UPDATE Contracts WHERE contractId=$contractId SET satisfactionLevel=$satisfaction");
+
+        if(!$result) {
+            die($this->conn->error());
+        }
+    }
+
     function getContractsByClientId(int $id) {
         $results = $this->conn->query("SELECT * FROM Contracts WHERE clientId=$id");
         return $results;
@@ -55,6 +63,11 @@ class DatabaseConn {
         } else {
             return 0;
         }
+    }
+
+    function getManagersByContractId(int $id) {
+        $result = $this->conn->query("SELECT DISTINCT Employees.* FROM Manager, Employees, Contracts WHERE Manager.contractId=$id AND Manager.employeeId = Employees.employeeId");
+        return $result;
     }
 
     function getManagerEmployeeById(int $id) {

@@ -1,3 +1,15 @@
+<?php
+  include("includes.php");
+  $user = $_SESSION["user"];
+
+  if(!isset($_GET["id"])) {
+    pushError("No contract id provided");
+    header("location: index.php");
+  }
+
+  $contract = $db->GetContractByContractId($_GET["id"]);
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -36,27 +48,40 @@
       <!-- row -->
       <div class="row">
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-          <h4>ID: 26771010</h4>
-          <span>Contract Date: 01/03/2018</span>
+          <h4>ID: <?=$contract["contractId"]?></h4>
+          <span>Contract Date: <?=$contract["serviceStartDate"]?></span>
           <br/>
-          <span>Contact number:</span>
+          <span>Contact number: <?=$contract["contactNumber"]?></span>
           <br/>
-          <span>Supervised By:</span>
+          <?php
+            $supervisor = $db->getEmployeeById($contract["superviseBy"]);
+          ?>
+          <span>Supervised By: <?=$supervisor["firstName"]." ".$supervisor["lastName"]?></span>
           <br/>
-          <span>Initial Amount:</span>
+          <span>Initial Amount: <?=$contract["initalAmount"]?></span>
           <br/>
-          <span>ACV:</span>
+          <span>ACV: <?=$contract["annualContractValue"]?></span>
           <br/>
-          <span>Type: Gold</span>
+          <span>Type: <?=$contract["contractType"]?></span>
           <br/>
-          <span>Service Type:</span>
+          <span>Service Type: <?=$contract["serviceType"]?></span>
           <br/>
-          <span>Line of Bisiness:</span>
+          <span>Line of Business:<?=$contract["lineOfBusiness"]?></span>
           <br/>
-          <span>Satisfaction Score:</span>
+          <span>Satisfaction Level: <?=$contract["satisfactionLevel"]?></span>
           <br/><br/>
+
           <h5>Manager on Contract:</h5>
-          <span>Dwight Schrute</a>
+          <?php
+            $managers = $db->getManagersByContractId($contract["contractId"]);
+
+            while($manager = $managers->fetch_assoc()) {
+                ?>
+                <span><?=$manager["firstName"]." ".$manager["lastName"]?> </span>
+                <br />
+                <?php
+            }
+          ?>
           <br/>
           <br/>
           <h5>Deliverables:</h5>
@@ -67,7 +92,7 @@
           <!-- form row -->
           <div class="form-group">
             <label for="dropdown" class="col-form-label"><strong>Satisfaction Score:</strong></label>
-            <select class="form-control col-4" id="dropdown">
+            <select onchange="SetSatisfactionLevel()" class="form-control col-4" id="dropdown">
               <option>1</option>
               <option>2</option>
               <option>3</option>

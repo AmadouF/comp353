@@ -54,7 +54,7 @@
           if($contracts->num_rows > 0) {
             while($contract = $contracts->fetch_array()) {
               ?>
-            <a href="client_contract.php" class="list-group-item list-group-item-action flex-column align-items-start">
+            <a href="client_contract.php?id=<?=$contract["contractId"] ?>" class="list-group-item list-group-item-action flex-column align-items-start">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1"><?=$contract["contractId"] ?></h5>
                 <small><?=$contract["serviceStartDate"]?></small>
