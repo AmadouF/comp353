@@ -106,21 +106,33 @@
           }
         ?>
 
-          <!-- form row -->
-          <div class="form-group">
-            <label for="dropdown" class="col-form-label"><strong>Assign New Employee:</strong></label>
-            <select class="form-control col-6" id="dropdown">
-              <option>Oscar</option>
-              <option>Dwight</option>
-              <option>Big Tuna</option>
-            </select>
-            <label for="dropdown" class="col-form-label"><strong>To Task:</strong></label>
-            <select class="form-control col-6" id="dropdown">
-              <option>A</option>
-              <option>B</option>
-              <option>C</option>
-            </select>
-            <button class="my-2 btn btn-primary btn-md">Add</button>
+        <div class="form-group">
+        <label for="dropdown" class="col-form-label"><strong>Assign Suitable Employees:</strong></label>
+        <select class="form-control col-6" id="dropdown">
+        <?php
+          foreach ($desired_contract_type_id as $key=> $val)
+          {
+            if($val[0]==$user_contract["contractType"])
+            {
+              $temp = $db->getEmployeeById($val[1]);
+              echo "<option>".$temp["firstName"]." ".$temp["lastName"]."</option>";
+            }
+          }
+        ?>
+        </select>
+
+          <label for="dropdown" class="col-form-label"><strong>To Task:</strong></label>
+          <select class="form-control col-6" id="dropdown">
+              <?php
+                foreach ($user_tasks as $key=> $val)
+                {
+                  echo "<option>$val[0]</option>";
+                }
+              ?>
+          </select>
+
+          <button class="my-2 btn btn-primary btn-md">Add</button>
+
           </div>
         </div>
         <!-- ./ form row -->
