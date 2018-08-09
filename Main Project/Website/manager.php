@@ -8,8 +8,8 @@
   $user_client = $db->getClientByContractId($user["contractId"]);
   $user_supervisor = $db->getEmployeeById($user["superviseBy"]);
   $user_regularUnder = $db->getRegularOnSameContract($user["contractId"]);
-  $user_tasks = $db->getTaskByContractId($user["contractId"]);
-  $empl_and_tasktype_on_contract = $db->getTaskTypeAndEmployeeIdByContractId($user["contractId"]);
+  $user_tasks = $db->getTaskTypeByContractId($user["contractId"]);
+  $empl_and_tasktype_on_contract = $db->getTaskTypeAndEmployeeNameByContractId($user["contractId"]);
 ?>
 
 <!doctype html>
@@ -65,21 +65,21 @@
 
           <h3 class="py-3">Employees on Contract</h3>
           <ul class="list-group pb-3">
-          <?php 
+          <?php
             foreach ($user_regularUnder as $key => $val) {
-              echo "<li class=\"list-group-item\">$val[0]</li>";
+              echo "<li class=\"list-group-item\">$val[0] $val[1]</li>";
             }
           ?>
           </ul>
 
-          <h3 class="py-3">Tasks</h3>
-          <?php 
+          <h3 class="py-3">Contract Tasks</h3>
+          <?php
             foreach ($user_tasks as $key => $task) {
               echo "<ul class=\"list-group pb-3\">";
                 echo "<li class=\"list-group-item active\">$task[0]</li>";
                 foreach ($empl_and_tasktype_on_contract as $key => $val) {
                   if($val[0] == $task[0]){
-                    echo "<li class=\"list-group-item\">$val[1]</li>";
+                    echo "<li class=\"list-group-item\">$val[1] $val[2]</li>";
                   }
                 }
               echo "</ul>";
@@ -132,7 +132,7 @@
               <option>C</option>
             </select>
             <button class="my-2 btn btn-primary btn-md">Add</button>
-          </div>          
+          </div>
         </div>
         <!-- ./ form row -->
       </div>

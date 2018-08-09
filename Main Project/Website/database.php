@@ -117,7 +117,7 @@ class DatabaseConn {
         }
     }
 
-    function getTaskByContractId(int $id) {
+    function getTaskTypeByContractId(int $id) {
       $result = $this->conn->query("SELECT DISTINCT Tasks.taskType FROM Tasks WHERE Tasks.contractId=$id");
 
       print($this->conn->error);
@@ -128,8 +128,8 @@ class DatabaseConn {
           return 0;
         }
     }
-    function getTaskTypeAndEmployeeIdByContractId(int $id) {
-      $result = $this->conn->query("SELECT Tasks.taskType, Employees.firstName FROM Tasks,Employees WHERE Tasks.contractId=$id AND Employees.employeeId = Tasks.employeeId");
+    function getTaskTypeAndEmployeeNameByContractId(int $id) {
+      $result = $this->conn->query("SELECT Tasks.taskType, Employees.firstName,Employees.lastName FROM Tasks,Employees WHERE Tasks.contractId=$id AND Employees.employeeId = Tasks.employeeId");
 
       print($this->conn->error);
 
@@ -143,7 +143,7 @@ class DatabaseConn {
 
     function getRegularOnSameContract(int $contractId)
     {
-      $result = $this->conn->query("SELECT Employees.firstName FROM Employees, Regular WHERE Employees.employeeId = Regular.employeeId AND Regular.contractId=$contractId");
+      $result = $this->conn->query("SELECT Employees.firstName,Employees.lastName FROM Employees, Regular WHERE Employees.employeeId = Regular.employeeId AND Regular.contractId=$contractId");
 
       print($this->conn->error);
 
