@@ -157,6 +157,30 @@ class DatabaseConn {
       }
     }
 
+    function getDesiredContractTypeFromRegular() {
+      $result = $this->conn->query("SELECT DISTINCT desiredContractType FROM Regular");
+
+      print($this->conn->error);
+
+      if($result->num_rows > 0){
+        return $result->fetch_all();
+      } else {
+          return 0;
+        }
+    }
+
+    function getDesiredContractTypeAndIdFromRegular() {
+      $result = $this->conn->query("SELECT desiredContractType,employeeId FROM Regular");
+
+      print($this->conn->error);
+
+      if($result->num_rows > 0){
+        return $result->fetch_all();
+      } else {
+          return 0;
+        }
+    }
+
     // Attempt to login as a client
     function loginClient(string $username, string $password) {
         // $query = "SELECT * FROM Clients WHERE emailId ='$username' AND password='$password' LIMIT 1";

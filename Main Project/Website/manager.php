@@ -10,6 +10,8 @@
   $user_regularUnder = $db->getRegularOnSameContract($user["contractId"]);
   $user_tasks = $db->getTaskTypeByContractId($user["contractId"]);
   $empl_and_tasktype_on_contract = $db->getTaskTypeAndEmployeeNameByContractId($user["contractId"]);
+  $desired_contract_type = $db->getDesiredContractTypeFromRegular();
+  $desired_contract_type_id = $db->getDesiredContractTypeAndIdFromRegular();
 ?>
 
 <!doctype html>
@@ -85,37 +87,24 @@
               echo "</ul>";
             }
           ?>
-          </ul>
 
-          <h3 class="py-3">Candidates List</h3>
-          <div class="list-group pb-3">
-            <a href="#" class="list-group-item list-group-item-action active">Premium</a>
-            <a href="#" class="list-group-item list-group-item-action">Jack</a>
-            <a href="#" class="list-group-item list-group-item-action">David</a>
-            <a href="#" class="list-group-item list-group-item-action">Bob</a>
-            <a href="#" class="list-group-item list-group-item-action">Robin</a>
-          </div>
-          <div class="list-group pb-3">
-            <a href="#" class="list-group-item list-group-item-action active">Diamond</a>
-            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-            <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
-          </div>
-          <div class="list-group pb-3">
-            <a href="#" class="list-group-item list-group-item-action active">Gold</a>
-            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-            <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
-          </div>
-          <div class="list-group pb-3">
-            <a href="#" class="list-group-item list-group-item-action active">Silver</a>
-            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-            <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
-          </div>
+        <h3 class="py-3">Candidates List</h3>
+        <?php
+          foreach ($desired_contract_type as $key=> $desireType)
+          {
+            echo "<ul class=\"list-group pb-3\">";
+            echo "<li class=\"list-group-item active\">$desireType[0]</li>";
+            foreach ($desired_contract_type_id as $key=> $val)
+            {
+              if($val[0]==$desireType[0])
+              {
+                $temp = $db->getEmployeeById($val[1]);
+                echo "<li class=\"list-group-item\">".$temp["firstName"]." ".$temp["lastName"]."</li>";
+              }
+            }
+            echo "</ul>";
+          }
+        ?>
 
           <!-- form row -->
           <div class="form-group">
