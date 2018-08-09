@@ -72,7 +72,7 @@
           ?>
           </ul>
 
-          <h3 class="py-3">Contract Tasks</h3>
+          <h3 class="py-3">Tasks on Contract</h3>
           <?php
             foreach ($user_tasks as $key => $task) {
               echo "<ul class=\"list-group pb-3\">";
@@ -120,13 +120,13 @@
           <!-- form row -->
           <div class="form-group">
             <label for="dropdown" class="col-form-label"><strong>Assign New Employee:</strong></label>
-            <select class="form-control col-4" id="dropdown">
+            <select class="form-control col-6" id="dropdown">
               <option>Oscar</option>
               <option>Dwight</option>
               <option>Big Tuna</option>
             </select>
             <label for="dropdown" class="col-form-label"><strong>To Task:</strong></label>
-            <select class="form-control col-4" id="dropdown">
+            <select class="form-control col-6" id="dropdown">
               <option>A</option>
               <option>B</option>
               <option>C</option>

@@ -56,39 +56,22 @@
       <div class="row py-3">
 
         <!-- col -->
-        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
-          <h3>My Contract</h3>
-          <h4>Client Name: <?=$user_client["clientName"]?></h4>
-        </div>
-        <!-- ./ col -->
-
-        <!-- col -->
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-          <span>Contract ID: <?=$user_contract["contractId"]?></span>
-          <br/>
-          <span>Contract Start Date: <?=$user_contract["serviceStartDate"]?></span>
-          <br/>
-          <span>Contact number: <?=$user_contract["contactNumber"]?></span>
-          <br/>
-          <span>Managed By: <?= $user_manager["firstName"].' '.$user_manager["lastName"] ?></span>
-          <br/>
-          <span>Initial Amount: <?=$user_contract["initalAmount"]?></span>
-          <br/>
-          <span>ACV: <?=$user_contract["annualContractValue"]?></span>
-          <br/>
-          <span>Type: <?=$user_contract["contractType"]?></span>
-          <br/>
-          <span>Service Type: <?=$user_contract["serviceType"]?></span>
-          <br/>
-          <span>Line of Bisiness: <?=$user_contract["lineOfBusiness"]?></span>
-          <br/>
-          <span>Satisfaction Score: <?=$user_contract["satisfactionLevel"]?></span>
-          <br/>
-        </div>
-        <!-- ./ col -->
+          <h3 class="py-3">My Contract</h3>
+          <ul class="list-group pb-3">
+            <li class="list-group-item active">Client Name: <?=$user_client["clientName"]?></li>
+            <li class="list-group-item">Contract ID: <?=$user_contract["contractId"]?></li>
+            <li class="list-group-item">Contract Start Date: <?=$user_contract["serviceStartDate"]?></li>
+            <li class="list-group-item">Contact number: <?=$user_contract["contactNumber"]?></li>
+            <li class="list-group-item">Managed By: <?=$user_manager["firstName"].' '.$user_manager["lastName"]?></li>
+            <li class="list-group-item">Initial Amount: <?=$user_contract["initalAmount"]?></li>
+            <li class="list-group-item">ACV: <?=$user_contract["annualContractValue"]?></li>
+            <li class="list-group-item">Type: <?=$user_contract["contractType"]?></li>
+            <li class="list-group-item">Service Type: <?=$user_contract["serviceType"]?></li>
+            <li class="list-group-item">Line of Bisiness: <?=$user_contract["lineOfBusiness"]?></li>
+            <li class="list-group-item">Satisfaction Score: <?=$user_contract["satisfactionLevel"]?></li>
+          </ul>
 
-        <!-- col -->
-        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
           <!-- form row -->
           <div class="form-group">
             <label for="dropdown" class="col-form-label"><strong>Wanted Contract Type:</strong></label>
@@ -106,18 +89,13 @@
             </select>
             <button class="my-2 btn btn-outline-primary btn-md">Confirm</button>
           </div>
-        </div>
-        <!-- ./ col -->
 
-        <!-- col -->
-        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
-          <h4>Task Working On</h4>
-          <div class="list-group pb-3">
-            <button type="button" class="list-group-item list-group-item-action active"><?=$user_task["taskType"]?></button>
-            <button type="button" class="list-group-item list-group-item-action">Logged In Hours: <?=$user_task["hours"]?></button>
-          </div>
-        </div>
-        <!-- ./col -->
+        <h3 class="py-3">Task Working On</h3>
+        <ul class="list-group pb-3">
+          <li class="list-group-item active"><?=$user_task["taskType"]?></li>
+          <li class="list-group-item">Logged In Hours: <?=$user_task["hours"]?></li>
+        </ul>
+      </div>
       </div>
       <!-- ./row -->
     </div>
