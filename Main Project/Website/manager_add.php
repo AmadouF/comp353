@@ -34,7 +34,7 @@
       header("location: manager.php");
     }
 
-    $db->updateRegularContractIdByIdAndContractId($candidate_id["employeeId"],$user["contractId"]);
+    $db->updateRegularContractId($candidate_id["employeeId"],$user["contractId"],$user["employeeId"]);
     $db->updateRegularTaskType($candidate_id["employeeId"],$task_type);
     header("location: regular.php");
   }

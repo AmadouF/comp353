@@ -238,13 +238,17 @@ class DatabaseConn {
       }
     }
 
-    function updateRegularContractIdByIdAndContractId(int $id,int $contractid) {
+    function updateRegularContractId(int $id,int $contractid,int $mid) {
       $result1 = $this->conn->query("UPDATE Regular SET contractId=$contractid WHERE employeeId=$id");
       $result2 = $this->conn->query("UPDATE Tasks SET contractId=$contractid WHERE employeeId=$id");
+      $result3 = $this->conn->query("UPDATE Regular SET manageBy=$mid WHERE employeeId=$id");
       if(!$result1) {
           die($this->conn->error);
       }
-      if(!$result1) {
+      if(!$result2) {
+          die($this->conn->error);
+      }
+      if(!$result3) {
           die($this->conn->error);
       }
     }
