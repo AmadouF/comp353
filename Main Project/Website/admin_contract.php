@@ -1,3 +1,12 @@
+<?php
+  include("includes.php");
+  if(!isLoggedIn() || !getUserType() == "Admin") {
+    header("location: index.php");
+  }
+  // print_r($_SESSION); // DEBUGGER
+  $contractId =  $_GET['contractId']; // get the client Id from the url
+  $contract = $db->getContractByContractId($contractId);
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -28,50 +37,40 @@
       <!-- row -->
       <div class="row py-3">
         <!-- col -->
-        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
-          <h3 class="text-center">Contract XXX</h3>
-          <h4 class="text-center">Client Name: <a href="https://instantcena.ca">Nike</a></h4>
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3 text-center">
+          <h1 class="text-center">Contract: <?= $contract['contractId']?></h1>
         </div>
         <!-- ./ col -->
 
         <!-- col -->
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-          <span>ID: 26771010</span>
-          <br/>
-          <span>Contract Date: 01/03/2018</span>
-          <br/>
-          <span>Contact number:</span>
-          <br/>
-          <span>Supervised By:</span>
-          <br/>
-          <span>Initial Amount:</span>
-          <br/>
-          <span>ACV:</span>
-          <br/>
-          <span>Type: Gold</span>
-          <br/>
-          <span>Service Type:</span>
-          <br/>
-          <span>Line of Bisiness:</span>
-          <br/>
-          <span>Satisfaction Score:</span>
-        </div>
+          <? // print_r($client); // DEBUGGER ?>
+          <ul class="list-group">
+            <li class="d-flex w-100 justify-content-between list-group-item">
+              <h5 class="mb-1">Contract ID: <?= $contract['contractId'] ?></h5>
+              <div>
+                <a href="<?= "admin_edit_contract.php?contractId=".$contract['contractId']?>" class="btn btn-sm btn-outline-success">Edit Contract</a>                 
+              </div>
+            </li>
+            <li class="list-group-item">Start Date: <?= $contract['serviceStartDate']?></li>
+            <? $employee = $db->getEmployeeNameById($contract['superviseBy']); ?>
+            <li class="list-group-item">
+              Supervisor: <? foreach ($employee as $key=> $name){echo $name['firstName'];} ?> (ID: <?= $contract['superviseBy']?>)
+            </li> 
+            <li class="list-group-item">Contact #: <?= $contract['contactNumber']?></li>
+            <li class="list-group-item">ACV: $<?= round($contract['annualContractValue'],2) ?> </li>
+            <li class="list-group-item">Initial Amount: $<?= round($contract['initalAmount'], 2) ?></li>
+            <li class="list-group-item">Service Type: <?= $contract['serviceType']?></li>
+            <li class="list-group-item">Contract Type: <?= $contract['contractType']?></li>
+            <li class="list-group-item">Line of Business: <?= $contract['lineOfBusiness']?></li>
+            <li class="list-group-item">Satisfaction: <?= $contract['satisfactionLevel']?></li>
+          </a>  
+        </div> 
         <!-- ./ col -->
 
         <!-- col -->
-        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
-          <h4>Employees on Contract:</h4>
-          <h6>Task asfwef:</h6>
-          <span>Dwight Schrute</span>&nbsp;<span>(50 hours)</span>
-          <br/>
-          <span>Michael Scott</span>&nbsp;<span>(48 hours)</span>
-          <br/>
-          <span>Jim Halpern</span>&nbsp;<span>(71 hours)</span>
-          <br/>
-          <br/>
-          <button type="button" class="btn btn-outline-success">Edit</button>
-          <button type="button" class="btn btn-outline-primary">Save</button>
-          <button type="button" class="btn btn-outline-danger">Cancel</button>
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3 text-center">
+          <a href="<?= "admin_contracts.php?clientId=".$contract['clientId'] ?>" class="btn btn-outline-primary">Back</a>
         </div>
         <!-- ./ col -->
       </div>
