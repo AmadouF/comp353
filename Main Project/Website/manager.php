@@ -3,6 +3,8 @@
   if(!isLoggedIn() || !getUserType() == "Manager") {
     header("location: index.php");
   }
+  displayErrors();
+
   $user = $db->getManagerEmployeeById($_SESSION["user"]["employeeId"]);
   $user_contract = $db->getContractByContractId($user["contractId"]);
   $user_client = $db->getClientByContractId($user["contractId"]);
@@ -106,9 +108,25 @@
           }
         ?>
 
+        <form action="manager_remove.php" method="POST">
+        <div class="form-group">
+        <label for="dropdown" class="col-form-label"><strong>Remove Employees:</strong></label>
+          <select class="form-control col-6" id="dropdown" name="remove_regular">
+          <?php
+            foreach ($user_regularUnder as $key => $val) {
+              echo "<option>$val[0] $val[1]</option>";
+            }
+          ?>
+          </select>
+          <input value="Remove" type="submit" class="my-2 btn btn-outline-primary btn-md">
+          </div>
+        </form>
+
+
+        <form action="manager_add.php" method="POST">
         <div class="form-group">
         <label for="dropdown" class="col-form-label"><strong>Assign Suitable Employees:</strong></label>
-        <select class="form-control col-6" id="dropdown">
+        <select class="form-control col-6" id="dropdown" name="assign_regular">
         <?php
           foreach ($desired_contract_type_id as $key=> $val)
           {
@@ -122,7 +140,7 @@
         </select>
 
           <label for="dropdown" class="col-form-label"><strong>To Task:</strong></label>
-          <select class="form-control col-6" id="dropdown">
+          <select class="form-control col-6" id="dropdown" name="to_task">
               <?php
                 foreach ($user_tasks as $key=> $val)
                 {
@@ -131,9 +149,10 @@
               ?>
           </select>
 
-          <button class="my-2 btn btn-outline-primary btn-md">Add</button>
+          <input value="Add" type="submit" class="my-2 btn btn-outline-primary btn-md">
 
           </div>
+        </form>
         </div>
         <!-- ./ form row -->
       </div>
