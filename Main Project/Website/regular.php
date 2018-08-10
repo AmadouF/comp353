@@ -3,6 +3,7 @@
   if(!isLoggedIn() || !getUserType() == "Regular") {
     header("location: index.php");
   }
+  displayErrors();
 
   $user = $db->getRegularEmployeeById($_SESSION["user"]["employeeId"]);
   $user_contract = $db->getContractByContractId($user["contractId"]);
@@ -47,6 +48,7 @@
       	<div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
       	    <strong>Department</strong>: <?= $user["department"] ?><br/>
       	    <strong>Insurance</strong>: <?= $user["insurance"] ?><br/>
+            <strong>Desired Contract Type</strong>: <?= $user["desiredContractType"] ?><br/>
       	    <br/>
       	</div>
       </div>
@@ -71,24 +73,25 @@
             <li class="list-group-item">Line of Bisiness: <?=$user_contract["lineOfBusiness"]?></li>
             <li class="list-group-item">Satisfaction Score: <?=$user_contract["satisfactionLevel"]?></li>
           </ul>
-
+          <form action="regular_confirm.php" method="POST">
           <!-- form row -->
           <div class="form-group">
             <label for="dropdown" class="col-form-label"><strong>Wanted Contract Type:</strong></label>
-            <select class="form-control col-6" id="dropdown">
-              <option <?=$user["desiredContractType"]=="Premium"?"selected":""?>>Premium</option>
-              <option <?=$user["desiredContractType"]=="Diamond"?"selected":""?>>Diamond</option>
-              <option <?=$user["desiredContractType"]=="Gold"?"selected":""?>>Gold</option>
-              <option <?=$user["desiredContractType"]=="Silver"?"selected":""?>>Silver</option>
+            <select class="form-control col-6" id="dropdown" name="selectedType">
+              <option>Premium</option>
+              <option>Diamond</option>
+              <option>Gold</option>
+              <option>Silver</option>
             </select>
             <label for="dropdown" class="col-form-label"><strong>Insurance Plan:</strong></label>
-            <select class="form-control col-6" id="dropdown">
-              <option <?=$user["insurance"]=="Premium"?"selected":""?>>Premium</option>
-              <option <?=$user["insurance"]=="Silver"?"selected":""?>>Silver</option>
-              <option <?=$user["insurance"]=="Normal"?"selected":""?>>Normal</option>
+            <select class="form-control col-6" id="dropdown" name="selectedInsurance">
+              <option>Premium</option>
+              <option>Silver</option>
+              <option>Normal</option>
             </select>
-            <button class="my-2 btn btn-outline-primary btn-md">Confirm</button>
+            <input value="Confirm" type="submit" class="my-2 btn btn-outline-primary btn-md">
           </div>
+        </form>
 
         <h3 class="py-3">Task Working On</h3>
         <ul class="list-group pb-3">

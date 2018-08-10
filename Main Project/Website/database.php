@@ -59,6 +59,17 @@ class DatabaseConn {
         }
     }
 
+    function getIdFromName(string $name) {
+        $result = $this->conn->query("SELECT employeeId FROM Employees WHERE CONCAT(firstName,' ', lastName)='$name'");
+        print($this->conn->error);
+
+        if($result->num_rows > 0){
+            return $result->fetch_assoc();
+        } else {
+            return 0;
+        }
+    }
+
     function getManagersByContractId(int $id) {
         $result = $this->conn->query("SELECT DISTINCT Employees.* FROM Manager, Employees, Contracts WHERE Manager.contractId=$id AND Manager.employeeId = Employees.employeeId");
         return $result;
@@ -189,7 +200,6 @@ class DatabaseConn {
         }
     }
 
-
     /*== Admin Page Logic ===*/
     // Returns array containing all clients in DB
     function getAllClients(){
@@ -270,6 +280,59 @@ class DatabaseConn {
     /*== End Admin Page Logic ===*/
 
     /*== Login Page Logic ===*/
+
+    function updateRegularDesiredContractType(int $id,string $enumm) {
+      $result = $this->conn->query("UPDATE Regular SET desiredContractType='$enumm' WHERE employeeId=$id");
+
+      if(!$result) {
+          die($this->conn->error);
+      }
+    }
+
+    function updateRegularInsurance(int $id,string $enumm) {
+      $result = $this->conn->query("UPDATE Regular SET insurance='$enumm' WHERE employeeId=$id");
+
+      if(!$result) {
+          die($this->conn->error);
+      }
+    }
+
+    function removeRegularFromContractById(int $id)
+    {
+      $result1 = $this->conn->query("UPDATE Regular SET contractId=0 WHERE employeeId=$id");
+      $result2 = $this->conn->query("UPDATE Tasks SET contractId=0 WHERE employeeId=$id");
+      $result3 = $this->conn->query("UPDATE Regular SET manageBy=0 WHERE employeeId=$id");
+
+      if(!$result1) {
+          die($this->conn->error);
+      }
+      if(!$result2) {
+          die($this->conn->error);
+      }
+      if(!$result3) {
+          die($this->conn->error);
+      }
+    }
+
+    function updateRegularContractIdByIdAndContractId(int $id,int $contractid) {
+      $result1 = $this->conn->query("UPDATE Regular SET contractId=$contractid WHERE employeeId=$id");
+      $result2 = $this->conn->query("UPDATE Tasks SET contractId=$contractid WHERE employeeId=$id");
+      if(!$result1) {
+          die($this->conn->error);
+      }
+      if(!$result1) {
+          die($this->conn->error);
+      }
+    }
+
+    function updateRegularTaskType(int $id,string $type) {
+      $result = $this->conn->query("UPDATE Tasks SET taskType='$type' WHERE employeeId=$id");
+      if(!$result) {
+          die($this->conn->error);
+      }
+    }
+
+
     // Attempt to login as a client
     function loginClient(string $username, string $password) {
         // $query = "SELECT * FROM Clients WHERE emailId ='$username' AND password='$password' LIMIT 1";
