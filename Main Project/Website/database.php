@@ -29,6 +29,12 @@ class DatabaseConn {
         return $result;
     }
 
+    function getDeliverablesByContractId($contractId) {
+        $result = $this->conn->query("SELECT * from Deliverables WHERE contractId=$contractId");
+
+        return $result;
+    }
+
     function saveContractSatisfactionByContractId(int $contractId, int $satisfaction) {
         $result = $this->conn->query("UPDATE Contracts SET satisfactionLevel=$satisfaction WHERE contractId=$contractId");
 
@@ -228,13 +234,13 @@ class DatabaseConn {
       $result3 = $this->conn->query("UPDATE Regular SET manageBy=0 WHERE employeeId=$id");
 
       if(!$result1) {
-          die($this->conn->error);
+          die("Regular update error: ". $this->conn->error);
       }
       if(!$result2) {
-          die($this->conn->error);
+          die("Task update error: ".$this->conn->error);
       }
       if(!$result3) {
-          die($this->conn->error);
+          die("Regylar manager update error: ". $this->conn->error);
       }
     }
 
@@ -295,19 +301,13 @@ class DatabaseConn {
         $query = "SELECT * FROM Employees WHERE employeeId ='$username' AND password='$password' LIMIT 1";
         $employees = $this->conn->query($query);
 
-		echo $query."   ";
-		echo $username."--".$password;
-		echo "  ".$employees->num_rows;
-
         if($employees->num_rows >= 1) {
             $employee = $employees->fetch_assoc();
             $employee_type = $this->getEmployeeTypeById($employee["employeeId"]);
 
             $_SESSION["user"] = $employee;
 			$_SESSION["user_type"] = $employee_type;
-			echo "GOOD";
         } else {
-			echo "ERROR";
             pushError("
             <div class=\"container\">
                 <div class=\"row-fluid\">

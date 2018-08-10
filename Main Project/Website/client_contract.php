@@ -87,7 +87,22 @@
           <br/>
           <br/>
           <h5>Deliverables:</h5>
-          <span>XYZ</a>
+          <?php
+            $deliverables = $db->getDeliverablesByContractId($contract["contractId"]);
+            
+            while($deliverable = $deliverables->fetch_assoc()) {
+              ?>
+            <a class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><?=$deliverable["deliverableIndex"] ?></h5>
+              </div>
+              <p class="mb-1"><b>Scheduled For:</b> <?=$deliverable["scheduledDate"]?></p>
+              <p class="mb-1"><b>Delivered On:</b> <?=$deliverable["deliveredDate"]?></p>
+            </a>
+            <br />
+              <?php
+            }
+          ?>
           <br/>
           <br/>          
 
