@@ -99,6 +99,10 @@ class DatabaseConn {
         }
     }
 
+    function getContractsSupervisedBySalesAssociateById(int $salesAssociateId) {
+        return $this->conn->query("SELECT * from Contracts WHERE superviseBy=$salesAssociateId");
+    }
+
     function getContractByContractId(int $id) {
         $result = $this->conn->query("SELECT * FROM Contracts WHERE Contracts.contractId=$id");
 
