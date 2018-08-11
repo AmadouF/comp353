@@ -14,6 +14,7 @@
   $empl_and_tasktype_on_contract = $db->getTaskTypeAndEmployeeNameByContractId($user["contractId"]);
   $desired_contract_type = $db->getDesiredContractTypeFromRegular();
   $desired_contract_type_id = $db->getDesiredContractTypeAndIdFromRegular();
+  $reg_employees_not_on_contract = $db->getEmployeesNotOnContractByContractId($user['contractId']);
 ?>
 
 <!doctype html>
@@ -89,70 +90,73 @@
               echo "</ul>";
             }
           ?>
-
         <h3 class="py-3">Candidates List</h3>
         <?php
-          foreach ($desired_contract_type as $key=> $desireType)
+          foreach ($desired_contract_type as $key=> $desiredType)
           {
             echo "<ul class=\"list-group pb-3\">";
-            echo "<li class=\"list-group-item active\">$desireType[0]</li>";
-            foreach ($desired_contract_type_id as $key=> $val)
+            echo "<li class=\"list-group-item active\">$desiredType[0]</li>";
+            // desired_contract_type_id is the list of all the ids on the contract
+            foreach ($desired_contract_type_id as $key=> $premium)
             {
-              if($val[0]==$desireType[0])
+              if($premium[0]==$desiredType[0])
               {
-                $temp = $db->getEmployeeById($val[1]);
+                $temp = $db->getEmployeeById($premium[1]);
                 echo "<li class=\"list-group-item\">".$temp["firstName"]." ".$temp["lastName"]."</li>";
               }
             }
             echo "</ul>";
           }
-        ?>
+        ?> 
 
+        <!-- form to remove employee -->
         <form action="manager_remove.php" method="POST">
-        <div class="form-group">
-        <label for="dropdown" class="col-form-label"><strong>Remove Employees:</strong></label>
-          <select class="form-control col-6" id="dropdown" name="remove_regular">
+          <div class="form-group">
+            <label for="dropdown" class="col-form-label"><strong>Remove Employees:</strong></label>
+            <select class="form-control" id="dropdown" name="remove_regular">
+            <?php
+              foreach ($user_regularUnder as $key => $val) {
+                echo "<option value=\"".$val[2]."\" >$val[0] $val[1]</option>";
+              }
+            ?>
+            </select>
+            <input value="Remove" type="submit" class="my-2 btn btn-outline-danger">
+          </div>
+        </form>
+        <!-- ./ form to remove employee -->
+
+        <!-- form to add employee -->
+        <form action="manager_add.php" method="POST">
+          <div class="form-group">
+          <label for="dropdown" class="col-form-label"><strong>Assign Suitable Employees:</strong></label>
+          <select class="form-control" id="dropdown" name="assign_regular">
           <?php
-            foreach ($user_regularUnder as $key => $val) {
-              echo "<option>$val[0] $val[1]</option>";
+            foreach ($reg_employees_not_on_contract as $key=> $val)
+            {
+              if($val[0]==$user_contract["contractType"])
+              {
+                $temp = $db->getEmployeeById($val[1]);
+                echo "<option value=\"".$val[1]."\">".$temp["firstName"]." ".$temp["lastName"]."</option>";
+              }
             }
           ?>
           </select>
-          <input value="Remove" type="submit" class="my-2 btn btn-outline-primary btn-md">
-          </div>
-        </form>
-
-
-        <form action="manager_add.php" method="POST">
-        <div class="form-group">
-        <label for="dropdown" class="col-form-label"><strong>Assign Suitable Employees:</strong></label>
-        <select class="form-control col-6" id="dropdown" name="assign_regular">
-        <?php
-          foreach ($desired_contract_type_id as $key=> $val)
-          {
-            if($val[0]==$user_contract["contractType"])
-            {
-              $temp = $db->getEmployeeById($val[1]);
-              echo "<option>".$temp["firstName"]." ".$temp["lastName"]."</option>";
-            }
-          }
-        ?>
-        </select>
 
           <label for="dropdown" class="col-form-label"><strong>To Task:</strong></label>
-          <select class="form-control col-6" id="dropdown" name="to_task">
+          <select class="form-control" id="dropdown" name="to_task">
               <?php
                 foreach ($user_tasks as $key=> $val)
                 {
-                  echo "<option>$val[0]</option>";
+                  echo "<option value=\"".$val[0]."\">".$val[0]."</option>";
                 }
               ?>
           </select>
 
-          <input value="Add" type="submit" class="my-2 btn btn-outline-primary btn-md">
+            <input value="Add" type="submit" class="my-2 btn btn-outline-success">
 
-          </div>
-        </form>
+            </div>
+          </form>
+          <!-- ./ form to add employee -->
         </div>
         <!-- ./ form row -->
       </div>
