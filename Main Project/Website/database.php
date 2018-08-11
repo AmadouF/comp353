@@ -174,6 +174,17 @@ class DatabaseConn {
         }
     }
 
+    function getEmployeesNotOnContractByContractId(int $id){
+      $result = $this->conn->query("SELECT Regular.desiredContractType, Regular.employeeId FROM Regular WHERE Regular.contractId!=$id ");
+
+      print($this->conn->error);
+
+      if($result->num_rows > 0){
+        return $result->fetch_all();
+      } else {
+          return 0;
+        }      
+    }
 
     function getRegularOnSameContract(int $contractId)
     {

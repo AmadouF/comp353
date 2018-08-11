@@ -14,6 +14,7 @@
   $empl_and_tasktype_on_contract = $db->getTaskTypeAndEmployeeNameByContractId($user["contractId"]);
   $desired_contract_type = $db->getDesiredContractTypeFromRegular();
   $desired_contract_type_id = $db->getDesiredContractTypeAndIdFromRegular();
+  $reg_employees_not_on_contract = $db->getEmployeesNotOnContractByContractId($user['contractId']);
 ?>
 
 <!doctype html>
@@ -130,12 +131,12 @@
           <label for="dropdown" class="col-form-label"><strong>Assign Suitable Employees:</strong></label>
           <select class="form-control" id="dropdown" name="assign_regular">
           <?php
-            foreach ($desired_contract_type_id as $key=> $premium)
+            foreach ($reg_employees_not_on_contract as $key=> $val)
             {
-              if($premium[0]==$user_contract["contractType"])
+              if($val[0]==$user_contract["contractType"])
               {
-                $temp = $db->getEmployeeById($premium[1]);
-                echo "<option>".$temp["firstName"]." ".$temp["lastName"]."</option>";
+                $temp = $db->getEmployeeById($val[1]);
+                echo "<option value=\"".$val[1]."\">".$temp["firstName"]." ".$temp["lastName"]."</option>";
               }
             }
           ?>
@@ -146,7 +147,7 @@
               <?php
                 foreach ($user_tasks as $key=> $val)
                 {
-                  echo "<option>$val[0]</option>";
+                  echo "<option value=\"".$val[0]."\">".$val[0]."</option>";
                 }
               ?>
           </select>
