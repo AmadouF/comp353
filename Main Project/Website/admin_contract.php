@@ -53,9 +53,9 @@
               </div>
             </li>
             <li class="list-group-item">Start Date: <?= $contract['serviceStartDate']?></li>
-            <? $employee = $db->getEmployeeNameById($contract['superviseBy']); ?>
+            <?php $employee = $db->getEmployeeNameById($contract['superviseBy']); ?>
             <li class="list-group-item">
-              Supervisor: <? foreach ($employee as $key=> $name){echo $name['firstName'];} ?> (ID: <?= $contract['superviseBy']?>)
+              Supervisor: <?php foreach ($employee as $key=> $name){echo $name['firstName'];} ?> (ID: <?= $contract['superviseBy']?>)
             </li> 
             <li class="list-group-item">Contact #: <?= $contract['contactNumber']?></li>
             <li class="list-group-item">ACV: $<?= round($contract['annualContractValue'],2) ?> </li>

@@ -50,7 +50,7 @@
           <ul class="list-grpup px-0 py-3">
             <li class="list-group-item"><h3>List of Contracts</h3></li>
             <!-- for each -->
-            <? foreach ($contracts as $key=> $contract){ ?>
+            <?php foreach ($contracts as $key=> $contract){ ?>
               <li class="d-flex w-100 justify-content-between list-group-item">
                 <h5 class="mb-1">Contract ID: <?= $contract['contractId'] ?></h5>
                 <div>
@@ -59,7 +59,7 @@
                   <a href="<?= "admin_contract.php?contractId=".$contract['contractId'] ?>" class="btn btn-sm btn-outline-primary">View Contract</a>
                 </div>
               </li>
-            <? } ?> 
+            <?php } ?> 
             <!-- ./ for each -->
           </ul>
         </div> 
