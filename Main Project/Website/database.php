@@ -282,7 +282,7 @@ class DatabaseConn {
     function removeRegularFromContractById(int $id)
     {
       $result1 = $this->conn->query("UPDATE Regular SET contractId=0 WHERE employeeId=$id");
-      $result2 = $this->conn->query("UPDATE Tasks SET contractId=0 WHERE employeeId=$id");
+      $result2 = $this->conn->query("DELETE FROM Tasks WHERE employeeId=$id");
       $result3 = $this->conn->query("UPDATE Regular SET manageBy=0 WHERE employeeId=$id");
 
       if(!$result1) {
