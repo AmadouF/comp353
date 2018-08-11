@@ -318,6 +318,14 @@ class DatabaseConn {
       }
     }
 
+    function addClient(string $s1,string $s2,string $s3,string $s4,string $s5,string $s6,string $s7,string $s8,string $s9)
+    {
+      $result = $this->conn->query("INSERT INTO Clients VALUES (0,'$s1','$s2','$s3','$s4','$s5','$s6','$s7','$s8','$s9')");
+      if(!$result) {
+          die($this->conn->error);
+      }
+    }
+
     // Attempt to login as a client
     function loginClient(string $username, string $password) {
         // $query = "SELECT * FROM Clients WHERE emailId ='$username' AND password='$password' LIMIT 1";

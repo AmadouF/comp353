@@ -4,8 +4,35 @@
     header("location: index.php");
   }
 
-  displayErrors();
+  if((isset($_POST["client_password"]))&&(strlen($_POST["client_password"])<20))
+  {
+    if(strlen($_POST["middle_name"])<5){
+      echo "<div class=\"alert alert-success alert-dismissible fade show my-1\">
+          Client file success <strong>builded</strong>.
+           <button type=\"button\" class=\"close\" data-dismiss=\"alert\">
+              <span>&times;</span>
+          </button>
+      </div>";
 
+      $db->addClient($_POST["client_name"],$_POST["first_name"],$_POST["middle_name"],$_POST["last_name"],$_POST["client_email"],$_POST["client_city"],$_POST["client_province"],$_POST["client_postalcode"],$_POST["client_password"]);
+    }
+    else{
+      echo "<div class=\"alert alert-danger alert-dismissible fade show my-1\">
+          Sorry, <strong>middle name</strong> length exceeded.
+           <button type=\"button\" class=\"close\" data-dismiss=\"alert\">
+              <span>&times;</span>
+          </button>
+      </div>";
+    }
+  }
+  else{
+    echo "<div class=\"alert alert-danger alert-dismissible fade show my-1\">
+        Client <strong>password</strong> length exceeded.
+         <button type=\"button\" class=\"close\" data-dismiss=\"alert\">
+            <span>&times;</span>
+        </button>
+    </div>";
+  }
   $user = $db->getSalesAssociateEmployeeById($_SESSION["user"]["employeeId"]);
   $user_line_of_business = $db->getLinesOfBusinessBySalesAssociateId($user["employeeId"]);
   $user_client = $db->getClientsBySalesAssociateId($user["employeeId"]);
