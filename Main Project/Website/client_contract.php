@@ -64,11 +64,13 @@
           <ul >
             <?php 
               while($otherContract = $supervisorOtherContracts->fetch_assoc()) {
+                if($otherContract["contractId"] != $contract["contractId"]) {
                   echo "<li class=\"list-group-item list-group-item-action flex-column align-items-start\">";
                   echo "<strong>".$otherContract["contractId"]."</strong> ";
                   echo "<small>".$otherContract["serviceStartDate"]."</small>";
                   echo "<p class=\"mb-1\"><b>Satisfaction Level:</b> ".$otherContract["satisfactionLevel"]."</p>";
                   echo "</li>";
+                }
               }
             ?>
           </ul>
