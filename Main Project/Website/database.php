@@ -100,6 +100,18 @@ class DatabaseConn {
         }
     }
 
+    function getSalesAssociateEmployeeById(int $id) {
+        $result = $this->conn->query("SELECT * FROM SalesAssociate INNER JOIN Employees ON Employees.employeeId = SalesAssociate.employeeId WHERE SalesAssociate.employeeId=$id");
+
+        print($this->conn->error);
+
+        if($result->num_rows > 0){
+            return $result->fetch_assoc();
+        } else {
+            return 0;
+        }
+    }
+
     function getContractsSupervisedBySalesAssociateById(int $salesAssociateId) {
         return $this->conn->query("SELECT * from Contracts WHERE superviseBy=$salesAssociateId");
     }
@@ -230,6 +242,43 @@ class DatabaseConn {
         }
     }
 
+
+    function getLinesOfBusinessBySalesAssociateId(int $id) {
+      $result = $this->conn->query("SELECT DISTINCT lineOfBusiness FROM Contracts WHERE Contracts.superviseBy=$id");
+
+      print($this->conn->error);
+
+      if($result->num_rows > 0){
+        return $result->fetch_all();
+      } else {
+          return 0;
+        }
+    }
+
+    function getContractIdFromSalesAssociateIdAndLinesOfBusiness(int $id,string $lines) {
+      $result = $this->conn->query("SELECT contractId FROM Contracts WHERE Contracts.superviseBy=$id AND Contracts.lineOfBusiness='$lines'");
+
+      print($this->conn->error);
+
+      if($result->num_rows > 0){
+        return $result->fetch_all();
+      } else {
+          return 0;
+        }
+    }
+
+    function getClientsBySalesAssociateId(int $id) {
+      $result = $this->conn->query("SELECT DISTINCT Clients.* FROM Clients,Contracts WHERE Contracts.superviseBy=$id AND Contracts.clientId=Clients.clientId");
+
+      print($this->conn->error);
+
+      if($result->num_rows > 0){
+        return $result->fetch_all();
+      } else {
+          return 0;
+        }
+    }
+  
     /*== Admin Page Logic ===*/
     // Returns array containing all clients in DB
     function getAllClients(){
@@ -305,6 +354,7 @@ class DatabaseConn {
 
     /*== Login Page Logic ===*/
 
+
     function updateRegularDesiredContractType(int $id,string $enumm) {
       $result = $this->conn->query("UPDATE Regular SET desiredContractType='$enumm' WHERE employeeId=$id");
 
@@ -324,7 +374,7 @@ class DatabaseConn {
     function removeRegularFromContractById(int $id)
     {
       $result1 = $this->conn->query("UPDATE Regular SET contractId=0 WHERE employeeId=$id");
-      $result2 = $this->conn->query("UPDATE Tasks SET contractId=0 WHERE employeeId=$id");
+      $result2 = $this->conn->query("DELETE FROM Tasks WHERE employeeId=$id");
       $result3 = $this->conn->query("UPDATE Regular SET manageBy=0 WHERE employeeId=$id");
 
       if(!$result1) {
@@ -359,6 +409,27 @@ class DatabaseConn {
           die($this->conn->error);
       }
     }
+
+
+    function addClient(string $s1,string $s2,string $s3,string $s4,string $s5,string $s6,string $s7,string $s8,string $s9)
+    {
+      $result = $this->conn->query("INSERT INTO Clients VALUES (0,'$s1','$s2','$s3','$s4','$s5','$s6','$s7','$s8','$s9')");
+      if(!$result) {
+          die($this->conn->error);
+      }
+    }
+
+    function addContract(int $i1, int $i2, string $s1, string $d1, string $d2, string $da, string $s2, string $s3, string $s4)
+    {
+      $real_d1 = floatval($d1);
+      $real_d2 = floatval($d2);
+
+      $result = $this->conn->query("INSERT INTO Contracts VALUES (0,$i1,$i2,'$s1',$real_d1,$real_d2,'$da','$s2','$s3','$s4',0)");
+      if(!$result) {
+          die($this->conn->error);
+      }
+    }
+
 
 
     // Attempt to login as a client

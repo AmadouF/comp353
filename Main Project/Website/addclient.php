@@ -12,7 +12,7 @@
     <link type="text/css" rel="stylesheet" href="style.css"/>
     <!-- Custom Script -->
     <script type="text/javascript" src="script.js"></script>
-    
+
     <title>New Client</title>
   </head>
   <body>
@@ -35,40 +35,49 @@
 
       <!-- row -->
       <div class="row pb-3">
-        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+        <form class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2" action="saleassociate.php" method="POST">
+
+          <!-- form row -->
+          <div class="form-group row">
+            <label for="cname" class="col-sm-4 col-form-label">Client Name</label>
+            <div class="col-sm-8">
+              <input name="client_name" class="form-control" id="cname" placeholder="Inc. Name">
+            </div>
+          </div>
+          <!-- ./ form row -->
 
           <!-- form row -->
           <div class="form-group row">
             <label for="fname" class="col-sm-4 col-form-label">First Name</label>
             <div class="col-sm-8">
-              <input class="form-control" id="fname" placeholder="Representative First Name">
+              <input name="first_name"class="form-control" id="fname" placeholder="Representative First Name">
             </div>
           </div>
-          <!-- ./ form row -->          
+          <!-- ./ form row -->
 
           <!-- form row -->
           <div class="form-group row">
             <label for="lname" class="col-sm-4 col-form-label">Last Name</label>
             <div class="col-sm-8">
-              <input class="form-control" id="lname" placeholder="Representative Last Name">
+              <input name="last_name" class="form-control" id="lname" placeholder="Representative Last Name">
             </div>
           </div>
-          <!-- ./ form row -->     
+          <!-- ./ form row -->
 
           <!-- form row -->
           <div class="form-group row">
             <label for="mname" class="col-sm-4 col-form-label">Middle Name</label>
             <div class="col-sm-8">
-              <input class="form-control" id="mname" placeholder="Representative Middle Name">
+              <input name="middle_name" class="form-control" id="mname" placeholder="Representative Middle Name">
             </div>
           </div>
-          <!-- ./ form row -->  
+          <!-- ./ form row -->
 
           <!-- form row -->
           <div class="form-group row">
             <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="staticEmail" placeholder="Company Name">
+              <input name= "client_email" type="text" class="form-control" id="staticEmail" placeholder="Company Name">
             </div>
           </div>
           <!-- ./ form row -->
@@ -77,16 +86,16 @@
           <div class="form-group row">
             <label for="city" class="col-sm-4 col-form-label">City</label>
             <div class="col-sm-8">
-              <input class="form-control" id="city" placeholder="City">
+              <input name="client_city" class="form-control" id="city" placeholder="City">
             </div>
           </div>
-          <!-- ./ form row -->            
+          <!-- ./ form row -->
 
           <!-- form row -->
           <div class="form-group row">
             <label for="dropdown" class="col-sm-4 col-form-label">Province</label>
             <div class="col-sm-8">
-              <select class="form-control" id="dropdown">
+              <select class="form-control" id="dropdown" name="client_province">
                 <option>British Columbia</option>
                 <option>Alberta</option>
                 <option>Saskatchewan</option>
@@ -99,33 +108,32 @@
               </select>
             </div>
           </div>
-          <!-- ./ form row -->   
+          <!-- ./ form row -->
 
           <!-- form row -->
           <div class="form-group row">
             <label for="city" class="col-sm-4 col-form-label">Postal Code</label>
             <div class="col-sm-8">
-              <input class="form-control" id="city" placeholder="Postal Code">
+              <input name="client_postalcode" class="form-control" id="city" placeholder="Postal Code">
             </div>
           </div>
-          <!-- ./ form row -->    
-          
+          <!-- ./ form row -->
+
           <!-- ./ row -->
           <div class="form-group row">
             <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
             <div class="col-sm-8">
-              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              <input name="client_password" type="password" class="form-control" id="inputPassword" placeholder="Password">
             </div>
           </div>
           <!-- ./ form row -->
 
           <div class="form-group">
-            <button type="submit" class="btn btn-primary">Add Client</button>
-            <a href="./" class="btn btn-danger">Cancel</a>
+            <input value="Submit" type="submit" class="my-2 btn btn-outline-primary btn-md">
+            <a href="./" class="btn btn-outline-danger">Cancel</a>
           </div>
         </form>
-      </div>
-      <!-- ./row -->   
+      <!-- ./row -->
     </div>
     <!-- ./ container -->
 

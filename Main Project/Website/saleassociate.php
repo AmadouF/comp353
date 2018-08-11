@@ -3,6 +3,66 @@
   if(!isLoggedIn() || !getUserType() == "Sales Associate") {
     header("location: index.php");
   }
+
+  if(isset($_POST["client_password"]))
+  {
+    if(strlen($_POST["middle_name"])<5){
+      if(strlen($_POST["client_password"])<20){
+      echo "<div class=\"alert alert-success alert-dismissible fade show my-1\">
+          Client file <strong>SUCCESS</strong> builded.
+           <button type=\"button\" class=\"close\" data-dismiss=\"alert\">
+              <span>&times;</span>
+          </button>
+      </div>";
+
+      $db->addClient($_POST["client_name"],$_POST["first_name"],$_POST["middle_name"],$_POST["last_name"],$_POST["client_email"],$_POST["client_city"],$_POST["client_province"],$_POST["client_postalcode"],$_POST["client_password"]);
+    }
+    else{
+      echo "<div class=\"alert alert-danger alert-dismissible fade show my-1\">
+          Client <strong>password</strong> length exceeded.
+           <button type=\"button\" class=\"close\" data-dismiss=\"alert\">
+              <span>&times;</span>
+          </button>
+      </div>";
+      }
+    }
+    else{
+      echo "<div class=\"alert alert-danger alert-dismissible fade show my-1\">
+          Sorry, <strong>middle name</strong> length exceeded.
+           <button type=\"button\" class=\"close\" data-dismiss=\"alert\">
+              <span>&times;</span>
+          </button>
+      </div>";
+      }
+  }
+
+  if((isset($_POST["client_id"]))&&(isset($_POST["supervisor_id"])))
+  {
+    if((strlen($_POST["contact_number"]))<15)
+    {
+      echo "<div class=\"alert alert-success alert-dismissible fade show my-1\">
+           New contract <strong>SUCCESS</strong> builded.
+           <button type=\"button\" class=\"close\" data-dismiss=\"alert\">
+              <span>&times;</span>
+          </button>
+      </div>";
+
+      $db->addContract($_POST["client_id"],$_POST["supervisor_id"],$_POST["contact_number"],$_POST["a_c_v"],$_POST["initial_amount"],$_POST["service_start_date"],$_POST["service_type"],$_POST["contract_type"],$_POST["line_of_business"]);
+    }
+    else{
+      echo "<div class=\"alert alert-danger alert-dismissible fade show my-1\">
+          This phone number is not <strong>human</strong> phone number.
+           <button type=\"button\" class=\"close\" data-dismiss=\"alert\">
+              <span>&times;</span>
+          </button>
+      </div>";
+    }
+  }
+
+  $user = $db->getSalesAssociateEmployeeById($_SESSION["user"]["employeeId"]);
+  $user_line_of_business = $db->getLinesOfBusinessBySalesAssociateId($user["employeeId"]);
+  $user_client = $db->getClientsBySalesAssociateId($user["employeeId"]);
+
 ?>
 
 <!doctype html>
@@ -39,81 +99,47 @@
       <!-- row -->
       <div class="row py-3">
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-          <h3>Clients List</h3>
-        </div>
-      </div>
-      <!-- ./ row -->
 
-      <!-- row -->
-      <div class="table-responsive">
-        <table class="table table-hover table-striped col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Representative Name</th>
-              <th scope="col">City</th>
-              <th scope="col">Province</th>
-              <th scope="col">Postal Code</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Pirate</th>
-              <td>Jack Sparrow</td>
-              <td>Tortuga</td>
-              <td>Qc</td>
-              <td>H8N 9C9</td>
-            </tr>
-            <tr>
-              <th scope="row">Another Pirate</th>
-              <td>Edward Teach</td>
-              <td>Nassau</td>
-              <td>ON</td>
-              <td>H0N 3C3</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <!-- ./ row -->
+          <h3 class="py-3">My Clients</h3>
+          <?php
+            foreach ($user_client as $val) {
+              echo "<ul class=\"list-group pb-3\">";
+                echo "<li class=\"list-group-item active\">Client $val[0]</li>";
+                echo "<li class=\"list-group-item\">Client Name: $val[1]</li>";
+                echo "<li class=\"list-group-item\">Representive Name: $val[2] $val[3] $val[4]</li>";
+                echo "<li class=\"list-group-item\">Email: $val[5]</li>";
+                echo "<li class=\"list-group-item\">City: $val[6]</li>";
+                echo "<li class=\"list-group-item\">Province: $val[7]</li>";
+                echo "<li class=\"list-group-item\">Postal Code: $val[8]</li>";
+              echo "</ul>";
+            }
+          ?>
+        <form action="addclient.php">
+          <input value="New Client" type="submit" class="my-2 btn btn-outline-primary btn-md">
+        </form>
 
-      <!-- row -->
-      <div class="row pb-3">
-        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-          <a class="btn btn-outline-primary px-4" href="addclient.php">Create A New <strong>Client Account</strong></a>
-        </div>
-      </div>
-      <!-- ./ row -->
+        <h3 class="py-3">Contracts in Line of Business</h3>
+        <?php
+          foreach ($user_line_of_business as $val) {
+            echo "<ul class=\"list-group pb-3\">";
+            echo "<li class=\"list-group-item active\">$val[0]</li>";
+            $temp = $db->getContractIdFromSalesAssociateIdAndLinesOfBusiness($user["employeeId"],$val[0]);
+            foreach ($temp as $vall)
+            {
+              echo "<li class=\"list-group-item\"><form action=\"saleassociate_contract.php\" method=\"POST\">
+              Contract
+              <input type=\"submit\" name=\"contract_ID\" value=\"$vall[0]\" class=\"my-2 btn btn-outline-primary btn-md\"></input>
+              </form></li>";
+            }
+            echo "</ul>";
+              }
+        ?>
+        <form action="addcontract.php">
+          <input value="New Contract" type="submit" class="my-2 btn btn-outline-primary btn-md">
+        </form>
 
-      <!-- row -->
-      <div class="row pb-3">
-        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-          <h3 class="py-3">Line of Business</h3>
-          <div class="list-group pb-3">
-            <a href="#" class="list-group-item active">Development</a>
-            <a href="#" class="list-group-item list-group-item-action">contractA</a>
-            <a href="#" class="list-group-item list-group-item-action">contractB</a>
-            <a href="#" class="list-group-item list-group-item-action">contractC</a>
-            <a href="#" class="list-group-item list-group-item-action">contractD</a>
           </div>
-          <div class="list-group pb-3">
-            <a href="#" class="list-group-item list-group-item-action active">Research</a>
-            <a href="#" class="list-group-item list-group-item-action">contractE</a>
-            <a href="#" class="list-group-item list-group-item-action">contractF</a>
-            <a href="#" class="list-group-item list-group-item-action">contractG</a>
-            <a href="#" class="list-group-item list-group-item-action">contractH</a>
-          </div>
-          <div class="list-group pb-3">
-            <a href="#" class="list-group-item list-group-item-action active">Cloud Service</a>
-            <a href="#" class="list-group-item list-group-item-action">contractI</a>
-            <a href="#" class="list-group-item list-group-item-action">contractJ</a>
-            <a href="#" class="list-group-item list-group-item-action">contractK</a>
-            <a href="#" class="list-group-item list-group-item-action">contractL</a>
-          </div>
-          <a class="btn btn-outline-primary px-4 my-2" href="addcontract.php">Start A New <strong>Contract</strong></a>
         </div>
-      </div>
-      <!-- ./ row -->
-
     </div>
     <!-- ./ container -->
 
