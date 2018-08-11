@@ -6,7 +6,7 @@
     $select_contract_type = $_POST["selectedType"];
     $select_insurance = $_POST["selectedInsurance"];
     $user = $db->getRegularEmployeeById($_SESSION["user"]["employeeId"]);
-    if($user["desiredContractType"]==$select_contract_type)
+    if($user["desiredContractType"]===$select_contract_type)
     {
       pushError("
       <div class=\"alert alert-danger alert-dismissible fade show my-1\">
@@ -18,7 +18,7 @@
       ");
       header("location: regular.php");
     }
-    if($user["insurance"]==$select_insurance)
+    if($user["insurance"]===$select_insurance)
     {
       pushError("
       <div class=\"alert alert-danger alert-dismissible fade show my-1\">
