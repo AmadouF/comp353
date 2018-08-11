@@ -4,9 +4,10 @@ Where
 Contracts.contractId=(Select Distinct Max(Contracts.contractId)&(Contracts.clientId=Clients.clientId))
 
 
-2)	SELECT * 
+2)	SELECT *
 FROM Contracts, SalesAssociate
-WHERE SalesAssociate.employeeId=Contracts.superviseBy
+WHERE
+day(Contracts.serviceStartDate) between day(NOW())-10 and day(NOW());
 
 3)	Select *
 From Employees
@@ -15,3 +16,19 @@ where province='Quebec'
 4)	Select * 
 FROM Contracts 
 WHERE contractType='Gold'
+
+5) select clientName, max(satisfactionLevel), contractType, city
+FROM Contracts, Clients
+where contractType='Premium' GROUP BY Clients.city;
+
+select clientName, max(satisfactionLevel), contractType, city
+FROM Contracts, Clients
+where contractType='Diamond' GROUP BY Clients.city;
+
+select clientName, max(satisfactionLevel), contractType, city
+FROM Contracts, Clients
+where contractType='Silver' GROUP BY Clients.city;
+
+select clientName, max(satisfactionLevel), contractType, city
+FROM Contracts, Clients
+where contractType='Gold' GROUP BY Clients.city;
