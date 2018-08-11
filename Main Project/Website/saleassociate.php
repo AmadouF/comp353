@@ -59,6 +59,12 @@
     }
   }
 
+  if (isset($_POST["manager_on"]))
+  {
+    $manager_on_id = $db->getEmployeeIdByName($_POST["manager_on"]);
+    $db->updateManagerContractIdbyId($manager_on_id["employeeId"]);
+  }
+
   $user = $db->getSalesAssociateEmployeeById($_SESSION["user"]["employeeId"]);
   $user_line_of_business = $db->getLinesOfBusinessBySalesAssociateId($user["employeeId"]);
   $user_client = $db->getClientsBySalesAssociateId($user["employeeId"]);

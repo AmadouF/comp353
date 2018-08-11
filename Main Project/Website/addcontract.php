@@ -3,6 +3,7 @@
   $user = $db->getSalesAssociateEmployeeById($_SESSION["user"]["employeeId"]);
   $user_client = $db->getClientsBySalesAssociateId($user["employeeId"]);
   $all_client = $db->getClientsAll();
+  $managers = $db->getAllManagers();
 ?>
 <!doctype html>
 <html lang="en">
@@ -67,6 +68,22 @@
               <select class="form-control" id="dropdown" name="supervisor_id">
                 <?php
                   echo "<option>".$user["employeeId"]."</option>";
+                ?>
+              </select>
+            </div>
+          </div>
+          <!-- ./ form row -->
+
+          <!-- form row -->
+          <div class="form-group row">
+            <label for="dropdown" class="col-sm-4 col-form-label">Assign Manager On</label>
+            <div class="col-sm-8">
+              <select class="form-control" id="dropdown" name="manager_on">
+                <?php
+                  foreach($managers as $manager)
+                  {
+                    echo "<option>".$manager["firstName"]." ".$manager["lastName"]."</option>";
+                  }
                 ?>
               </select>
             </div>

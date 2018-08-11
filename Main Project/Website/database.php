@@ -100,6 +100,12 @@ class DatabaseConn {
         }
     }
 
+    function getAllManagers() {
+        $result = $this->conn->query("SELECT * FROM Manager INNER JOIN Employees ON Employees.employeeId = Manager.employeeId");
+
+        return $result;
+    }
+
     function getSalesAssociateEmployeeById(int $id) {
         $result = $this->conn->query("SELECT * FROM SalesAssociate INNER JOIN Employees ON Employees.employeeId = SalesAssociate.employeeId WHERE SalesAssociate.employeeId=$id");
 
@@ -207,7 +213,7 @@ class DatabaseConn {
 
 	function setDeliverableDeliveredByContractIdAndDeliverableIndex(int $contractId, int $index) {
 		$result = $this->conn->query("UPDATE Deliverables SET deliveredDate=NOW() WHERE contractId=$contractId AND deliverableIndex=$index");
-		
+
 		if(!$result) {
 			die($this->conn->error);
 		}
@@ -277,7 +283,7 @@ class DatabaseConn {
           return 0;
         }
 	}
-	
+
 	function getAllContractsOrderedByDate() {
 		return $this->conn->query("SELECT * from Contracts ORDER BY serviceStartDate");
 	}
@@ -389,7 +395,7 @@ class DatabaseConn {
           die($this->conn->error);
       }
 	}
-	
+
 	function getTaskByRegularId($id) {
 	  $result = $this->conn->query("SELECT * FROM Tasks");
 	  return $result->fetch_assoc();
@@ -460,6 +466,20 @@ class DatabaseConn {
       if(!$result) {
           die($this->conn->error);
       }
+    }
+
+    function getEmployeeIdByName(string $name)
+    {
+        $result = $this->conn->query("SELECT employeeId FROM Employees WHERE CONCAT(firstName,' ',lastName)='$name'");
+        return $result->fetch_assoc();
+    }
+
+    function updateManagerContractIdbyId(int $id)
+    {
+      $contract = $this->conn->query("SELECT * FROM Contracts ORDER BY contractId DESC LIMIT 1");
+      $contract_1 = $contract->fetch_assoc();
+      $contract_id = $contract_1["contractId"];
+      $result = $this->conn->query("UPDATE Manager SET contractId=$contract_id WHERE employeeId=$id");
     }
 
 
