@@ -63,6 +63,8 @@
             <li class="list-group-item">Service Start Date: <?=$user_contract["serviceStartDate"]?></li>
             <li class="list-group-item">Satisfaction Score: <?=$user_contract["satisfactionLevel"]?></li>
           </ul>
+
+            <a href="./" class="btn btn-outline-primary">Back</a>
         </div>
       </div>
 
