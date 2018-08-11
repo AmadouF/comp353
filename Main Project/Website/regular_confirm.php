@@ -16,8 +16,9 @@
           </button>
       </div>
       ");
-      header("location: regular.php");
-    }
+    }else {
+    	$db->updateRegularDesiredContractType($user["employeeId"],$select_contract_type);
+	}
     if($user["insurance"]===$select_insurance)
     {
       pushError("
@@ -28,11 +29,10 @@
           </button>
       </div>
       ");
-      header("location: regular.php");
-    }
-
-    $db->updateRegularDesiredContractType($user["employeeId"],$select_contract_type);
+    } else {
     $db->updateRegularInsurance($user["employeeId"],$select_insurance);
+	}
+
     header("location: regular.php");
   }
   else{
