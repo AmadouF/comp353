@@ -4,8 +4,14 @@
   if (isset($_POST["contract_ID"]))
   {
     $user_contract_id = $_POST["contract_ID"];
+<<<<<<< HEAD
     $user_contract = $db->getContractByContractId($user_contract_id);
     $managers_on = $db->getManagersByContractId($user_contract_id);
+=======
+	$user_contract = $db->getContractByContractId($user_contract_id);
+
+	$contract_client = $db->getClientByClientId($user_contract["clientId"]);
+>>>>>>> b944b7ca7b6007f9f7bf7831947f693f07bc2d73
   }
 ?>
 
@@ -64,6 +70,7 @@
             <li class="list-group-item">Line of Business: <?=$user_contract["lineOfBusiness"]?></li>
             <li class="list-group-item">Service Start Date: <?=$user_contract["serviceStartDate"]?></li>
             <li class="list-group-item">Satisfaction Score: <?=$user_contract["satisfactionLevel"]?></li>
+            <li class="list-group-item">Location: <?=$contract_client["city"].", ".$contract_client["province"]?></li>
           </ul>
 
           <h3 class="py-3">Managers On</h3>
