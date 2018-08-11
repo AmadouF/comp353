@@ -4,7 +4,7 @@
     header("location: index.php");
   }
 
-  if((isset($_POST["client_password"]))&&(strlen($_POST["client_password"])<20))
+  if(isset($_POST["client_password"]))
   {
     if(strlen($_POST["middle_name"])<5){
       if(strlen($_POST["client_password"])<20){
