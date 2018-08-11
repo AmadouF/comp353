@@ -2,6 +2,7 @@
   include("includes.php");
   $user = $db->getSalesAssociateEmployeeById($_SESSION["user"]["employeeId"]);
   $user_client = $db->getClientsBySalesAssociateId($user["employeeId"]);
+  $all_client = $db->getClientsAll();
 ?>
 <!doctype html>
 <html lang="en">
@@ -49,7 +50,7 @@
             <div class="col-sm-8">
               <select class="form-control" id="dropdown" name="client_id">
                 <?php
-                  foreach ($user_client as $val)
+                  foreach ($all_client as $val)
                   {
                     echo "<option>$val[0]</option>";
                   }
