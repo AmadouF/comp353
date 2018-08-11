@@ -99,6 +99,18 @@ class DatabaseConn {
         }
     }
 
+    function getSalesAssociateEmployeeById(int $id) {
+        $result = $this->conn->query("SELECT * FROM SalesAssociate INNER JOIN Employees ON Employees.employeeId = SalesAssociate.employeeId WHERE SalesAssociate.employeeId=$id");
+
+        print($this->conn->error);
+
+        if($result->num_rows > 0){
+            return $result->fetch_assoc();
+        } else {
+            return 0;
+        }
+    }
+
     function getContractsSupervisedBySalesAssociateById(int $salesAssociateId) {
         return $this->conn->query("SELECT * from Contracts WHERE superviseBy=$salesAssociateId");
     }
@@ -205,6 +217,42 @@ class DatabaseConn {
 
     function getDesiredContractTypeAndIdFromRegular() {
       $result = $this->conn->query("SELECT desiredContractType,employeeId FROM Regular");
+
+      print($this->conn->error);
+
+      if($result->num_rows > 0){
+        return $result->fetch_all();
+      } else {
+          return 0;
+        }
+    }
+
+    function getLinesOfBusinessBySalesAssociateId(int $id) {
+      $result = $this->conn->query("SELECT DISTINCT lineOfBusiness FROM Contracts WHERE Contracts.superviseBy=$id");
+
+      print($this->conn->error);
+
+      if($result->num_rows > 0){
+        return $result->fetch_all();
+      } else {
+          return 0;
+        }
+    }
+
+    function getContractIdFromSalesAssociateIdAndLinesOfBusiness(int $id,string $lines) {
+      $result = $this->conn->query("SELECT contractId FROM Contracts WHERE Contracts.superviseBy=$id AND Contracts.lineOfBusiness='$lines'");
+
+      print($this->conn->error);
+
+      if($result->num_rows > 0){
+        return $result->fetch_all();
+      } else {
+          return 0;
+        }
+    }
+
+    function getClientsBySalesAssociateId(int $id) {
+      $result = $this->conn->query("SELECT DISTINCT Clients.* FROM Clients,Contracts WHERE Contracts.superviseBy=$id AND Contracts.clientId=Clients.clientId");
 
       print($this->conn->error);
 
