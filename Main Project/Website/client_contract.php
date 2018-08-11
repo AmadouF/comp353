@@ -42,65 +42,62 @@
       <!-- row -->
       <div class="row py-3 text-center">
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-          <h1>Contract A</h1>
+          <h1>Contract <?=$contract["contractId"]?></h1>
         </div>
       </div>
       <!-- ./ row -->
       
       <!-- row -->
       <div class="row">
+        <!-- col -->
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-          <h4>ID: <?=$contract["contractId"]?></h4>
-          <span>Contract Date: <?=$contract["serviceStartDate"]?></span>
-          <br/>
-          <span>Contact number: <?=$contract["contactNumber"]?></span>
-          <br/>
-          <?php
-            $supervisor = $db->getEmployeeById($contract["superviseBy"]);
-            $supervisorOtherContracts = $db->getContractsSupervisedBySalesAssociateById($contract["superviseBy"]);
-          ?>
-          <span>Supervisor: <?=$supervisor["firstName"]." ".$supervisor["lastName"]?></span>
-          <p>Also supervised: 
-          <ul >
-            <?php 
-              while($otherContract = $supervisorOtherContracts->fetch_assoc()) {
-                  echo "<li class=\"list-group-item list-group-item-action flex-column align-items-start\">";
-                  echo "<strong>".$otherContract["contractId"]."</strong> ";
-                  echo "<small>".$otherContract["serviceStartDate"]."</small>";
-                  echo "<p class=\"mb-1\"><b>Satisfaction Level:</b> ".$otherContract["satisfactionLevel"]."</p>";
-                  echo "</li>";
-              }
+          <ul class="list-group">
+            <li class="list-group-item">Contract Date: <?=$contract["serviceStartDate"]?></li>
+            <li class="list-group-item">Contact number: <?=$contract["contactNumber"]?></li>
+            <?php
+              $supervisor = $db->getEmployeeById($contract["superviseBy"]);
+              $supervisorOtherContracts = $db->getContractsSupervisedBySalesAssociateById($contract["superviseBy"]);
             ?>
+            <li class="list-group-item">Supervisor: <?=$supervisor["firstName"]." ".$supervisor["lastName"]?></li>
+            <li class="list-group-item">Also supervising:
+            <ul class="list-group pt-3">
+              <?php 
+                while($otherContract = $supervisorOtherContracts->fetch_assoc()) {
+                    echo "<li class=\"list-group-item\"><strong>Contract: ".$otherContract["contractId"]."</strong></li>";
+                    echo "<li class=\"list-group-item\">Start Date: ".$otherContract["serviceStartDate"]."</li>";
+                    echo "<li class=\"list-group-item\">Satisfaction Level: ".$otherContract["satisfactionLevel"]."</li>";
+                }
+              ?>
+            </ul>
+            </li>
+            <li class="list-group-item">Initial Amount: <?=$contract["initalAmount"]?></li>
+            <li class="list-group-item">ACV: <?=$contract["annualContractValue"]?></li>
+            <li class="list-group-item">Type: <?=$contract["contractType"]?></li>
+            <li class="list-group-item">Service Type: <?=$contract["serviceType"]?></li>
+            <li class="list-group-item">Line of Business:<?=$contract["lineOfBusiness"]?></li>
+            <li class="list-group-item">Satisfaction Level: <?=$contract["satisfactionLevel"]?></li>
           </ul>
-          </p>
-          <br/>
-          <span>Initial Amount: <?=$contract["initalAmount"]?></span>
-          <br/>
-          <span>ACV: <?=$contract["annualContractValue"]?></span>
-          <br/>
-          <span>Type: <?=$contract["contractType"]?></span>
-          <br/>
-          <span>Service Type: <?=$contract["serviceType"]?></span>
-          <br/>
-          <span>Line of Business:<?=$contract["lineOfBusiness"]?></span>
-          <br/>
-          <span>Satisfaction Level: <?=$contract["satisfactionLevel"]?></span>
-          <br/><br/>
-
-          <h5>Manager on Contract:</h5>
+        </div>
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
+          <h4 class="py-2">Manager on Contract:</h4>
+          <ul class="list-group">
           <?php
             $managers = $db->getManagersByContractId($contract["contractId"]);
 
             while($manager = $managers->fetch_assoc()) {
                 ?>
-                <span><?=$manager["firstName"]." ".$manager["lastName"]?> </span>
-                <br />
+                <li class="list-group-item"><?=$manager["firstName"]." ".$manager["lastName"]?> </li>
                 <?php
             }
           ?>
-          <br/>
-          <br/>
-          <h5>Deliverables:</h5>
+          </ul>
+        </div>
+        <!-- ./ col -->
+
+        <!-- col -->
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
+          <h4 class="py-2">Deliverables:</h4>
+          <ul class="list-group">
           <?php
             $deliverables = $db->getDeliverablesByContractId($contract["contractId"]);
             
@@ -110,34 +107,39 @@
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1"><?=$deliverable["deliverableIndex"] ?></h5>
               </div>
-              <p class="mb-1"><b>Scheduled For:</b> <?=$deliverable["scheduledDate"]?></p>
-              <p class="mb-1"><b>Delivered On:</b> <?=$deliverable["deliveredDate"]?></p>
+              <p class="mb-1">Scheduled For: <?=$deliverable["scheduledDate"]?></p>
+              <p class="mb-1">Delivered On: <?=$deliverable["deliveredDate"]?></p>
             </a>
-            <br />
               <?php
             }
           ?>
-          <br/>
-          <br/>          
+          </ul>          
+        </div>
+        <!-- ./ col -->
 
+        <!-- col -->
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
           <!-- form row -->
-          <div class="form-group">
-            <label for="dropdown" class="col-form-label"><strong>Satisfaction Score:</strong></label>
-            <select onchange="setSatisfactionLevel(this, <?=$contract["contractId"]?>)" class="form-control col-4" id="satisfactionLevel">
+          <div class="form-group row-fluid">
+            <h4 class="py-2">Satisfaction Score:</h4>
+            <select onchange="setSatisfactionLevel(this, <?=$contract["contractId"]?>)" class="form-control col-6" id="satisfactionLevel">
             <?php
               for($i=0; $i <= 10; $i++) {
                 if($contract["satisfactionLevel"] == $i) {
                   echo "<option selected>$i</option>";
                 } else {
-                  echo "<option>$i</option>";
+                  echo "<option value=\"$i\">$i</option>";
                 }
               }
               ?>
             </select>
-            <button class="my-2 btn btn-primary btn-md">Add</button>
           </div>
           <!-- ./ form row -->
+          <div class="col text-center">
+            <a href="./" class="btn btn-primary">Back</a>
+          </div>
         </div>
+        <!-- ./ col -->
       </div>
       <!-- ./ row -->
     </div>
