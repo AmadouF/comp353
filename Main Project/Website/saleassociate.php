@@ -120,15 +120,18 @@
 
         <h3 class="py-3">Contracts in Line of Business</h3>
         <?php
-          foreach ($user_line_of_business as $val) {
+          foreach ($user_line_of_business as $line_of_business) {
             echo "<ul class=\"list-group pb-3\">";
-            echo "<li class=\"list-group-item active\">$val[0]</li>";
-            $temp = $db->getContractIdFromSalesAssociateIdAndLinesOfBusiness($user["employeeId"],$val[0]);
-            foreach ($temp as $vall)
+            echo "<li class=\"list-group-item active\">$line_of_business[0]</li>";
+            $contracts_in_line_of_business = $db->getContractIdFromSalesAssociateIdAndLinesOfBusiness($user["employeeId"],$line_of_business[0]);
+            foreach ($contracts_in_line_of_business as $contract)
             {
+				$contract_client = $db->getClientByClientId($contract[0]);
+
               echo "<li class=\"list-group-item\"><form action=\"saleassociate_contract.php\" method=\"POST\">
-              Contract
-              <input type=\"submit\" name=\"contract_ID\" value=\"$vall[0]\" class=\"my-2 btn btn-outline-primary btn-md\"></input>
+			  Contract:
+              <input type=\"submit\" name=\"contract_ID\" value=\"$contract[0]\" class=\"my-2 btn btn-outline-primary btn-md\"></input>
+				<br />".$contract_client["city"].", ".$contract_client["province"]."
               </form></li>";
             }
             echo "</ul>";

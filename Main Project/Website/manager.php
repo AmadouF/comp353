@@ -47,12 +47,14 @@
    <?php
         include("employee_general_info.php");
       ?>
-
       <!-- row -->
       <div class="row py-3">
 
         <!-- col -->
+	  
+
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+		  <a class="btn btn-main" href="manager_chronological_contracts.php">View All Contracts</a>
           <h3 class="py-3">My Contract</h3>
           <ul class="list-group pb-3">
             <li class="list-group-item active">Client Name: <?=$user_client["clientName"]?></li>
@@ -72,6 +74,7 @@
           <ul class="list-group pb-3">
           <?php
             foreach ($user_regularUnder as $key => $val) {
+				 $task =$db->getTaskByRegularId($val["employeeId"]);
               echo "<li class=\"list-group-item\">$val[0] $val[1]</li>";
             }
           ?>
@@ -115,9 +118,10 @@
             <label for="dropdown" class="col-form-label"><strong>Remove Employees:</strong></label>
             <select class="form-control" id="dropdown" name="remove_regular">
             <?php
-              foreach ($user_regularUnder as $key => $val) {
-                echo "<option value=\"".$val[2]."\" >$val[0] $val[1]</option>";
-              }
+              foreach ($user_regularUnder as $val) {
+
+     	           echo "<option value=\"".$val["firstName"]."\" >"."</option>";
+			}
             ?>
             </select>
             <input value="Remove" type="submit" class="my-2 btn btn-outline-danger">

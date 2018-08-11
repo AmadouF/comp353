@@ -4,7 +4,9 @@
   if (isset($_POST["contract_ID"]))
   {
     $user_contract_id = $_POST["contract_ID"];
-    $user_contract = $db->getContractByContractId($user_contract_id);
+	$user_contract = $db->getContractByContractId($user_contract_id);
+
+	$contract_client = $db->getClientByClientId($user_contract["clientId"]);
   }
 ?>
 
@@ -62,6 +64,7 @@
             <li class="list-group-item">Line of Business: <?=$user_contract["lineOfBusiness"]?></li>
             <li class="list-group-item">Service Start Date: <?=$user_contract["serviceStartDate"]?></li>
             <li class="list-group-item">Satisfaction Score: <?=$user_contract["satisfactionLevel"]?></li>
+            <li class="list-group-item">Location: <?=$contract_client["city"].", ".$contract_client["province"]?></li>
           </ul>
 
             <a href="./" class="btn btn-outline-primary">Back</a>

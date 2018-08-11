@@ -265,7 +265,11 @@ class DatabaseConn {
       } else {
           return 0;
         }
-    }
+	}
+	
+	function getAllContractsOrderedByDate() {
+		return $this->conn->query("SELECT * from Contracts ORDER BY serviceStartDate");
+	}
 
     function getClientsBySalesAssociateId(int $id) {
       $result = $this->conn->query("SELECT DISTINCT Clients.* FROM Clients,Contracts WHERE Contracts.superviseBy=$id AND Contracts.clientId=Clients.clientId");
@@ -373,7 +377,11 @@ class DatabaseConn {
       if(!$result) {
           die($this->conn->error);
       }
-    }
+	}
+	
+	function getTaskByRegularId($id) {
+      return $this->conn->query("SELECT * from Tasks WHERE employeeId=")->fetch_assoc();
+	}
 
     function updateRegularInsurance(int $id,string $enumm) {
       $result = $this->conn->query("UPDATE Regular SET insurance='$enumm' WHERE employeeId=$id");
