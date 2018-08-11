@@ -1,3 +1,8 @@
+<?php
+  include("includes.php");
+  $user = $db->getSalesAssociateEmployeeById($_SESSION["user"]["employeeId"]);
+  $user_client = $db->getClientsBySalesAssociateId($user["employeeId"]);
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,7 +12,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
+
     <!-- Custom Stylesheet -->
     <link type="text/css" rel="stylesheet" href="style.css"/>
     <!-- Custom Script -->
@@ -33,51 +38,22 @@
       </div>
       <!-- ./ row -->
 
+
       <!-- row -->
       <div class="row pb-3">
-        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+        <form class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2" action="saleassociate.php" method="POST">
 
           <!-- form row -->
           <div class="form-group row">
-            <label for="staticEmail" class="col-sm-4 col-form-label">ContractID</label>
+            <label for="dropdown" class="col-sm-4 col-form-label">Client ID</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="staticEmail" placeholder="12345678">
-            </div>
-          </div>
-          <!-- ./ form row -->
-
-          <!-- form row -->
-          <div class="form-group row">
-            <label for="fname" class="col-sm-4 col-form-label">Company Name</label>
-            <div class="col-sm-8">
-              <input class="form-control" id="fname" placeholder="Department">
-            </div>
-          </div>
-          <!-- ./ form row -->          
-
-          <!-- form row -->
-          <div class="form-group row">
-            <label for="lname" class="col-sm-4 col-form-label">Date</label>
-            <div class="col-sm-8">
-              <input class="form-control" id="fname" placeholder="lname">
-            </div>
-          </div>
-          <!-- ./ form row -->               
-          
-          <!-- form row -->
-          <div class="form-group row">
-            <label for="dropdown" class="col-sm-4 col-form-label">Province</label>
-            <div class="col-sm-8">
-              <select class="form-control" id="dropdown">
-                <option>British Columbia</option>
-                <option>Alberta</option>
-                <option>Saskatchewan</option>
-                <option>Manitoba</option>
-                <option>Ontario</option>
-                <option>Quebec</option>
-                <option>New Brunswick</option>
-                <option>Newfoundland</option>
-                <option>PEI</option>
+              <select class="form-control" id="dropdown" name="client_id">
+                <?php
+                  foreach ($user_client as $val)
+                  {
+                    echo "<option>$val[0]</option>";
+                  }
+                ?>
               </select>
             </div>
           </div>
@@ -85,12 +61,12 @@
 
           <!-- form row -->
           <div class="form-group row">
-            <label for="dropdown" class="col-sm-4 col-form-label">Manager</label>
+            <label for="dropdown" class="col-sm-4 col-form-label">Supervisor ID</label>
             <div class="col-sm-8">
-              <select class="form-control" id="dropdown">
-                <option>Michael</option>
-                <option>David</option>
-                <option>Ryan</option>
+              <select class="form-control" id="dropdown" name="supervisor_id">
+                <?php
+                  echo "<option>".$user["employeeId"]."</option>";
+                ?>
               </select>
             </div>
           </div>
@@ -98,9 +74,9 @@
 
           <!-- form row -->
           <div class="form-group row">
-            <label for="dropdown" class="col-sm-4 col-form-label">Priority</label>
+            <label for="dropdown" class="col-sm-4 col-form-label">Contract Type</label>
             <div class="col-sm-8">
-              <select class="form-control" id="dropdown">
+              <select class="form-control" id="dropdown" name="contract_type">
                 <option>Premium</option>
                 <option>Diamond</option>
                 <option>Gold</option>
@@ -108,40 +84,74 @@
               </select>
             </div>
           </div>
-          <!-- ./ form row -->   
+          <!-- ./ form row -->
 
           <!-- form row -->
           <div class="form-group row">
-            <label for="dropdown" class="col-sm-4 col-form-label">Employee</label>
-            <div class="col-sm-6">
-              <select class="form-control" id="dropdown">
-                <option>Oscar</option>
-                <option>Dwight</option>
-                <option>Big Tuna</option>
+            <label for="dropdown" class="col-sm-4 col-form-label">Service Type</label>
+            <div class="col-sm-8">
+              <select class="form-control" id="dropdown" name="service_type">
+                <option>Cloud</option>
+                <option>On-Premises</option>
               </select>
-            </div>
-            <div class="col-2">
-              <button class="btn btn-primary btn-md" style="width:100%;">Add</button>
             </div>
           </div>
           <!-- ./ form row -->
 
-          <!-- ./ row -->
+          <!-- form row -->
           <div class="form-group row">
-            <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
+            <label for="dropdown" class="col-sm-4 col-form-label">Line of Business</label>
             <div class="col-sm-8">
-              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              <select class="form-control" id="dropdown" name="line_of_business">
+                <option>CloudServices</option>
+                <option>Development</option>
+                <option>Research</option>
+              </select>
             </div>
           </div>
-          <!-- ./ form row -->          
+          <!-- ./ form row -->
+
+          <!-- form row -->
+          <div class="form-group row">
+            <label for="lname" class="col-sm-4 col-form-label">Contact Number</label>
+            <div class="col-sm-8">
+              <input class="form-control" id="fname" placeholder="Phone Number" name="contact_number">
+            </div>
+          </div>
+          <!-- ./ form row -->
+
+          <!-- form row -->
+          <div class="form-group row">
+            <label for="lname" class="col-sm-4 col-form-label">Initial Amount</label>
+            <div class="col-sm-8">
+              <input class="form-control" id="fname" placeholder="lnitial Amount" name="initial_amount">
+            </div>
+          </div>
+          <!-- ./ form row -->
+
+          <!-- form row -->
+          <div class="form-group row">
+            <label for="lname" class="col-sm-4 col-form-label">ACV</label>
+            <div class="col-sm-8">
+              <input class="form-control" id="fname" placeholder="Annual Contract Value" name="a_c_v">
+            </div>
+          </div>
+          <!-- ./ form row -->
+
+          <!-- form row -->
+          <div class="form-group row">
+            <label for="lname" class="col-sm-4 col-form-label">Service Start Date</label>
+            <div class="col-sm-8">
+              <input class="form-control" id="fname" placeholder="Date" name="service_start_date">
+            </div>
+          </div>
+          <!-- ./ form row -->
 
           <div class="form-group">
-            <button type="submit" class="btn btn-primary">Add Contract</button>
-            <a href="./" class="btn btn-danger">Cancel</a>
+            <input value="Submit" type="submit" class="my-2 btn btn-outline-primary btn-md">
+            <a href="./" class="btn btn-outline-danger">Cancel</a>
           </div>
         </form>
-      </div>
-      <!-- ./row -->
 
       </div>
       <!-- ./ row -->

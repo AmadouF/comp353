@@ -39,7 +39,7 @@
 
           <!-- form row -->
           <div class="form-group row">
-            <label for="cname" class="col-sm-4 col-form-label">Client Name:</label>
+            <label for="cname" class="col-sm-4 col-form-label">Client Name</label>
             <div class="col-sm-8">
               <input name="client_name" class="form-control" id="cname" placeholder="Inc. Name">
             </div>
