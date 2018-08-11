@@ -113,6 +113,20 @@
 
           <!-- form row -->
           <div class="form-group row">
+            <label for="dropdown" class="col-sm-4 col-form-label">Service Start Date</label>
+            <div class="col-sm-8">
+              <select class="form-control" id="dropdown" name="service_start_date">
+                <?php
+                  $datee = date("Y-m-d");
+                  echo "<option>$datee</option>";
+                ?>
+              </select>
+            </div>
+          </div>
+          <!-- ./ form row -->
+
+          <!-- form row -->
+          <div class="form-group row">
             <label for="lname" class="col-sm-4 col-form-label">Contact Number</label>
             <div class="col-sm-8">
               <input class="form-control" id="fname" placeholder="Phone Number" name="contact_number">
@@ -134,15 +148,6 @@
             <label for="lname" class="col-sm-4 col-form-label">ACV</label>
             <div class="col-sm-8">
               <input class="form-control" id="fname" placeholder="Annual Contract Value" name="a_c_v">
-            </div>
-          </div>
-          <!-- ./ form row -->
-
-          <!-- form row -->
-          <div class="form-group row">
-            <label for="lname" class="col-sm-4 col-form-label">Service Start Date</label>
-            <div class="col-sm-8">
-              <input class="form-control" id="fname" placeholder="Date" name="service_start_date">
             </div>
           </div>
           <!-- ./ form row -->

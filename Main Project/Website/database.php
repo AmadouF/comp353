@@ -326,6 +326,14 @@ class DatabaseConn {
       }
     }
 
+    function addContract(int $i1, int $i2, string $s1, double $d1, double $d2, date $da, string $s2, string $s3, string $s4)
+    {
+      $result = $this->conn->query("INSERT INTO Contracts VALUES (0,$i1,$i2,'$s1',$d1,$d2,$da,'$s2','$s3','$s4')");
+      if(!$result) {
+          die($this->conn->error);
+      }
+    }
+
     // Attempt to login as a client
     function loginClient(string $username, string $password) {
         // $query = "SELECT * FROM Clients WHERE emailId ='$username' AND password='$password' LIMIT 1";
