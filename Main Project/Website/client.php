@@ -69,6 +69,7 @@
             }
           }
         ?>
+		<a class="btn btn-primary" href="client_add_contract.php">New Contract</a>
       </div>
 
     </div>
