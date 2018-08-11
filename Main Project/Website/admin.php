@@ -44,7 +44,7 @@
           <ul class="list-grpup px-0 pb-3">
           <li class="list-group-item"><h3>List of Clients</h3></li>
           <!-- for each  -->
-          <? foreach ($clients as $key=> $client){ ?>
+          <?php foreach ($clients as $key => $client){ ?>
             <li class="d-flex w-100 justify-content-between list-group-item">
               <h5 class="mb-1"><?= $client['clientName'] ?></h5>
               <div>
@@ -53,7 +53,7 @@
                 <a href="<?= "admin_contracts.php?clientId=".$client['clientId'] ?>" class="btn btn-outline-primary btn-sm">View Contracts</a>
               </div>
             </li>
-          <? } ?> 
+          <?php } ?> 
           <!-- ./ for each  -->
           </ul>
         </div>  
