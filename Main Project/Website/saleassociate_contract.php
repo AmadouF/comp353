@@ -4,9 +4,14 @@
   if (isset($_POST["contract_ID"]))
   {
     $user_contract_id = $_POST["contract_ID"];
+<<<<<<< HEAD
+    $user_contract = $db->getContractByContractId($user_contract_id);
+    $managers_on = $db->getManagersByContractId($user_contract_id);
+=======
 	$user_contract = $db->getContractByContractId($user_contract_id);
 
 	$contract_client = $db->getClientByClientId($user_contract["clientId"]);
+>>>>>>> b944b7ca7b6007f9f7bf7831947f693f07bc2d73
   }
 ?>
 
@@ -42,7 +47,8 @@
       	<div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
       	    <h1>Contract <?= $user_contract_id?></h1>
       	    <span><strong>Client ID</strong>: <?= $user_contract["clientId"] ?></span><br/>
-      	    <span><strong>Supervisor ID</strong>: <?= $user_contract["superviseBy"] ?></span>
+      	    <span><strong>Supervisor ID</strong>: <?= $user_contract["superviseBy"] ?></span><br/>
+            <span><strong>Supervisor Name</strong>: <?= $user["firstName"] ?> <?= $user["lastName"] ?></span>
       	    <br/>
       	</div>
       </div>
@@ -56,7 +62,7 @@
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
           <h3 class="py-3">Contract Details</h3>
           <ul class="list-group pb-3">
-            <li class="list-group-item active">Contact Number: <?=$user_contract["contactNumber"]?></li>
+            <li class="list-group-item">Contact Number: <?=$user_contract["contactNumber"]?></li>
             <li class="list-group-item">Initial Amount: <?=$user_contract["initalAmount"]?></li>
             <li class="list-group-item">ACV: <?=$user_contract["annualContractValue"]?></li>
             <li class="list-group-item">Contract Type: <?=$user_contract["contractType"]?></li>
@@ -65,6 +71,18 @@
             <li class="list-group-item">Service Start Date: <?=$user_contract["serviceStartDate"]?></li>
             <li class="list-group-item">Satisfaction Score: <?=$user_contract["satisfactionLevel"]?></li>
             <li class="list-group-item">Location: <?=$contract_client["city"].", ".$contract_client["province"]?></li>
+          </ul>
+
+          <h3 class="py-3">Managers On</h3>
+          <ul class="list-group pb-3">
+            <?php
+              foreach($managers_on as $manager_row)
+              {
+                echo "<li class=\"list-group-item\">";
+                echo $manager_row["firstName"]." ".$manager_row["lastName"];
+                echo "</li>";
+              }
+            ?>
           </ul>
 
             <a href="./" class="btn btn-outline-primary">Back</a>
