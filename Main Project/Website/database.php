@@ -181,8 +181,6 @@ class DatabaseConn {
     {
       $result = $this->conn->query("SELECT Employees.firstName,Employees.lastName FROM Employees, Regular WHERE Employees.employeeId = Regular.employeeId AND Regular.contractId=$contractId");
 
-      print($this->conn->error);
-
       if($result->num_rows > 0)
       {
         return $result->fetch_all();
@@ -193,10 +191,16 @@ class DatabaseConn {
       }
     }
 
+	function setDeliverableDeliveredByContractIdAndDeliverableIndex(int $contractId, int $index) {
+		$result = $this->conn->query("UPDATE Deliverables SET deliveredDate=NOW() WHERE contractId=$contractId AND deliverableIndex=$index");
+		
+		if(!$result) {
+			die($this->conn->error);
+		}
+	}
+
     function getDesiredContractTypeFromRegular() {
       $result = $this->conn->query("SELECT DISTINCT desiredContractType FROM Regular");
-
-      print($this->conn->error);
 
       if($result->num_rows > 0){
         return $result->fetch_all();
@@ -207,8 +211,6 @@ class DatabaseConn {
 
     function getDesiredContractTypeAndIdFromRegular() {
       $result = $this->conn->query("SELECT desiredContractType,employeeId FROM Regular");
-
-      print($this->conn->error);
 
       if($result->num_rows > 0){
         return $result->fetch_all();

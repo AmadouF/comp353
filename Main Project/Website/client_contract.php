@@ -111,7 +111,9 @@
               </div>
               <p class="mb-1">Scheduled For: <?=$deliverable["scheduledDate"]?></p>
               <p class="mb-1">Delivered On: <?=$deliverable["deliveredDate"]?></p>
+			  <a class="btn btn-primary" href="deliverable_set_delivered.php?contractId=<?=$contract["contractId"]?>&deliverable=<?=$deliverable["deliverableIndex"]?>">Set as delivered</a>
             </a>
+			<br />
               <?php
             }
           ?>
