@@ -9,7 +9,7 @@
     if(strlen($_POST["middle_name"])<5){
       if(strlen($_POST["client_password"])<20){
       echo "<div class=\"alert alert-success alert-dismissible fade show my-1\">
-          Client file success <strong>builded</strong>.
+          Client file <strong>SUCCESS</strong> builded.
            <button type=\"button\" class=\"close\" data-dismiss=\"alert\">
               <span>&times;</span>
           </button>
@@ -34,6 +34,29 @@
           </button>
       </div>";
       }
+  }
+
+  if((isset($_POST["client_id"]))&&(isset($_POST["supervisor_id"])))
+  {
+    if((strlen($_POST["contact_number"]))<15)
+    {
+      echo "<div class=\"alert alert-success alert-dismissible fade show my-1\">
+           New contract <strong>SUCCESS</strong> builded.
+           <button type=\"button\" class=\"close\" data-dismiss=\"alert\">
+              <span>&times;</span>
+          </button>
+      </div>";
+
+      $db->addContract($_POST["client_id"],$_POST["supervisor_id"],$_POST["contact_number"],$_POST["a_c_v"],$_POST["initial_amount"],$_POST["service_start_date"],$_POST["service_type"],$_POST["contract_type"],$_POST["line_of_business"]);
+    }
+    else{
+      echo "<div class=\"alert alert-danger alert-dismissible fade show my-1\">
+          This phone number is not <strong>human</strong> phone number.
+           <button type=\"button\" class=\"close\" data-dismiss=\"alert\">
+              <span>&times;</span>
+          </button>
+      </div>";
+    }
   }
 
   $user = $db->getSalesAssociateEmployeeById($_SESSION["user"]["employeeId"]);

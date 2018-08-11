@@ -326,9 +326,12 @@ class DatabaseConn {
       }
     }
 
-    function addContract(int $i1, int $i2, string $s1, double $d1, double $d2, date $da, string $s2, string $s3, string $s4)
+    function addContract(int $i1, int $i2, string $s1, string $d1, string $d2, string $da, string $s2, string $s3, string $s4)
     {
-      $result = $this->conn->query("INSERT INTO Contracts VALUES (0,$i1,$i2,'$s1',$d1,$d2,$da,'$s2','$s3','$s4')");
+      $real_d1 = floatval($d1);
+      $real_d2 = floatval($d2);
+
+      $result = $this->conn->query("INSERT INTO Contracts VALUES (0,$i1,$i2,'$s1',$real_d1,$real_d2,'$da','$s2','$s3','$s4',0)");
       if(!$result) {
           die($this->conn->error);
       }
