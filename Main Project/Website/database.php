@@ -35,6 +35,7 @@ class DatabaseConn {
         return $result;
     }
 
+
     function saveContractSatisfactionByContractId(int $contractId, int $satisfaction) {
         $result = $this->conn->query("UPDATE Contracts SET satisfactionLevel=$satisfaction WHERE contractId=$contractId");
 
@@ -115,6 +116,7 @@ class DatabaseConn {
         }
     }
 
+    // Returns the client matching the contract id
     function getClientByContractId(int $id) {
         $result = $this->conn->query("SELECT * FROM Clients WHERE clientId IN (SELECT clientId FROM Contracts WHERE Contracts.contractId=$id)");
 
@@ -215,6 +217,81 @@ class DatabaseConn {
         }
     }
 
+    /*== Admin Page Logic ===*/
+    // Returns array containing all clients in DB
+    function getAllClients(){
+        $result = $this->conn->query("SELECT * FROM Clients;");
+        return $result; 
+    }
+
+    function getEmployeeNameById(int $id){
+        $result = $this->conn->query("SELECT Employees.firstName FROM Employees WHERE Employees.employeeId = $id;");
+        return $result;
+    }
+
+    // Retunrs array containing all contracts belonging to a clients
+    function getContractByClientId(int $id){
+        $result = $this->conn->query("SELECT * FROM Contracts WHERE Contracts.clientId=$id;");
+        return $result;
+    }
+
+    // returns an array of all the employees working on a specific contract
+    function getEmployeeByContractId(int $id){
+        $result = $this->conn->query("SELECT * FROM Contracts WHERE Contracts.clientId=$id;");
+        return $result;
+    }
+
+    // Returns the client matching the client id
+    function getClientByClientId(int $id) {
+        $result = $this->conn->query("SELECT * FROM Clients WHERE Clients.clientId=$id");
+        print($this->conn->error);
+
+        if($result->num_rows > 0){
+            return $result->fetch_assoc();
+        } else {
+            return 0;
+        }
+    }
+
+    // Update the values of a row of Table Contracts
+    function updateContract(string $contactNumber, string $annualContractValue, string $initalAmount, string $serviceStartDate, string $serviceType, string $contractType, string $lineOfBusiness, int $satisfactionLevel, int $id){
+        
+        $result = $this->conn->query("
+            UPDATE Contracts 
+            SET 
+            contactNumber = $contactNumber,
+            annualContractValue = $annualContractValue,
+            initalAmount = $initalAmount,
+            serviceStartDate =  $serviceStartDate,
+            serviceType = $serviceType,
+            contractType = $contractType,
+            lineOfBusiness = $lineOfBusiness,
+            satisfactionLevel = $satisfactionLevel
+            WHERE Contracts.contractId=$id;");
+        return $result;     
+    }
+
+    // Update the values of a row of Table Clients
+    function updateClient(string $clientName, string $repFirstName, string $repMiddleInital, string $repLastName, string $emailId, $city, $province, string $postalCode,string $password, int $id){
+        $result = $this->conn->query("
+            UPDATE Clients
+            SET
+            clientName = $clientName,
+            repFirstName = $repFirstName,
+            repMiddleInital = $repMiddleInital,
+            repLastName = $repLastName,
+            emailId = $emailId,
+            city = $city,
+            province = $province,
+            postalCode = $postalCode,
+            password = $password
+            WHERE Clients.clientId=$id;");
+        return $result;     
+    }
+    /*== End Admin Page Logic ===*/
+
+    /*== Login Page Logic ===*/
+
     function updateRegularDesiredContractType(int $id,string $enumm) {
       $result = $this->conn->query("UPDATE Regular SET desiredContractType='$enumm' WHERE employeeId=$id");
 
@@ -269,6 +346,7 @@ class DatabaseConn {
           die($this->conn->error);
       }
     }
+
 
     // Attempt to login as a client
     function loginClient(string $username, string $password) {
@@ -328,6 +406,7 @@ class DatabaseConn {
 
         header("location: index.php");
     }
+    /*== End Login Page Logic ===*/
 
     // Returns an employee type by his id
     function getEmployeeTypeById(int $id) {

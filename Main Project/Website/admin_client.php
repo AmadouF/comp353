@@ -4,9 +4,9 @@
     header("location: index.php");
   }
   // print_r($_SESSION); // DEBUGGER
-  $clients = $db->getAllClients(); 
+  $clientId =  $_GET['clientId']; // get the client Id from the url
+  $client = $db->getClientByClientId($clientId);
 ?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -16,13 +16,13 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    
     <!-- Custom Stylesheet -->
     <link type="text/css" rel="stylesheet" href="style.css"/>
     <!-- Custom Script -->
     <script type="text/javascript" src="script.js"></script>
 
-    <title>SaleAssociate</title>
+    <title>Contract</title>
   </head>
   <body>
     <!-- container -->
@@ -34,32 +34,47 @@
       ?>
       <!-- ./nav -->
 
-      <?php 
-        include("employee_general_info.php");
-      ?>
       <!-- row -->
-      <div class="row py-5">
+      <div class="row py-3">
+        <!-- col -->
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3 text-center">
+          <h1 class="text-center"><?= $client['clientName']?></h1>
+        </div>
+        <!-- ./ col -->
+
         <!-- col -->
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-          <ul class="list-grpup px-0 pb-3">
-          <li class="list-group-item"><h3>List of Clients</h3></li>
-          <!-- for each  -->
-          <? foreach ($clients as $key=> $client){ ?>
+          <? // print_r($client); // DEBUGGER ?>
+          <ul class="list-group">
             <li class="d-flex w-100 justify-content-between list-group-item">
               <h5 class="mb-1"><?= $client['clientName'] ?></h5>
               <div>
-                <a href="<?= "admin_client.php?clientId=".$client['clientId'] ?>" class="btn btn-outline-success btn-sm">View Client</a>
-                <span>&nbsp;</span>
-                <a href="<?= "admin_contracts.php?clientId=".$client['clientId'] ?>" class="btn btn-outline-primary btn-sm">View Contracts</a>
+                <a href="<?= "admin_edit_client.php?clientId=".$client['clientId'] ?>" class="btn btn-outline-success btn-sm">Edit Client</a>               
               </div>
             </li>
-          <? } ?> 
-          <!-- ./ for each  -->
-          </ul>
-        </div>  
+            <li class="list-group-item">
+              Representative: 
+              <?= $client['repFirstName'] ?>
+              <?=$client['repMiddleInital']?>
+              <?= $client['repLastName'] ?>
+            </li>
+            <li class="list-group-item">Email: <?= $client['emailId'] ?> </li>
+            <li class="list-group-item">City: <?= $client['city'] ?></li>
+            <li class="list-group-item">Province: <?= $client['province']?></li>
+            <li class="list-group-item">Postal Code: <?= $client['postalCode']?></li>
+            <li class="list-group-item">Password: <?= $client['password']?></li>
+          </a>  
+        </div> 
+        <!-- ./ col -->
+
+        <!-- col -->
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3 text-center">
+          <a href="./" class="btn btn-outline-primary">Back</a>
+        </div>
         <!-- ./ col -->
       </div>
       <!-- ./ row -->
+
     </div>
     <!-- ./ container -->
 
