@@ -129,14 +129,9 @@
 				$contract_client = $db->getClientByClientId($contract[0]);
 
               echo "<li class=\"list-group-item\"><form action=\"saleassociate_contract.php\" method=\"POST\">
-<<<<<<< HEAD
-              Contract <input type=\"submit\" name=\"contract_ID\" value=\"$vall[0]\" class=\"my-2 btn btn-outline-primary btn-md\"></input>
-=======
 			  Contract:
               <input type=\"submit\" name=\"contract_ID\" value=\"$contract[0]\" class=\"my-2 btn btn-outline-primary btn-md\"></input>
-				<br />".$contract_client["city"].", ".$contract_client["province"]."
->>>>>>> b944b7ca7b6007f9f7bf7831947f693f07bc2d73
-              </form></li>";
+				<br /></form></li>";
             }
             echo "</ul>";
               }
