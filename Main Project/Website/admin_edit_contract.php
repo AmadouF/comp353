@@ -77,29 +77,51 @@
 
           <!-- form row -->
           <div class="form-group row">
-            <label>Service Type (<small>Cloud, On-premises</small>)</label>
-            <input name="serviceType" type="text" class="form-control" value="<?= $contract['serviceType']?>">
+            <label>Service Type</label>
+            <select name="serviceType" type="text" class="form-control" value="<?= $contract['serviceType']?>">
+              <option value="Cloud">Cloud</option>
+              <option value="On-premises">On-premises</option>
+            </select>
           </div>
           <!-- ./ form row -->
 
           <!-- form row -->
           <div class="form-group row">
-            <label>Contract Type (<small>Premium, Gold, Diamond, Silver</small>)</label>
-            <input name="contractType" type="text" class="form-control" value="<?= $contract['contractType']?>">
+            <label>Contract Type</label>
+            <select name="contractType" type="text" class="form-control" value="<?= $contract['contractType']?>">
+              <option value="Premium">Premium</option>
+              <option value="Gold">Gold</option>
+              <option value="Diamond">Diamond</option>
+              <option value="Silver">Silver</option>
+            </select>
           </div>
           <!-- ./ form row -->      
 
           <!-- form row -->
           <div class="form-group row">
-            <label>Line Of Business (<small>CloudServices, Development, Research</small>)</label>
-            <input name="lineOfBusiness" type="text" class="form-control" value="<?= $contract['lineOfBusiness']?>">
+            <label>Line Of Business</label>
+            <select name="lineOfBusiness" type="text" class="form-control" value="<?= $contract['lineOfBusiness']?>">
+              <option value="CloudServices">CloudServices</option>
+              <option value="Development">Development</option>
+              <option value="Research">Research</option>
+            </select>
           </div>
           <!-- ./ form row -->    
 
           <!-- form row -->
           <div class="form-group row">
             <label>Satisfaction Level</label>
-            <input name="satisfactionLevel" type="text" class="form-control" value="<?= $contract['satisfactionLevel']?>">
+            <select name="satisfactionLevel" type="text" class="form-control" value="<?= $contract['satisfactionLevel']?>">
+            <?php
+              for($i=0; $i <= 10; $i++) {
+                if($contract["satisfactionLevel"] == $i) {
+                  echo "<option selected>$i</option>";
+                } else {
+                  echo "<option value=\"$i\">$i</option>";
+                }
+              }
+              ?>
+            </select>
           </div>
           <!-- ./ form row -->    
 

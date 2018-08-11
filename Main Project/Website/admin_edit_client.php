@@ -92,7 +92,21 @@
           <!-- form row -->
           <div class="form-group row">
             <label>Province</label>
-            <input name="province" type="text" class="form-control" value="<?= $client['province']?>">
+            <select name="province" type="text" class="form-control" value="<?= $client['province']?>">
+              <option value="British Columbia">British Columbia</option>
+              <option value="Alberta">Alberta</option>
+              <option value="Saskatchewan">Saskatchewan</option>
+              <option value="Manitoba">Manitoba</option>
+              <option value="Ontario">Ontario</option>
+              <option value="Quebec">Quebec</option>
+              <option value="PEI">PEI</option>
+              <option value="Nova Scoita">Nova Scoita</option>
+              <option value="New Brunswick">New Brunswick</option>
+              <option value="Newfoundland">Newfoundland</option>
+              <option value="Northwest Territories">Northwest Territories</option>
+              <option value="Yukon">Yukon</option>
+              <option value="Nunavut">Nunavut</option>
+            </select>
           </div>
           <!-- ./ form row -->    
 
