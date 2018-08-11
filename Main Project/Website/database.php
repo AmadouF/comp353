@@ -197,7 +197,7 @@ class DatabaseConn {
         return $result->fetch_all();
       } else {
           return 0;
-        }      
+        }
     }
 
     function getRegularOnSameContract(int $contractId)
@@ -278,12 +278,24 @@ class DatabaseConn {
           return 0;
         }
     }
-  
+
+    function getClientsAll() {
+      $result = $this->conn->query("SELECT DISTINCT * FROM Clients");
+
+      print($this->conn->error);
+
+      if($result->num_rows > 0){
+        return $result->fetch_all();
+      } else {
+          return 0;
+        }
+    }
+
     /*== Admin Page Logic ===*/
     // Returns array containing all clients in DB
     function getAllClients(){
         $result = $this->conn->query("SELECT * FROM Clients;");
-        return $result; 
+        return $result;
     }
 
     function getEmployeeNameById(int $id){
@@ -317,10 +329,10 @@ class DatabaseConn {
 
     // Update the values of a row of Table Contracts
     function updateContract(string $contactNumber, string $annualContractValue, string $initalAmount, string $serviceStartDate, string $serviceType, string $contractType, string $lineOfBusiness, int $satisfactionLevel, int $id){
-        
+
         $result = $this->conn->query("
-            UPDATE Contracts 
-            SET 
+            UPDATE Contracts
+            SET
             contactNumber = $contactNumber,
             annualContractValue = $annualContractValue,
             initalAmount = $initalAmount,
@@ -330,7 +342,7 @@ class DatabaseConn {
             lineOfBusiness = $lineOfBusiness,
             satisfactionLevel = $satisfactionLevel
             WHERE Contracts.contractId=$id;");
-        return $result;     
+        return $result;
     }
 
     // Update the values of a row of Table Clients
@@ -348,7 +360,7 @@ class DatabaseConn {
             postalCode = $postalCode,
             password = $password
             WHERE Clients.clientId=$id;");
-        return $result;     
+        return $result;
     }
     /*== End Admin Page Logic ===*/
 
