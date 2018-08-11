@@ -27,7 +27,7 @@ if($userSet && $passSet) {
         ");
     }
     if(!$passSet) {
-                pushError("
+        pushError("
         <div class=\"alert alert-danger alert-dismissible fade show my-1\">
            Client <strong>password</strong>  is required 🙈.
              <button type=\"button\" class=\"close\" data-dismiss=\"alert\">
