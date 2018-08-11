@@ -202,16 +202,7 @@ class DatabaseConn {
 
     function getRegularOnSameContract(int $contractId)
     {
-      $result = $this->conn->query("SELECT Employees.firstName, Employees.lastName,Employees.employeeId FROM Employees, Regular WHERE Employees.employeeId = Regular.employeeId AND Regular.contractId=$contractId");
-
-      if($result->num_rows > 0)
-      {
-        return $result->fetch_all();
-      }
-      else
-      {
-          return 0;
-      }
+      return $this->conn->query("SELECT * FROM Employees, Regular WHERE Employees.employeeId = Regular.employeeId AND Regular.contractId=$contractId");
     }
 
 	function setDeliverableDeliveredByContractIdAndDeliverableIndex(int $contractId, int $index) {
@@ -242,6 +233,26 @@ class DatabaseConn {
         }
     }
 
+	function deleteContractByContractId($id) {
+		$this->conn->query("DELETE FROM Deliverables WHERE contractId=$id");
+		$this->conn->query("DELETE FROM Contracts where contractId=$id");
+	}
+
+    function getLinesOfBusiness() {
+      $result = $this->conn->query("SELECT DISTINCT lineOfBusiness FROM Contracts");
+
+      print($this->conn->error);
+
+      if($result->num_rows > 0){
+        return $result->fetch_all();
+      } else {
+          return 0;
+        }
+    }
+
+	function getContractsFromLinesOfBusiness(string $lines) {
+		return $this->conn->query("SELECT * FROM Contracts WHERE Contracts.lineOfBusiness='$lines'");
+	}
 
     function getLinesOfBusinessBySalesAssociateId(int $id) {
       $result = $this->conn->query("SELECT DISTINCT lineOfBusiness FROM Contracts WHERE Contracts.superviseBy=$id");
@@ -380,7 +391,8 @@ class DatabaseConn {
 	}
 	
 	function getTaskByRegularId($id) {
-      return $this->conn->query("SELECT * from Tasks WHERE employeeId=")->fetch_assoc();
+	  $result = $this->conn->query("SELECT * FROM Tasks");
+	  return $result->fetch_assoc();
 	}
 
     function updateRegularInsurance(int $id,string $enumm) {

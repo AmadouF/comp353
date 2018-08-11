@@ -73,9 +73,9 @@
           <h3 class="py-3">Employees on Contract</h3>
           <ul class="list-group pb-3">
           <?php
-            foreach ($user_regularUnder as $key => $val) {
+            foreach ($user_regularUnder as $val) {
 				 $task =$db->getTaskByRegularId($val["employeeId"]);
-              echo "<li class=\"list-group-item\">$val[0] $val[1]</li>";
+              echo "<li class=\"list-group-item\"><b>".$val["firstName"]." ".$val["lastName"]."</b>: ".$task["hours"]." hours logged</li>";
             }
           ?>
           </ul>
@@ -161,6 +161,25 @@
             </div>
           </form>
           <!-- ./ form to add employee -->
+        <h3 class="py-3">All Contracts by all clients by category</h3>
+			<?php $user_line_of_business = $db->getLinesOfBusiness(); 
+          foreach ($user_line_of_business as $line_of_business) {
+            echo "<ul class=\"list-group pb-3\">";
+			echo "<li class=\"list-group-item active\">$line_of_business[0]</li>";
+			$contracts_in_line_of_business = $db->getContractsFromLinesOfBusiness($line_of_business[0]);
+            foreach ($contracts_in_line_of_business as $contract)
+            {
+				$contract_client = $db->getClientByClientId($contract["clientId"]);
+
+              echo "<li class=\"list-group-item\"><form action=\"saleassociate_contract.php\" method=\"POST\">
+			  Contract:
+              <input type=\"submit\" name=\"contract_ID\" value=\"".$contract["contractId"]."\" class=\"my-2 btn btn-outline-primary btn-md\"></input>
+				<br />".$contract_client["city"].", ".$contract_client["province"]."
+              </form></li>";
+            }
+            echo "</ul>";
+			  }
+	?>
         </div>
         <!-- ./ form row -->
       </div>
