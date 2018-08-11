@@ -23,6 +23,19 @@ class DatabaseConn {
         $this->conn = $connection;
     }
 
+    // Returns array containing all contracts
+    function getAllContracts() {
+        $result = $this->conn->query("SELECT * FROM Contracts;");
+        return $result;
+    }
+
+    function getDeliverablesByContractId($contractId) {
+        $result = $this->conn->query("SELECT * from Deliverables WHERE contractId=$contractId");
+
+        return $result;
+    }
+
+
     function saveContractSatisfactionByContractId(int $contractId, int $satisfaction) {
         $result = $this->conn->query("UPDATE Contracts SET satisfactionLevel=$satisfaction WHERE contractId=$contractId");
 
@@ -85,6 +98,10 @@ class DatabaseConn {
         } else {
             return 0;
         }
+    }
+
+    function getContractsSupervisedBySalesAssociateById(int $salesAssociateId) {
+        return $this->conn->query("SELECT * from Contracts WHERE superviseBy=$salesAssociateId");
     }
 
     function getContractByContractId(int $id) {
@@ -207,12 +224,6 @@ class DatabaseConn {
         return $result; 
     }
 
-    // Returns array containing all contracts in DB
-    function getAllContracts() {
-        $result = $this->conn->query("SELECT * FROM Contracts;");
-        return $result;
-    }
-
     function getEmployeeNameById(int $id){
         $result = $this->conn->query("SELECT Employees.firstName FROM Employees WHERE Employees.employeeId = $id;");
         return $result;
@@ -304,23 +315,27 @@ class DatabaseConn {
       $result3 = $this->conn->query("UPDATE Regular SET manageBy=0 WHERE employeeId=$id");
 
       if(!$result1) {
+          die("Regular update error: ". $this->conn->error);
+      }
+      if(!$result2) {
+          die("Task update error: ".$this->conn->error);
+      }
+      if(!$result3) {
+          die("Regylar manager update error: ". $this->conn->error);
+      }
+    }
+
+    function updateRegularContractId(int $id,int $contractid,int $mid) {
+      $result1 = $this->conn->query("UPDATE Regular SET contractId=$contractid WHERE employeeId=$id");
+      $result2 = $this->conn->query("UPDATE Tasks SET contractId=$contractid WHERE employeeId=$id");
+      $result3 = $this->conn->query("UPDATE Regular SET manageBy=$mid WHERE employeeId=$id");
+      if(!$result1) {
           die($this->conn->error);
       }
       if(!$result2) {
           die($this->conn->error);
       }
       if(!$result3) {
-          die($this->conn->error);
-      }
-    }
-
-    function updateRegularContractIdByIdAndContractId(int $id,int $contractid) {
-      $result1 = $this->conn->query("UPDATE Regular SET contractId=$contractid WHERE employeeId=$id");
-      $result2 = $this->conn->query("UPDATE Tasks SET contractId=$contractid WHERE employeeId=$id");
-      if(!$result1) {
-          die($this->conn->error);
-      }
-      if(!$result1) {
           die($this->conn->error);
       }
     }
@@ -368,19 +383,13 @@ class DatabaseConn {
         $query = "SELECT * FROM Employees WHERE employeeId ='$username' AND password='$password' LIMIT 1";
         $employees = $this->conn->query($query);
 
-		echo $query."   ";
-		echo $username."--".$password;
-		echo "  ".$employees->num_rows;
-
         if($employees->num_rows >= 1) {
             $employee = $employees->fetch_assoc();
             $employee_type = $this->getEmployeeTypeById($employee["employeeId"]);
 
             $_SESSION["user"] = $employee;
 			$_SESSION["user_type"] = $employee_type;
-			echo "GOOD";
         } else {
-			echo "ERROR";
             pushError("
             <div class=\"container\">
                 <div class=\"row-fluid\">
