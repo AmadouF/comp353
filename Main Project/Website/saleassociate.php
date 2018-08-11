@@ -127,8 +127,7 @@
             foreach ($temp as $vall)
             {
               echo "<li class=\"list-group-item\"><form action=\"saleassociate_contract.php\" method=\"POST\">
-              Contract
-              <input type=\"submit\" name=\"contract_ID\" value=\"$vall[0]\" class=\"my-2 btn btn-outline-primary btn-md\"></input>
+              Contract <input type=\"submit\" name=\"contract_ID\" value=\"$vall[0]\" class=\"my-2 btn btn-outline-primary btn-md\"></input>
               </form></li>";
             }
             echo "</ul>";
