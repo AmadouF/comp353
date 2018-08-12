@@ -35,7 +35,7 @@
           </button>
 	  </div>"
 	  );
-				header("location: index.php");
+				header("location: addclient.php");
 	  }
 	}
     else{
@@ -73,9 +73,10 @@
           </button>
 	  </div>"
 	  );
-				header("location: index.php");
+				header("location: addcontract.php");
 		}
 	}
+<<<<<<< HEAD
     }
     else{
       echo "<div class=\"alert alert-danger alert-dismissible fade show my-1\">
@@ -86,6 +87,18 @@
       </div>";
     }
   
+=======
+  else{
+    pushError( "<div class=\"alert alert-danger alert-dismissible fade show my-1\">
+        This phone number is not <strong>human</strong> phone number.
+         <button type=\"button\" class=\"close\" data-dismiss=\"alert\">
+            <span>&times;</span>
+        </button>
+    </div>");
+    header("location: addcontract.php");
+  }
+    }
+>>>>>>> 62f1d0277b038de70062189ea43c9e28953d0bf4
 
   if (isset($_POST["manager_on"]))
   {
