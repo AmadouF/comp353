@@ -48,9 +48,6 @@
           <ul class="list-group">
             <li class="d-flex w-100 justify-content-between list-group-item">
               <h5 class="mb-1"><?= $client['clientName'] ?></h5>
-              <div>
-                <a href="<?= "admin_edit_client.php?clientId=".$client['clientId'] ?>" class="btn btn-outline-success btn-sm">Edit Client</a>               
-              </div>
             </li>
             <li class="list-group-item">
               Representative: 
