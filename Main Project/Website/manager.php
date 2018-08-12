@@ -201,7 +201,7 @@
             {
 				$contract_client = $db->getClientByClientId($contract["clientId"]);
 
-              echo "<li class=\"list-group-item\"><form action=\"saleassociate_contract.php\" method=\"POST\">
+              echo "<li class=\"list-group-item\"><form action=\"saleassociate_contract.php\" method=\"GET\">
 			  Contract:
               <input type=\"submit\" name=\"contract_ID\" value=\"".$contract["contractId"]."\" class=\"my-2 btn btn-outline-primary btn-md\"></input>
 				<br />".$contract_client["city"].", ".$contract_client["province"]."
