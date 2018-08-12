@@ -409,7 +409,7 @@ class DatabaseConn {
 	}
 
 	function getTaskByRegularId($id) {
-	  $result = $this->conn->query("SELECT * FROM Tasks");
+	  $result = $this->conn->query("SELECT * FROM Tasks WHERE employeeId=$id");
 	  return $result->fetch_assoc();
     }
     

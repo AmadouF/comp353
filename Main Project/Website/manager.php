@@ -150,7 +150,7 @@
             <?php
               foreach ($user_regularUnder as $val) {
 
-     	           echo "<option value=\"".$val["firstName"]."\" >"."</option>";
+     	           echo "<option value=\"".$val["employeeId"]."\" >".$val["firstName"]." ".$val["lastName"]."</option>";
 			}
             ?>
             </select>
