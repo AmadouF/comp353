@@ -49,6 +49,17 @@ class DatabaseConn {
         return $results;
     }
 
+    function addNewPayment(int $contractId, float $amount) {
+        $result = $this->conn->query("INSERT INTO Payments (contractId, amount) VALUES($contractId, $amount)");
+        if(!$result) {
+            die($this->conn->error);
+        }
+    }
+
+    function getPaymentsByContractId(int $contractId) {
+        return $this->conn->query("SELECT * from Payments WHERE contractId=$contractId");
+    }
+
     // Returns a user by his id
     function getUserById(int $id) {
         $result = $this->conn->query("SELECT * FROM Users WHERE id=$id");

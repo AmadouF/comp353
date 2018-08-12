@@ -5,7 +5,8 @@
   }
   $user = $db->getManagerEmployeeById($_SESSION["user"]["employeeId"]);
   $contract = $db->getContractByContractid($user["contractId"]);
-?>
+  $client = $db->getClientByContractId($contract["contractId"]);
+  ?>
 
 <!doctype html>
 <html lang="en">
@@ -44,7 +45,7 @@
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
           <h3 class="py-3">My Contract</h3>
           <ul class="list-group pb-3">
-            <li class="list-group-item active">Client Name: <?=$contract["clientName"]?></li>
+            <li class="list-group-item active"><?=$client["clientName"]?></li>
             <li class="list-group-item">Contract ID: <?=$contract["contractId"]?></li>
             <li class="list-group-item">Contract Start Date: <?=$contract["serviceStartDate"]?></li>
             <li class="list-group-item">Contact number: <?=$contract["contactNumber"]?></li>
