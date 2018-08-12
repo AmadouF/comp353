@@ -20,7 +20,7 @@ dayname(serviceStartDate)!='Saturday'
 and
 dayname(serviceStartDate)!='Sunday'
 having 
-Count(Contracts.contractType) >= 0;
+Count(Contracts.contractType) >= 35;
 
 
 
