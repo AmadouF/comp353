@@ -1,3 +1,7 @@
+<?php
+  include("includes.php");
+  displayErrors();
+?>
 <!doctype html>
 <html lang="en">
   <head>

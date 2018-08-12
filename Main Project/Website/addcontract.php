@@ -4,6 +4,7 @@
   $user_client = $db->getClientsBySalesAssociateId($user["employeeId"]);
   $all_client = $db->getClientsAll();
   $managers = $db->getAllManagers();
+  displayErrors();
 ?>
 <!doctype html>
 <html lang="en">
