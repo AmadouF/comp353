@@ -79,7 +79,7 @@ CREATE TABLE Manager (
 CREATE TABLE Regular (
   employeeId INT NOT NULL PRIMARY KEY REFERENCES Employees(employeeId),
 	contractId INT,
-  manageBy INT NOT NULL,
+  manageBy INT,
 	department ENUM('Development', 'QA', 'UI', 'Design', 'BusinessIntelligence', 'Networking') NOT NULL,
 	insurance ENUM('Premium','Silver','Normal') NOT NULL,
   desiredContractType ENUM('Premium','Gold','Diamond','Silver') NOT NULL,

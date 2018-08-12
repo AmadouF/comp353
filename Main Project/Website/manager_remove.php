@@ -1,6 +1,9 @@
 <?php
   include("includes.php");
 
+  $user = $db->getManagerEmployeeById($_SESSION["user"]["employeeId"]);
+  
+ 
   if(isset($_POST["remove_regular"]))
   {
     $candidate_id = $_POST["remove_regular"];
@@ -9,7 +12,6 @@
     $candidate = $db->getRegularEmployeeById($candidate_id);
     if($candidate["contractId"]!=$manager["contractId"])
     {
-      echo "ya dun fucked up a-a-ron";
       pushError("
       <div class=\"alert alert-danger alert-dismissible fade show my-1\">
           Your target is <strong>not</strong> on this contract.
@@ -21,7 +23,6 @@
       header("location: manager.php");
     }
     else{
-      echo "removing";
       $db->removeRegularFromContractById($candidate_id);
       pushError("
       <div class=\"alert alert-success alert-dismissible fade show my-1\">
