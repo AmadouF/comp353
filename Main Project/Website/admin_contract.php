@@ -107,6 +107,26 @@
           ?>
           </ul>          
         </div>
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
+
+        <h4 class="py-2">Payments:</h4>
+        <ul class="list-group">
+        <?php
+          $payments = $db->getPaymentsByContractId($contract["contractId"]);
+          if(!empty($payments)) {
+            foreach($payments as $payment) {
+              ?>
+               
+               <li class="list-group-item list-group-item-action flex-column align-items-start">
+                  <p><b>Payment Id: <?=$payment["paymentId"]?></p>
+                  <p><b>Amount: <?=$payment["amount"]?></p>
+                </li>
+              <?php
+            }
+          }
+        ?>
+        </ul>
+        </div>
 
     </div>
     <!-- ./ container -->
