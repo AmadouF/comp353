@@ -55,6 +55,7 @@
   {
     if((strlen($_POST["contact_number"]))<15)
     {
+		if(checkArrayForEmpty([$_POST["client_id"],$_POST["supervisor_id"],$_POST["contact_number"],$_POST["a_c_v"],$_POST["initial_amount"],$_POST["service_start_date"],$_POST["service_type"],$_POST["contract_type"],$_POST["line_of_business"]])) {
       echo "<div class=\"alert alert-success alert-dismissible fade show my-1\">
            New contract <strong>SUCCESS</strong> builded.
            <button type=\"button\" class=\"close\" data-dismiss=\"alert\">
@@ -63,7 +64,17 @@
       </div>";
 
       $db->addContract($_POST["client_id"],$_POST["supervisor_id"],$_POST["contact_number"],$_POST["a_c_v"],$_POST["initial_amount"],$_POST["service_start_date"],$_POST["service_type"],$_POST["contract_type"],$_POST["line_of_business"]);
-    }
+		} else {
+			pushError("<div class=\"alert alert-danger alert-dismissible fade show my-1\">
+          Could not create contract, a field was left empty.
+           <button type=\"button\" class=\"close\" data-dismiss=\"alert\">
+              <span>&times;</span>
+          </button>
+	  </div>"
+	  );
+				header("location: index.php");
+		}
+	}
     else{
       echo "<div class=\"alert alert-danger alert-dismissible fade show my-1\">
           This phone number is not <strong>human</strong> phone number.
