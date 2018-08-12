@@ -240,7 +240,10 @@ class DatabaseConn {
     }
 
 	function deleteContractByContractId($id) {
-		$this->conn->query("DELETE FROM Deliverables WHERE contractId=$id");
+        $this->conn->query("UPDATE Manager set contractId = NULL where contractId = $id");
+        $this->conn->query("UPDATE Regular set contractId = NULL where contractId = $id");
+        $this->conn->query("DELETE FROM Deliverables WHERE contractId=$id");
+        $this->conn->query("DELETE FROM Tasks WHERE contractId=$id");
 		$this->conn->query("DELETE FROM Contracts where contractId=$id");
 	}
 
@@ -399,7 +402,16 @@ class DatabaseConn {
 	function getTaskByRegularId($id) {
 	  $result = $this->conn->query("SELECT * FROM Tasks");
 	  return $result->fetch_assoc();
-	}
+    }
+    
+    function deleteTasksOnContractByContractId(int $contractId) {
+        $result = $this->conn->query("DELETE FROM Tasks WHERE contractId=1");
+        if(!$result) {
+            die($this->conn->error);
+        }
+    }
+    
+
 
     function updateRegularInsurance(int $id,string $enumm) {
       $result = $this->conn->query("UPDATE Regular SET insurance='$enumm' WHERE employeeId=$id");

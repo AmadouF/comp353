@@ -58,7 +58,7 @@
                   <span>&nbsp;</span>
                   <a href="<?= "admin_contract.php?contractId=".$contract['contractId'] ?>" class="btn btn-sm btn-outline-primary">View Contract</a>
                   <span>&nbsp;</span>
-                  <a href="<?= "admin_delete_contract.php?contractId=".$contract['contractId'] ?>" class="btn btn-sm btn-outline-primary">Delete Contract</a>
+                  <a href="<?= "admin_delete_contract.php?clientId=".$contract["clientId"]."&contractId=".$contract['contractId'] ?>" class="btn btn-sm btn-outline-danger">Delete Contract</a>
                 </div>
               </li>
             <?php } ?> 
