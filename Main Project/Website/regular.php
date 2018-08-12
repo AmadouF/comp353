@@ -108,16 +108,16 @@
           <div class="form-group">
             <label for="dropdown" class="col-form-label"><strong>Wanted Contract Type:</strong></label>
             <select class="form-control col-6" id="dropdown" name="selectedType">
-              <option>Premium</option>
-              <option>Diamond</option>
-              <option>Gold</option>
-              <option>Silver</option>
+              <option <?= $user["desiredContractType"]=="Premium"?"selected":"" ?>>Premium</option>
+              <option <?= $user["desiredContractType"]=="Diamond"?"selected":"" ?>>Diamond</option>
+              <option> <?= $user["desiredContractType"]=="Gold"?"selected":"" ?>Gold</option>
+              <option <?= $user["desiredContractType"]=="Silver"?"selected":"" ?>>Silver</option>
             </select>
             <label for="dropdown" class="col-form-label"><strong>Insurance Plan:</strong></label>
             <select class="form-control col-6" id="dropdown" name="selectedInsurance">
-              <option>Premium</option>
-              <option>Silver</option>
-              <option>Normal</option>
+              <option <?= $user["insurance"]=="Premium"?"selected":"" ?>>Premium</option>
+              <option <?= $user["insurance"]=="Silver"?"selected":"" ?>>Silver</option>
+              <option <?= $user["insurance"]=="Normal"?"selected":"" ?>>Normal</option>
             </select>
             <input value="Confirm" type="submit" class="my-2 btn btn-outline-primary btn-md">
           </div>
