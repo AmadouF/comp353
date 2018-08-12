@@ -14,7 +14,7 @@
               <span>&times;</span>
           </button>
       </div>";
-		
+
       $db->addClient($_POST["client_name"],$_POST["first_name"],$_POST["middle_name"],$_POST["last_name"],$_POST["client_email"],$_POST["client_city"],$_POST["client_province"],$_POST["client_postalcode"],$_POST["client_password"]);
     }
     else{
@@ -48,6 +48,7 @@
       </div>";
 
       $db->addContract($_POST["client_id"],$_POST["supervisor_id"],$_POST["contact_number"],$_POST["a_c_v"],$_POST["initial_amount"],$_POST["service_start_date"],$_POST["service_type"],$_POST["contract_type"],$_POST["line_of_business"]);
+      $db->addDeliverable($_POST["client_id"],$_POST["service_start_date"]);
     }
     else{
       echo "<div class=\"alert alert-danger alert-dismissible fade show my-1\">
@@ -62,7 +63,7 @@
   if (isset($_POST["manager_on"]))
   {
     $manager_on_id = $db->getEmployeeIdByName($_POST["manager_on"]);
-    $db->updateManagerContractIdbyId($manager_on_id["employeeId"]);
+    $db->updateManagerContractIdbyId($manager_on_id["employeeId"],$_POST["client_id"]);
   }
 
   $user = $db->getSalesAssociateEmployeeById($_SESSION["user"]["employeeId"]);
@@ -138,7 +139,7 @@
 				$contract_client = $db->getClientByClientId($contract[0]);
 
 			  echo "<li class=\"list-group-item\">
-			 Contract: <a class=\"btn btn-outline-primary\" href=\"saleassociate_contract.php?contract_ID=$contract[0]\"> $contract[0]</a> 
+			 Contract: <a class=\"btn btn-outline-primary\" href=\"saleassociate_contract.php?contract_ID=$contract[0]\"> $contract[0]</a>
 			<br /></li>";
             }
             echo "</ul>";
