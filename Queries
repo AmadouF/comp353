@@ -9,9 +9,11 @@ FROM Contracts, SalesAssociate
 WHERE
 SalesAssociate.employeeId=Contracts.superviseBy and day(Contracts.serviceStartDate) between day(NOW())-10 and day(NOW()) and year(Contracts.serviceStartDate)=year(NOW());
 
-3)	Select *
-From Employees
-where province='Quebec'
+3)	SELECT Employees.* from Employees, Contracts, Clients, Tasks 
+WHERE Employees.employeeId = Tasks.employeeId AND
+Tasks.contractId = Contracts.contractId AND
+Contracts.clientId  = Clients.clientId AND 
+Clients.province = 'Quebec';
 
 4)	Select * 
 FROM Contracts 
