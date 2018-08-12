@@ -17,16 +17,6 @@ $lineOfBusiness = "'".$_POST['lineOfBusiness']."'";
 $satisfactionLevel = $_POST['satisfactionLevel'];
 $contractId = $_GET['contractId'];
 
-// debug some shiznit
-echo "contactNumber: ".$contactNumber."<br/>";
-echo "annualContractValue: ".$annualContractValue."<br/>";
-echo "initalAmount: ".$initalAmount."<br/>";
-echo "serviceStartDate: ".$serviceStartDate."<br/>";
-echo "serviceType: ".$serviceType."<br/>";
-echo "lineOfBusiness: ".$lineOfBusiness."<br/>";
-echo "satisfactionLevel: ".$satisfactionLevel."<br/>";
-echo "contractId: ".$contractId."<br/>";
-
 //update the DB... hopefully..
 $db->updateContract($contactNumber, $annualContractValue, $initalAmount, $serviceStartDate, $serviceType, $contractType, $lineOfBusiness, $satisfactionLevel, $contractId);
 header("location: admin_contract.php?contractId=$contractId")

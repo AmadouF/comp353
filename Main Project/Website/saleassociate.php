@@ -14,7 +14,7 @@
               <span>&times;</span>
           </button>
       </div>";
-
+		
       $db->addClient($_POST["client_name"],$_POST["first_name"],$_POST["middle_name"],$_POST["last_name"],$_POST["client_email"],$_POST["client_city"],$_POST["client_province"],$_POST["client_postalcode"],$_POST["client_password"]);
     }
     else{
@@ -137,10 +137,9 @@
             {
 				$contract_client = $db->getClientByClientId($contract[0]);
 
-              echo "<li class=\"list-group-item\"><form action=\"saleassociate_contract.php\" method=\"GET\">
-			  Contract:
-              <input type=\"submit\" name=\"contract_ID\" value=\"$contract[0]\" class=\"my-2 btn btn-outline-primary btn-md\"></input>
-				<br /></form></li>";
+			  echo "<li class=\"list-group-item\">
+			 Contract: <a class=\"btn btn-outline-primary\" href=\"saleassociate_contract.php?contract_ID=$contract[0]\"> $contract[0]</a> 
+			<br /></li>";
             }
             echo "</ul>";
               }

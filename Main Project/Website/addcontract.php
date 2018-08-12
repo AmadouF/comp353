@@ -53,6 +53,7 @@
                 <?php
                   foreach ($all_client as $val)
                   {
+
                     echo "<option>$val[0]</option>";
                   }
                 ?>
