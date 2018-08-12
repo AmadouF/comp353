@@ -412,14 +412,14 @@ class DatabaseConn {
 	  $result = $this->conn->query("SELECT * FROM Tasks WHERE employeeId=$id");
 	  return $result->fetch_assoc();
     }
-    
+
     function deleteTasksOnContractByContractId(int $contractId) {
         $result = $this->conn->query("DELETE FROM Tasks WHERE contractId=1");
         if(!$result) {
             die($this->conn->error);
         }
     }
-    
+
 
 
     function updateRegularInsurance(int $id,string $enumm) {
@@ -503,15 +503,59 @@ class DatabaseConn {
         return $result->fetch_assoc();
     }
 
-    function updateManagerContractIdbyId(int $id)
+    function updateManagerContractIdbyId(int $id,int $client_id)
     {
-      $contract = $this->conn->query("SELECT * FROM Contracts ORDER BY contractId DESC LIMIT 1");
+      $contract = $this->conn->query("SELECT * FROM Contracts WHERE Contracts.clientId=$client_id ORDER BY contractId DESC LIMIT 1");
       $contract_1 = $contract->fetch_assoc();
       $contract_id = $contract_1["contractId"];
       $result = $this->conn->query("UPDATE Manager SET contractId=$contract_id WHERE employeeId=$id");
     }
 
+    function addDeliverable(int $client_id,string $date)
+    {
+      $contract = $this->conn->query("SELECT * FROM Contracts WHERE Contracts.clientId=$client_id ORDER BY contractId DESC LIMIT 1");
+      $contract_1 = $contract->fetch_assoc();
+      $contract_id = $contract_1["contractId"];
+      $three = date("Y-m-d",strtotime($date." +3 weekdays"));
+      $five = date("Y-m-d",strtotime($date." +5 weekdays"));
+      $ten = date("Y-m-d",strtotime($date." +10 weekdays"));
+      $six = date("Y-m-d",strtotime($date." +6 weekdays"));
+      $eleven = date("Y-m-d",strtotime($date." +11 weekdays"));
+      $eightteen = date("Y-m-d",strtotime($date." +18 weekdays"));
+      $eight = date("Y-m-d",strtotime($date." +8 weekdays"));
+      $fourteen = date("Y-m-d",strtotime($date." +14 weekdays"));
+      $twenty = date("Y-m-d",strtotime($date." +20 weekdays"));
+      $fifteen = date("Y-m-d",strtotime($date." +15 weekdays"));
+      $twentyeight = date("Y-m-d",strtotime($date." +28 weekdays"));
 
+      switch ($contract_1["contractType"])
+      {
+        case "Premium":
+        $result1 = $this->conn->query("INSERT INTO Deliverables VALUES($contract_id,1,'$three',NULL)");
+        $result2 = $this->conn->query("INSERT INTO Deliverables VALUES($contract_id,2,'$five',NULL)");
+        $result3 = $this->conn->query("INSERT INTO Deliverables VALUES($contract_id,3,'$ten',NULL)");
+        break;
+
+        case "Diamond":
+        $result1 = $this->conn->query("INSERT INTO Deliverables VALUES($contract_id,1,'$six',NULL)");
+        $result2 = $this->conn->query("INSERT INTO Deliverables VALUES($contract_id,2,'$eleven',NULL)");
+        $result3 = $this->conn->query("INSERT INTO Deliverables VALUES($contract_id,3,'$eightteen',NULL)");
+        break;
+
+        case "Gold":
+        $result1 = $this->conn->query("INSERT INTO Deliverables VALUES($contract_id,1,'$eight',NULL)");
+        $result2 = $this->conn->query("INSERT INTO Deliverables VALUES($contract_id,2,'$fourteen',NULL)");
+        $result3 = $this->conn->query("INSERT INTO Deliverables VALUES($contract_id,3,'$twenty',NULL)");
+        break;
+
+        case "Silver":
+        $result1 = $this->conn->query("INSERT INTO Deliverables VALUES($contract_id,1,'$five',NULL)");
+        $result2 = $this->conn->query("INSERT INTO Deliverables VALUES($contract_id,2,'$fifteen',NULL)");
+        $result3 = $this->conn->query("INSERT INTO Deliverables VALUES($contract_id,3,'$twenty',NULL)");
+        $result3 = $this->conn->query("INSERT INTO Deliverables VALUES($contract_id,4,'$twentyeight',NULL)");
+        break;
+      }
+    }
 
     // Attempt to login as a client
     function loginClient(string $username, string $password) {

@@ -36,7 +36,7 @@
 	  </div>"
 	  );
 				header("location: index.php");
-	  }	
+	  }
 	}
     else{
       }
@@ -64,6 +64,7 @@
       </div>";
 
       $db->addContract($_POST["client_id"],$_POST["supervisor_id"],$_POST["contact_number"],$_POST["a_c_v"],$_POST["initial_amount"],$_POST["service_start_date"],$_POST["service_type"],$_POST["contract_type"],$_POST["line_of_business"]);
+      $db->addDeliverable($_POST["client_id"],$_POST["service_start_date"]);
 		} else {
 			pushError("<div class=\"alert alert-danger alert-dismissible fade show my-1\">
           Could not create contract, a field was left empty.
@@ -75,6 +76,7 @@
 				header("location: index.php");
 		}
 	}
+    }
     else{
       echo "<div class=\"alert alert-danger alert-dismissible fade show my-1\">
           This phone number is not <strong>human</strong> phone number.
@@ -88,7 +90,7 @@
   if (isset($_POST["manager_on"]))
   {
     $manager_on_id = $db->getEmployeeIdByName($_POST["manager_on"]);
-    $db->updateManagerContractIdbyId($manager_on_id["employeeId"]);
+    $db->updateManagerContractIdbyId($manager_on_id["employeeId"],$_POST["client_id"]);
   }
 
   $user = $db->getSalesAssociateEmployeeById($_SESSION["user"]["employeeId"]);
@@ -165,7 +167,7 @@
 				$contract_client = $db->getClientByClientId($contract[0]);
 
 			  echo "<li class=\"list-group-item\">
-			 Contract: <a class=\"btn btn-outline-primary\" href=\"saleassociate_contract.php?contract_ID=$contract[0]\"> $contract[0]</a> 
+			 Contract: <a class=\"btn btn-outline-primary\" href=\"saleassociate_contract.php?contract_ID=$contract[0]\"> $contract[0]</a>
 			<br /></li>";
             }
             echo "</ul>";
