@@ -127,6 +127,10 @@
         <ul class="list-group pb-3">
           <li class="list-group-item active"><?=$user_task["taskType"]?></li>
           <li class="list-group-item">Logged In Hours: <?=$user_task["hours"]?></li>
+		  <form class="form-group" action="regularLogHours.php" method="POST"> 
+				<input type="text" class="form-control" placeholder="hours" name="amount"/>
+				<input class="btn btn-primary" value="Add Hours" type="submit" />
+		  </form>
         </ul>
       </div>
       </div>

@@ -489,6 +489,14 @@ class DatabaseConn {
       }
     }
 
+	function logHoursForEmployee(int $employeeId, $timeAmount) {
+		$result = $this->conn->query("UPDATE Tasks SET hours = hours + $timeAmount WHERE employeeId=$employeeId");
+
+		if(!$result) {
+			die($this->conn->error);
+		}
+	}
+
     function getEmployeeIdByName(string $name)
     {
         $result = $this->conn->query("SELECT employeeId FROM Employees WHERE CONCAT(firstName,' ',lastName)='$name'");
