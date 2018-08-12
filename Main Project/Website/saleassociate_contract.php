@@ -1,10 +1,12 @@
 <?php
   include("includes.php");
+
   $user = $db->getSalesAssociateEmployeeById($_SESSION["user"]["employeeId"]);
   if (isset($_GET["contract_ID"]))
   {
     $user_contract_id = $_GET["contract_ID"];
     $user_contract = $db->getContractByContractId($user_contract_id);
+    $supervirsor = $db->getSalesAssociateEmployeeById($user_contract["superviseBy"]);
     $managers_on = $db->getManagersByContractId($user_contract_id);
     $contract_client = $db->getClientByContractId($user_contract_id);
   } else {
@@ -88,7 +90,7 @@
 
           <h3 class="py-3">Supervisor On</h3>
           <ul class="list-group pb-3">
-            <li class="list-group-item"><?= $user["firstName"] ?> <?= $user["lastName"] ?></li>
+            <li class="list-group-item"><?= $supervirsor["firstName"] ?> <?= $supervirsor["lastName"] ?></li>
           </ul>
 
           <h3 class="py-3">Managers On</h3>
