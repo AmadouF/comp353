@@ -85,7 +85,7 @@
           </button>
       </div>";
     }
-  }
+  
 
   if (isset($_POST["manager_on"]))
   {

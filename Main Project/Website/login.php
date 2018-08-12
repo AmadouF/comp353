@@ -27,7 +27,9 @@ if(isset($_SESSION["user"])) {
   <body>
     <!-- container -->
     <div class="container pt-3 pb-5">
-      <!-- row -->
+   	<a href="report.php" class="btn btn-primary">View Reports</a>   
+	  
+	  <!-- row -->
       <h1 class="text-center display-4">Contract Management System</h1>
       <p class="text-center lead">COMP 353 Summer 2018 Final Project</p>
       <div class="row py-2">

@@ -11,14 +11,14 @@ drop table Clients;
 
 CREATE TABLE Clients(
   clientId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  clientName VARCHAR(255),
-  repFirstName VARCHAR(255),
-  repMiddleInital VARCHAR(5),
-  repLastName VARCHAR(255),
-  emailId VARCHAR(255),
-  city VARCHAR(255),
-  province VARCHAR(255),
-  postalCode VARCHAR(255),
+  clientName VARCHAR(255) NOT NULL,
+  repFirstName VARCHAR(255) NOT NULL,
+  repMiddleInital VARCHAR(5) NOT NULL,
+  repLastName VARCHAR(255) NOT NULL,
+  emailId VARCHAR(255) NOT NULL,
+  city VARCHAR(255) NOT NULL,
+  province VARCHAR(255) NOT NULL,
+  postalCode VARCHAR(255) NOT NULL,
   password VARCHAR(20) NOT NULL
 );
 
@@ -65,7 +65,8 @@ create TABLE Deliverables(
     scheduledDate DATE NOT NULL,
     deliveredDate DATE,
     PRIMARY KEY (contractId, DeliverableIndex),
-    FOREIGN KEY (contractId) REFERENCES Contracts(contractId)
+    FOREIGN KEY (contractId) REFERENCES Contracts(contractId),
+    CHECK(WEEDDAY(scheduledDate)!=5 AND WEEKDAY(scheduledDate)!=6)
 );
 
 CREATE TABLE Manager (
