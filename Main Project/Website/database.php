@@ -515,6 +515,8 @@ class DatabaseConn {
 
     // Attempt to login as a client
     function loginClient(string $username, string $password) {
+		$username=  $this->escape($username);
+		$password = $this->escape($password);
         // $query = "SELECT * FROM Clients WHERE emailId ='$username' AND password='$password' LIMIT 1";
         $query = "SELECT * FROM Clients WHERE clientId ='$username' AND password='$password' LIMIT 1";
         $clients = $this->conn->query($query);
@@ -544,6 +546,8 @@ class DatabaseConn {
 
     // Attempt to login as an employee
     function loginEmployee(string $username,string $password) {
+		$username=  $this->escape($username);
+		$password = $this->escape($password);
         // $query = "SELECT * FROM Employees WHERE CONCAT(firstName,lastName) ='$username' AND password='$password' LIMIT 1";
         $query = "SELECT * FROM Employees WHERE employeeId ='$username' AND password='$password' LIMIT 1";
         $employees = $this->conn->query($query);
@@ -603,7 +607,7 @@ class DatabaseConn {
 
     // Escape string to be safe
     function escape(string $str) {
-        return $this->conn->real_escape_string(trim($str));
+        return $this->conn->escape_string(trim($str));
     }
 }
 
