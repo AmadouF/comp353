@@ -111,6 +111,14 @@
               </div>
               <p class="mb-1">Scheduled For: <?=$deliverable["scheduledDate"]?></p>
               <p class="mb-1">Delivered On: <?=$deliverable["deliveredDate"]?></p>
+              <p>
+              <?php 
+                if(!empty($deliverable["scheduledDate"] && !empty($deliverable["deliveredDate"]))) {
+                    echo "<b>".(strtotime($deliverable["deliveredDate"]) - strtotime($deliverable["scheduledDate"]))."</b>";
+                    echo " days to complete"; 
+                }
+              ?>
+               </p>
 			  <a class="btn btn-primary" href="deliverable_set_delivered.php?contractId=<?=$contract["contractId"]?>&deliverable=<?=$deliverable["deliverableIndex"]?>">Set as delivered</a>
             </a>
 			<br />
