@@ -76,6 +76,38 @@
       </div>
       <!-- ./ row -->
 
+        <!-- col -->
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
+          <h4 class="py-2">Deliverables:</h4>
+          <ul class="list-group">
+          <?php
+            $deliverables = $db->getDeliverablesByContractId($contract["contractId"]);
+            
+            while($deliverable = $deliverables->fetch_assoc()) {
+              ?>
+            <a class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><?=$deliverable["deliverableIndex"] ?></h5>
+              </div>
+              <p class="mb-1">Scheduled For: <?=$deliverable["scheduledDate"]?></p>
+              <p class="mb-1">Delivered On: <?=$deliverable["deliveredDate"]?></p>
+              <p>
+              <?php 
+                if(!empty($deliverable["scheduledDate"] && !empty($deliverable["deliveredDate"]))) {
+                    echo "<b>".(strtotime($deliverable["deliveredDate"]) - strtotime($deliverable["scheduledDate"]))."</b>";
+                    echo " days to complete"; 
+                }
+              ?>
+               </p>
+			
+            </a>
+			<br />
+              <?php
+            }
+          ?>
+          </ul>          
+        </div>
+
     </div>
     <!-- ./ container -->
 

@@ -63,11 +63,11 @@ class DatabaseConn {
     function getRegularEmployeeById(int $id) {
         $result = $this->conn->query("SELECT * FROM Regular INNER JOIN Employees ON Employees.employeeId = Regular.employeeId WHERE Regular.employeeId=$id");
 
-        print($this->conn->error);
 
         if($result->num_rows > 0){
             return $result->fetch_assoc();
         } else {
+            print($this->conn->error);
             return 0;
         }
     }
@@ -124,8 +124,6 @@ class DatabaseConn {
 
     function getContractByContractId(int $id) {
         $result = $this->conn->query("SELECT * FROM Contracts WHERE Contracts.contractId=$id");
-
-        print($this->conn->error);
 
         if($result->num_rows > 0){
             return $result->fetch_assoc();

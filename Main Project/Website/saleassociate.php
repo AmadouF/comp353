@@ -108,6 +108,7 @@
 
           <h3 class="py-3">My Clients</h3>
           <?php
+            if($user_client != 0) {
             foreach ($user_client as $val) {
               echo "<ul class=\"list-group pb-3\">";
                 echo "<li class=\"list-group-item active\">Client $val[0]</li>";
@@ -119,6 +120,7 @@
                 echo "<li class=\"list-group-item\">Postal Code: $val[8]</li>";
               echo "</ul>";
             }
+          }
           ?>
         <form action="addclient.php">
           <input value="New Client" type="submit" class="my-2 btn btn-outline-primary btn-md">
@@ -126,6 +128,7 @@
 
         <h3 class="py-3">Contracts in Line of Business</h3>
         <?php
+          if($user_line_of_business != 0) {
           foreach ($user_line_of_business as $line_of_business) {
             echo "<ul class=\"list-group pb-3\">";
             echo "<li class=\"list-group-item active\">$line_of_business[0]</li>";
@@ -134,13 +137,14 @@
             {
 				$contract_client = $db->getClientByClientId($contract[0]);
 
-              echo "<li class=\"list-group-item\"><form action=\"saleassociate_contract.php\" method=\"POST\">
+              echo "<li class=\"list-group-item\"><form action=\"saleassociate_contract.php\" method=\"GET\">
 			  Contract:
               <input type=\"submit\" name=\"contract_ID\" value=\"$contract[0]\" class=\"my-2 btn btn-outline-primary btn-md\"></input>
 				<br /></form></li>";
             }
             echo "</ul>";
               }
+            }
         ?>
         <form action="addcontract.php">
           <input value="New Contract" type="submit" class="my-2 btn btn-outline-primary btn-md">
