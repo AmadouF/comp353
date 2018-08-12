@@ -204,7 +204,7 @@ class DatabaseConn {
     }
 
     function getEmployeesNotOnContractByContractId(int $id){
-      $result = $this->conn->query("SELECT Regular.desiredContractType, Regular.employeeId FROM Regular WHERE Regular.contractId!=$id ");
+      $result = $this->conn->query("SELECT Regular.desiredContractType, Regular.employeeId FROM Regular WHERE (Regular.contractId!=$id OR Regular.contractId IS NULL) ");
 
       print($this->conn->error);
 
@@ -462,12 +462,16 @@ class DatabaseConn {
       }
     }
 
-    function updateRegularTaskType(int $id,string $type) {
-      $result = $this->conn->query("UPDATE Tasks SET taskType='$type' WHERE employeeId=$id");
+    function updateRegularTaskType(int $employeeId, int $contractId,string $type) {
+		$result = $this->conn->query("DELETE FROM Tasks WHERE employeeId=$employeeId");
       if(!$result) {
           die($this->conn->error);
-      }
-    }
+	  }	
+		$result = $this->conn->query("INSERT INTO Tasks VALUES ($employeeId, $contractId, '$type', 0)");
+      if(!$result) {
+          die($this->conn->error);
+	  }
+   }
 
 
     function addClient(string $s1,string $s2,string $s3,string $s4,string $s5,string $s6,string $s7,string $s8,string $s9)

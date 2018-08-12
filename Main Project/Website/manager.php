@@ -6,6 +6,9 @@
   displayErrors();
 
   $user = $db->getManagerEmployeeById($_SESSION["user"]["employeeId"]);
+
+  if($user["contractId"]) {
+
   $user_contract = $db->getContractByContractId($user["contractId"]);
   $user_client = $db->getClientByContractId($user["contractId"]);
   $user_supervisor = $db->getEmployeeById($user["superviseBy"]);
@@ -15,6 +18,7 @@
   $desired_contract_type = $db->getDesiredContractTypeFromRegular();
   $desired_contract_type_id = $db->getDesiredContractTypeAndIdFromRegular();
   $reg_employees_not_on_contract = $db->getEmployeesNotOnContractByContractId($user['contractId']);
+  }
 ?>
 
 <!doctype html>
@@ -51,7 +55,9 @@
       <div class="row py-3">
 
         <!-- col -->
-	  
+		  <?php 
+		  	if(isset($user_contract)) {
+		  ?>
 
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
 		  <a class="btn btn-main" href="manager_chronological_contracts.php">View All Contracts Chronologically</a>
@@ -184,9 +190,9 @@
           <label for="dropdown" class="col-form-label"><strong>To Task:</strong></label>
           <select class="form-control" id="dropdown" name="to_task">
               <?php
-                foreach ($user_tasks as $key=> $val)
+                foreach(['Set up infrastructure for client','Provisioning of resources','Assigning tasks to resources','Allocating a dedicated point of contact'] as $key=> $val)
                 {
-                  echo "<option value=\"".$val[0]."\">".$val[0]."</option>";
+                  echo "<option value=\"".$val."\">".$val."</option>";
                 }
               ?>
           </select>
@@ -197,6 +203,9 @@
           </form>
           <!-- ./ form to add employee -->
         <!-- ./ form row -->
+		<?php 
+			  }
+		?>
       </div>
       <!-- ./row -->
 

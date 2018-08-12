@@ -6,10 +6,12 @@
   displayErrors();
 
   $user = $db->getRegularEmployeeById($_SESSION["user"]["employeeId"]);
+  if($user["contractId"]) {
   $user_contract = $db->getContractByContractId($user["contractId"]);
   $user_client = $db->getClientByContractId($user["contractId"]);
   $user_task = $db->getTaskByEmployeeId($user["employeeId"]);
   $user_manager = $db->getEmployeeById($user["manageBy"]);
+  }
 ?>
 
 <!doctype html>
@@ -56,7 +58,7 @@
 
       <!-- row -->
       <div class="row py-3">
-
+  	<?php if(isset($user["contractId"])) { ?>
         <!-- col -->
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
           <h3 class="py-3">My Contract</h3>
@@ -103,6 +105,16 @@
           ?>
           </ul>          
         </div>
+        <h3 class="py-3">Task Working On</h3>
+        <ul class="list-group pb-3">
+          <li class="list-group-item active"><?=$user_task["taskType"]?></li>
+          <li class="list-group-item">Logged In Hours: <?=$user_task["hours"]?></li>
+		  <form class="form-group" action="regularLogHours.php" method="POST"> 
+				<input type="text" class="form-control" placeholder="hours" name="amount"/>
+				<input class="btn btn-primary" value="Add Hours" type="submit" />
+		  </form>
+        </ul>
+		<?php } ?>
           <form action="regular_confirm.php" method="POST">
           <!-- form row -->
           <div class="form-group">
@@ -123,15 +135,6 @@
           </div>
         </form>
 
-        <h3 class="py-3">Task Working On</h3>
-        <ul class="list-group pb-3">
-          <li class="list-group-item active"><?=$user_task["taskType"]?></li>
-          <li class="list-group-item">Logged In Hours: <?=$user_task["hours"]?></li>
-		  <form class="form-group" action="regularLogHours.php" method="POST"> 
-				<input type="text" class="form-control" placeholder="hours" name="amount"/>
-				<input class="btn btn-primary" value="Add Hours" type="submit" />
-		  </form>
-        </ul>
       </div>
       </div>
       <!-- ./row -->
