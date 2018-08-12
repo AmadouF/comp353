@@ -73,15 +73,18 @@
           <h3 class="py-3">Employees on Contract</h3>
           <ul class="list-group pb-3">
           <?php
+		  if(!empty($user_regularUnder)) {
             foreach ($user_regularUnder as $val) {
 				 $task =$db->getTaskByRegularId($val["employeeId"]);
               echo "<li class=\"list-group-item\"><b>".$val["firstName"]." ".$val["lastName"]."</b>: ".$task["hours"]." hours logged</li>";
-            }
+			}
+		}
           ?>
           </ul>
 
           <h3 class="py-3">Tasks on Contract</h3>
           <?php
+		  if(!empty($user_tasks)) {
             foreach ($user_tasks as $key => $task) {
               echo "<ul class=\"list-group pb-3\">";
                 echo "<li class=\"list-group-item active\">$task[0]</li>";
@@ -91,7 +94,8 @@
                   }
                 }
               echo "</ul>";
-            }
+			}
+		}
           ?>
   <h4 class="py-2">Deliverables:</h4>
           <ul class="list-group">
