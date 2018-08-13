@@ -114,7 +114,8 @@
               <p>
               <?php 
                 if(!empty($deliverable["scheduledDate"] && !empty($deliverable["deliveredDate"]))) {
-                    echo "<b>".(strtotime($deliverable["deliveredDate"]) - strtotime($deliverable["scheduledDate"]))."</b>";
+                    $time_diff =(strtotime($deliverable["deliveredDate"]) - strtotime($deliverable["scheduledDate"]))/(60*60*24); 
+                    echo "<b>".$time_diff."</b>";
                     echo " days to complete"; 
                 }
               ?>
