@@ -75,12 +75,11 @@
             <li class="list-group-item">Line of Bisiness: <?=$user_contract["lineOfBusiness"]?></li>
             <li class="list-group-item">Satisfaction Score: <?=$user_contract["satisfactionLevel"]?></li>
           </ul>
-          <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 py-3">
           <h4 class="py-2">Deliverables:</h4>
           <ul class="list-group">
           <?php
             $deliverables = $db->getDeliverablesByContractId($user_contract["contractId"]);
-            
+
             while($deliverable = $deliverables->fetch_assoc()) {
               ?>
             <a class="list-group-item list-group-item-action flex-column align-items-start">
@@ -90,26 +89,25 @@
               <p class="mb-1">Scheduled For: <?=$deliverable["scheduledDate"]?></p>
               <p class="mb-1">Delivered On: <?=$deliverable["deliveredDate"]?></p>
               <p>
-              <?php 
+              <?php
                 if(!empty($deliverable["scheduledDate"] && !empty($deliverable["deliveredDate"]))) {
                     echo "<b>".(strtotime($deliverable["deliveredDate"]) - strtotime($deliverable["scheduledDate"]))."</b>";
-                    echo " days to complete"; 
+                    echo " days to complete";
                 }
               ?>
                </p>
-			
+
             </a>
 			<br />
               <?php
             }
           ?>
-          </ul>          
-        </div>
+          </ul>
         <h3 class="py-3">Task Working On</h3>
         <ul class="list-group pb-3">
           <li class="list-group-item active"><?=$user_task["taskType"]?></li>
           <li class="list-group-item">Logged In Hours: <?=$user_task["hours"]?></li>
-		  <form class="form-group" action="regularLogHours.php" method="POST"> 
+		  <form class="form-group" action="regularLogHours.php" method="POST">
 				<input type="text" class="form-control" placeholder="hours" name="amount"/>
 				<input class="btn btn-primary" value="Add Hours" type="submit" />
 		  </form>
