@@ -51,7 +51,9 @@ From Contracts
 where
 Contracts.contractType='Silver'
 and
-day(Contracts.serviceStartDate) >= day(NOW())
+
+day(Contracts.serviceStartDate) >= day(NOW()) +10
+
 and 
 year(Contracts.serviceStartDate) >= year(NOW())
 and 
@@ -61,7 +63,8 @@ dayname(serviceStartDate)!='Saturday'
 and
 dayname(serviceStartDate)!='Sunday'
 having 
-Count(Contracts.contractType) >= 35
+
+Count(Contracts.contractType) >= 35;
 
 
 
@@ -142,6 +145,3 @@ and
 year(serviceStartDate)=2017
 and 
 Contracts.contractType='Silver'
-
-
-
